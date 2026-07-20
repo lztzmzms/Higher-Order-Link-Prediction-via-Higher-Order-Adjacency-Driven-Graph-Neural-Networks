@@ -292,6 +292,10 @@ class SparseCINConv(torch.nn.Module):
                 train_eps=train_eps)
             self.mp_levels.append(mp)
 
+    def reset_parameters(self):
+        for mp in self.mp_levels:
+            mp.reset_parameters()
+
     def forward(self, *cochain_params: CochainMessagePassingParams, start_to_process=0):
         assert len(cochain_params) <= self.max_dim+1
 

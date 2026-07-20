@@ -141,7 +141,8 @@ class SparseSIN(torch.nn.Module):
             conv.reset_parameters()
         if self.jump_mode is not None:
             self.jump.reset_parameters()
-        self.lin1s.reset_parameters()
+        for lin1 in self.lin1s:
+            lin1.reset_parameters()
         self.lin2.reset_parameters()
 
     def pool_complex(self, xs, data):
@@ -165,7 +166,8 @@ class SparseSIN(torch.nn.Module):
             xs += [self.jump(jump_x)]
         return xs
 
-    def forward(self, data: ComplexBatch, include_partial=False):
+    def forward(self, data: ComplexBatch, include_partial=False, return_logits=False,
+                return_embedding=False):
         act = get_nonlinearity(self.nonlinearity, return_module=False)
         xs, jump_xs = None, None
         res = {}
@@ -181,9 +183,9 @@ class SparseSIN(torch.nn.Module):
 
             if self.jump_mode is not None:
                 if jump_xs is None:
-                    xs = [[] for _ in xs]
+                    jump_xs = [[] for _ in xs]
                 for i, x in enumerate(xs):
-                    jump_xs[i] += xs[i]
+                    jump_xs[i].append(x)
 
         if self.jump_mode is not None:
             xs = self.jump_complex(jump_xs)
@@ -207,21 +209,26 @@ class SparseSIN(torch.nn.Module):
         if self.apply_dropout_before == 'final_readout':
             x = F.dropout(x, p=self.dropout_rate, training=self.training)
         if self.final_readout == 'mean':
-            x.mean(0)
+            x = x.mean(0)
         elif self.final_readout == 'sum':
-            x.sum(0)
+            x = x.sum(0)
         else:
             raise NotImplementedError
         if self.apply_dropout_before not in ['lin1', 'final_readout']:
             x = F.dropout(x, p=self.dropout_rate, training=self.training)
 
-        x = self.lin2(x)
-        x = x.sum(0)
+        graph_embedding = x
+        if return_embedding:
+            return graph_embedding
 
-        x = m(x)
+        x = self.lin2(graph_embedding)
+        logits = x
+        x = logits if return_logits else m(logits)
 
         if include_partial:
             res['out'] = x
+            res['logits'] = logits
+            res['graph_embedding'] = graph_embedding
             return x, res
         return x
 

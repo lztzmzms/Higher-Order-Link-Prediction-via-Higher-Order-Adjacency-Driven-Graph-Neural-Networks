@@ -1443,6 +1443,60 @@ def prune_edge_index_fanout(edge_index, num_nodes, fanout=100, seed=0, split_nam
 
 def generate_or_load_rw_embeddings(args, edge_index_train, tr_n, edge_index_test, te_n, rw_seed, device):
     os.makedirs(args.rw_cache_dir, exist_ok=True)
+    reference_cache = getattr(args, 'rw_reference_cache', None)
+    if reference_cache:
+        reference_cache = str(reference_cache).format(rw_seed=int(rw_seed))
+        if not os.path.isfile(reference_cache):
+            raise FileNotFoundError(f"Reference random-walk cache not found: {reference_cache}")
+        with np.load(reference_cache, allow_pickle=False) as z:
+            if 'train_rw' not in z or 'test_rw' not in z:
+                raise ValueError(
+                    f"Reference random-walk cache must contain train_rw and test_rw: {reference_cache}"
+                )
+            train_rw = np.asarray(z['train_rw'], dtype=np.float32).copy()
+            test_rw = np.asarray(z['test_rw'], dtype=np.float32).copy()
+            reference_payload = None
+            if 'payload' in z:
+                raw_payload = z['payload']
+                if np.asarray(raw_payload).size == 1:
+                    try:
+                        reference_payload = json.loads(str(np.asarray(raw_payload).item()))
+                    except (TypeError, ValueError, json.JSONDecodeError):
+                        reference_payload = None
+
+        expected_train_shape = (int(tr_n), int(args.rw_embedding_dim))
+        expected_test_shape = (int(te_n), int(args.rw_embedding_dim))
+        if train_rw.shape != expected_train_shape or test_rw.shape != expected_test_shape:
+            raise ValueError(
+                "Reference random-walk cache shape mismatch: "
+                f"train={train_rw.shape}, expected_train={expected_train_shape}, "
+                f"test={test_rw.shape}, expected_test={expected_test_shape}"
+            )
+        if not np.isfinite(train_rw).all() or not np.isfinite(test_rw).all():
+            raise ValueError(f"Reference random-walk cache contains NaN or Inf: {reference_cache}")
+        if isinstance(reference_payload, dict):
+            expected_payload = {
+                'rw_seed': int(rw_seed),
+                'walk_length': int(args.rw_walk_length),
+                'walks_per_node': int(args.rw_walks_per_node),
+                'window_size': int(args.rw_window_size),
+                'embedding_dim': int(args.rw_embedding_dim),
+                'rw_epochs': int(args.rw_epochs),
+                'rw_impl': str(args.rw_impl),
+            }
+            mismatches = {
+                key: (reference_payload.get(key), expected)
+                for key, expected in expected_payload.items()
+                if key in reference_payload and reference_payload.get(key) != expected
+            }
+            if mismatches:
+                raise ValueError(
+                    f"Reference random-walk cache configuration mismatch: {mismatches}"
+                )
+        print(f"Loading explicit reference random-walk cache for rw_seed={rw_seed}: {reference_cache}")
+        print_rw_diagnostics(args, train_rw, test_rw)
+        return train_rw, test_rw
+
     payload = {
         'train_hash': _file_hash(args.train),
         'test_hash': _file_hash(args.test),
@@ -1901,11 +1955,9 @@ def compute_auc_pr(y_true, y_score_pos):
         return 1.0, (1.0 / baseline) if baseline > 0 else np.nan, baseline
 
     try:
-        precision, recall, _ = precision_recall_curve(y_true, y_score_pos)
-        try:
-            auc_pr = auc(recall, precision)
-        except Exception:
-            auc_pr = np.nan
+        # Official AUC-PR: non-interpolated step integration.  This keeps the
+        # random/constant-score baseline equal to the positive prevalence.
+        auc_pr = float(average_precision_score(y_true, y_score_pos))
     except Exception:
         auc_pr = np.nan
 
@@ -2529,6 +2581,49 @@ def metrics_from_binary_scores(y_true, y_pos_probs, threshold=0.5, pos_ratio=Non
         "improvement": improvement,
     }
 
+def build_temporal_activity_target_scores(dataset, test_triplets, target_mask, args):
+    alpha = float(getattr(args, 'temporal_activity_alpha', 0.0))
+    if alpha <= 0:
+        return None
+    if not 0.0 <= alpha <= 1.0:
+        raise ValueError("--temporal_activity_alpha must be in [0, 1].")
+
+    # Reuse the MLSHOL protocol helper so both entry points use the exact same
+    # timestamped-event cutoff and tie-aware within-task rank calculation.
+    from exp.run_all_sparse_sin import build_temporal_activity_map
+
+    prior_args = argparse.Namespace(
+        temporal_activity_recent_fraction=float(args.temporal_activity_recent_fraction),
+        temporal_activity_aggregation=str(args.temporal_activity_aggregation),
+        temporal_activity_entity=str(args.temporal_activity_entity),
+        maxsimplex_prior_weight=0.0,
+    )
+    activity_map = build_temporal_activity_map(str(dataset), 'test', prior_args)
+    target_indices = torch.where(target_mask)[0].cpu().numpy()
+    target_triangles = [
+        tuple(sorted(map(int, test_triplets[int(index)])))
+        for index in target_indices
+    ]
+    missing = [triangle for triangle in target_triangles if triangle not in activity_map]
+    if missing:
+        raise KeyError(
+            "Temporal activity prior is missing target triangles: "
+            f"missing={len(missing)}, first={missing[:5]}"
+        )
+    scores = np.asarray(
+        [activity_map[triangle] for triangle in target_triangles],
+        dtype=np.float64,
+    )
+    if not np.isfinite(scores).all():
+        raise ValueError("Temporal activity prior contains NaN or Inf.")
+    print(
+        "Temporal activity prior: "
+        f"alpha={alpha:.3f}, recent_fraction={args.temporal_activity_recent_fraction}, "
+        f"aggregation={args.temporal_activity_aggregation}, "
+        f"entity={args.temporal_activity_entity}, targets={scores.size}"
+    )
+    return scores
+
 def test_local(model, data, target_mask, threshold=0.5, pos_ratio=None, pos_label=0,
                device=None, local_eval_batch_size=64,
                local_num_neighbors=50, local_num_hops=1,
@@ -2908,6 +3003,42 @@ def load_split_indices(split_dir, seed):
         return np.load(train_path), np.load(val_path)
     return None, None
 
+def validate_stratified_split_indices(train_indices, val_indices, labels, pos_label, val_ratio):
+    train_indices = np.asarray(train_indices, dtype=np.int64)
+    val_indices = np.asarray(val_indices, dtype=np.int64)
+    labels = np.asarray(labels)
+    train_n = int(labels.size)
+    if train_indices.ndim != 1 or val_indices.ndim != 1:
+        return False, "indices are not one-dimensional"
+    if train_indices.size + val_indices.size != train_n:
+        return False, "train and validation sizes do not cover all nodes"
+    if (
+        np.any(train_indices < 0)
+        or np.any(train_indices >= train_n)
+        or np.any(val_indices < 0)
+        or np.any(val_indices >= train_n)
+    ):
+        return False, "indices are outside the current graph"
+    if np.unique(train_indices).size != train_indices.size:
+        return False, "training indices contain duplicates"
+    if np.unique(val_indices).size != val_indices.size:
+        return False, "validation indices contain duplicates"
+    if np.intersect1d(train_indices, val_indices, assume_unique=False).size:
+        return False, "training and validation indices overlap"
+
+    positive = labels == int(pos_label)
+    expected_val_pos = int(np.sum(positive) * float(val_ratio))
+    expected_val_neg = int(np.sum(~positive) * float(val_ratio))
+    actual_val_pos = int(np.sum(positive[val_indices]))
+    actual_val_neg = int(val_indices.size - actual_val_pos)
+    if actual_val_pos != expected_val_pos or actual_val_neg != expected_val_neg:
+        return False, (
+            "cached class counts do not match the current stratified protocol "
+            f"(actual_pos={actual_val_pos}, expected_pos={expected_val_pos}, "
+            f"actual_neg={actual_val_neg}, expected_neg={expected_val_neg})"
+        )
+    return True, ""
+
 def save_priority_split_indices(split_dir, seed, priority_train_indices, priority_val_indices):
     os.makedirs(split_dir, exist_ok=True)
     np.save(os.path.join(split_dir, f'priority_train_indices_seed_{seed}.npy'), np.asarray(priority_train_indices, dtype=np.int64))
@@ -2998,6 +3129,51 @@ def build_priority_holdout_selector(priority_mask, train_n, val_seed=2026, prior
     }
     return priority_train_mask, selector_val_mask, selector_val_y, selector_info, info
 
+def adapt_gatconv_checkpoint_keys(checkpoint_state, model_state):
+    """Bridge PyG GATConv state-dict names across old and new releases."""
+    adapted = checkpoint_state.copy()
+    model_keys = set(model_state.keys())
+    converted = []
+
+    # Newer PyG stores the shared homogeneous projection as ``lin.weight``.
+    # Older PyG exposes the same projection through both ``lin_src`` and
+    # ``lin_dst``.  Use the identical tensor for both aliases.
+    for key in list(adapted.keys()):
+        suffix = '.lin.weight'
+        if not key.endswith(suffix) or key in model_keys:
+            continue
+        prefix = key[:-len(suffix)]
+        src_key = f'{prefix}.lin_src.weight'
+        dst_key = f'{prefix}.lin_dst.weight'
+        if src_key in model_keys and dst_key in model_keys:
+            weight = adapted.pop(key)
+            adapted[src_key] = weight
+            adapted[dst_key] = weight
+            converted.append((key, f'{src_key}, {dst_key}'))
+
+    # Also support the reverse direction so the frozen artifact remains
+    # portable if it is later produced by an older PyG release.
+    for model_key in model_keys:
+        suffix = '.lin.weight'
+        if not model_key.endswith(suffix) or model_key in adapted:
+            continue
+        prefix = model_key[:-len(suffix)]
+        src_key = f'{prefix}.lin_src.weight'
+        dst_key = f'{prefix}.lin_dst.weight'
+        if src_key in adapted and dst_key in adapted:
+            adapted[model_key] = adapted[src_key]
+            adapted.pop(src_key)
+            adapted.pop(dst_key)
+            converted.append((f'{src_key}, {dst_key}', model_key))
+
+    if converted:
+        print(
+            "Adapted GATConv checkpoint keys for torch-geometric compatibility: "
+            f"{len(converted)} layer(s)"
+        )
+    return adapted
+
+
 def run_experiment(seed, base_result_folder, data_train, data_test,
                    triplet_network, target_mask, target_nodes, pos_ratio=None, pos_label=0,
                    priority_mask=None, priority_frac=0.5, priority_mode='hard',
@@ -3056,17 +3232,79 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
     else:
         model = MultiLayerGAT(**common_model_kwargs).to(device)
 
+    pretrained_checkpoint = model_cfg.get('pretrained_checkpoint')
+    pretrained_checkpoint_path = None
+    if pretrained_checkpoint:
+        pretrained_checkpoint_path = str(pretrained_checkpoint).format(
+            seed=int(seed),
+            model_seed=int(seed),
+            rw_seed=int(rw_seed) if rw_seed is not None else 0,
+        )
+        if not os.path.isfile(pretrained_checkpoint_path):
+            raise FileNotFoundError(
+                f"Pretrained checkpoint not found for model_seed={seed}: "
+                f"{pretrained_checkpoint_path}"
+            )
+        try:
+            checkpoint_state = torch.load(
+                pretrained_checkpoint_path,
+                map_location=device,
+                weights_only=True,
+            )
+        except TypeError:
+            checkpoint_state = torch.load(pretrained_checkpoint_path, map_location=device)
+        if isinstance(checkpoint_state, dict) and 'state_dict' in checkpoint_state:
+            checkpoint_state = checkpoint_state['state_dict']
+        checkpoint_state = adapt_gatconv_checkpoint_keys(
+            checkpoint_state,
+            model.state_dict(),
+        )
+        model.load_state_dict(checkpoint_state, strict=True)
+        print(
+            f"Loaded pretrained checkpoint for model_seed={seed}: "
+            f"{pretrained_checkpoint_path}"
+        )
+
     optimizer = torch.optim.AdamW(model.parameters(), lr=float(model_cfg.get('lr', 0.005)), weight_decay=float(model_cfg.get('weight_decay', 1e-4)))
     scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=5, verbose=True)
 
     print(f"2. [种子 {seed}] 创建分层验证集...")
     val_ratio = 0.2
     train_n = data_train.num_nodes
-    pos_idx = torch.where(data_train.y == pos_label)[0].cpu().numpy()
-    neg_idx = torch.where(data_train.y != pos_label)[0].cpu().numpy()
+    supervision_mask = model_cfg.get("supervision_mask")
+    if supervision_mask is None:
+        supervision_mask = torch.ones(train_n, dtype=torch.bool)
+    elif not isinstance(supervision_mask, torch.Tensor):
+        supervision_mask = torch.as_tensor(supervision_mask, dtype=torch.bool)
+    supervision_mask = supervision_mask.detach().cpu().bool()
+    if supervision_mask.numel() != train_n:
+        raise ValueError(
+            "supervision_mask length mismatch: "
+            f"{supervision_mask.numel()} != {train_n}"
+        )
+    eligible_idx = torch.where(supervision_mask)[0].cpu().numpy()
+    eligible_y = data_train.y[supervision_mask]
+    pos_local = torch.where(eligible_y == pos_label)[0].cpu().numpy()
+    neg_local = torch.where(eligible_y != pos_label)[0].cpu().numpy()
+    pos_idx = eligible_idx[pos_local]
+    neg_idx = eligible_idx[neg_local]
     cached_train_idx, cached_val_idx = (None, None)
     if split_dir is not None and reuse_splits:
         cached_train_idx, cached_val_idx = load_split_indices(split_dir, seed)
+        if cached_train_idx is not None and cached_val_idx is not None:
+            split_is_valid, split_error = validate_stratified_split_indices(
+                cached_train_idx,
+                cached_val_idx,
+                data_train.y.cpu().numpy(),
+                pos_label,
+                val_ratio,
+            )
+            if not split_is_valid:
+                print(
+                    f"WARNING: ignoring stale cached split for seed={seed}: "
+                    f"{split_error}"
+                )
+                cached_train_idx, cached_val_idx = (None, None)
     if cached_train_idx is not None and cached_val_idx is not None:
         val_indices = np.asarray(cached_val_idx, dtype=np.int64)
         train_indices = np.asarray(cached_train_idx, dtype=np.int64)
@@ -3078,7 +3316,9 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
         val_pos = pos_idx[:int(len(pos_idx) * val_ratio)]
         val_neg = neg_idx[:int(len(neg_idx) * val_ratio)]
         val_indices = np.concatenate([val_pos, val_neg]) if len(val_pos) + len(val_neg) > 0 else np.array([], dtype=np.int64)
-        train_indices = np.setdiff1d(np.arange(train_n, dtype=np.int64), val_indices, assume_unique=False)
+        train_indices = np.setdiff1d(
+            eligible_idx, val_indices, assume_unique=False
+        )
     else:
         val_rng = np.random.default_rng(int(val_seed))
         val_rng.shuffle(pos_idx)
@@ -3086,12 +3326,14 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
         val_pos = pos_idx[:int(len(pos_idx) * val_ratio)]
         val_neg = neg_idx[:int(len(neg_idx) * val_ratio)]
         val_indices = np.concatenate([val_pos, val_neg]) if len(val_pos) + len(val_neg) > 0 else np.array([], dtype=np.int64)
-        train_indices = np.setdiff1d(np.arange(train_n, dtype=np.int64), val_indices, assume_unique=False)
+        train_indices = np.setdiff1d(
+            eligible_idx, val_indices, assume_unique=False
+        )
     val_mask = torch.zeros(train_n, dtype=torch.bool)
     if len(val_indices) > 0:
         val_mask[torch.tensor(val_indices, dtype=torch.long)] = True
-    train_mask = torch.ones(train_n, dtype=torch.bool)
-    train_mask[val_mask] = False
+    train_mask = torch.zeros(train_n, dtype=torch.bool)
+    train_mask[torch.as_tensor(train_indices, dtype=torch.long)] = True
     if split_dir is not None and (cached_train_idx is None or cached_val_idx is None):
         save_split_indices(split_dir, seed, train_indices, val_indices)
 
@@ -3149,8 +3391,16 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
     selected_model_threshold = np.nan
     best_model_state = None
     threshold_history = []
+    if pretrained_checkpoint_path is not None:
+        selected_model_threshold = float(model_cfg.get('pretrained_threshold', 0.5))
+        best_model_state = {
+            key: value.detach().cpu().clone()
+            for key, value in model.state_dict().items()
+        }
+        best_model_selection_score = np.nan
+        best_model_selection_metric = 'pretrained_checkpoint'
 
-    tr_counts = np.bincount(data_train.y.cpu().numpy())
+    tr_counts = np.bincount(data_train.y[train_mask].cpu().numpy(), minlength=2)
     if tr_counts.size == 1:
         tr_counts = np.array([tr_counts[0], 0])
     w0 = 1
@@ -3184,7 +3434,10 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
     if graph_scope not in ('full', 'local'):
         raise ValueError(f"Unsupported graph_scope={graph_scope}")
 
-    for epoch in range(epochs):
+    training_epochs = 0 if pretrained_checkpoint_path is not None else epochs
+    if pretrained_checkpoint_path is not None:
+        print("Pretrained evaluation mode: skipping optimizer training.")
+    for epoch in range(training_epochs):
         if graph_scope == 'local':
             total_loss, sup_loss, scaler, local_train_stats = train_local(
                 model, data_train, optimizer, criterion, train_mask, scaler=scaler,
@@ -3388,10 +3641,104 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
             })
             baseline = float(metrics.get('baseline', 0.0) or 0.0)
             y_true_target = np.asarray(metrics.get('y_true', []))
+
+    # Match the performance-critical behavior of the lztcode reference while
+    # keeping this release's minimal output contract.  The previous minimal
+    # runner captured the best validation checkpoint in memory but accidentally
+    # evaluated and summarized the last epoch instead.  Restoring the in-memory
+    # state avoids writing per-seed checkpoint files and the other diagnostic
+    # artifacts produced by the full reference runner.
+    if best_model_state is not None:
+        model.load_state_dict(best_model_state)
+    final_eval_threshold = (
+        float(selected_model_threshold)
+        if np.isfinite(selected_model_threshold)
+        else float(current_threshold)
+    )
+    if graph_scope == 'local':
+        metrics = test_local(
+            model,
+            data_test,
+            target_mask,
+            threshold=final_eval_threshold,
+            pos_ratio=pos_ratio,
+            pos_label=pos_label,
+            device=device,
+            local_eval_batch_size=local_eval_batch_size,
+            local_num_neighbors=local_num_neighbors,
+            local_num_hops=local_num_hops,
+            local_sampler=local_sampler,
+            local_fallback_sample=local_fallback_sample,
+        )
+        last_local_eval_stats = {
+            'sampler_backend': metrics.get('sampler_backend', local_sampler),
+            'local_sampler_used': metrics.get(
+                'local_sampler_used',
+                metrics.get('sampler_backend', local_sampler),
+            ),
+            'avg_seed_nodes_per_batch': float(metrics.get('avg_seed_nodes_per_batch', 0.0)),
+            'avg_sampled_nodes_per_batch': float(metrics.get('avg_sampled_nodes_per_batch', 0.0)),
+            'avg_sampled_edges_per_batch': float(metrics.get('avg_sampled_edges_per_batch', 0.0)),
+            'max_sampled_nodes_per_batch': int(metrics.get('max_sampled_nodes_per_batch', 0)),
+            'max_sampled_edges_per_batch': int(metrics.get('max_sampled_edges_per_batch', 0)),
+            'target_nodes_covered': int(metrics.get('target_nodes_covered', 0)),
+            'local_coverage_ratio_nodes': float(metrics.get('local_coverage_ratio_nodes', 0.0)),
+            'local_coverage_ratio_edges': float(metrics.get('local_coverage_ratio_edges', 0.0)),
+        }
+    else:
+        metrics = test(
+            model,
+            data_test,
+            target_mask,
+            threshold=final_eval_threshold,
+            pos_ratio=pos_ratio,
+            pos_label=pos_label,
+            device=device,
+        )
+    raw_gnn_metrics = metrics
+    temporal_activity_scores = model_cfg.get('temporal_activity_scores')
+    temporal_activity_alpha = float(model_cfg.get('temporal_activity_alpha', 0.0))
+    temporal_prior_metrics = None
+    if temporal_activity_scores is not None and temporal_activity_alpha > 0:
+        y_true_for_blend = np.asarray(metrics.get('y_true', []), dtype=np.int64)
+        gnn_scores_for_blend = np.asarray(metrics.get('y_probs', []), dtype=np.float64)
+        temporal_activity_scores = np.asarray(temporal_activity_scores, dtype=np.float64)
+        if temporal_activity_scores.shape != gnn_scores_for_blend.shape:
+            raise ValueError(
+                "Temporal activity score alignment mismatch: "
+                f"prior={temporal_activity_scores.shape}, "
+                f"gnn={gnn_scores_for_blend.shape}"
+            )
+        temporal_prior_metrics = metrics_from_binary_scores(
+            y_true_for_blend,
+            temporal_activity_scores,
+            threshold=0.5,
+            pos_ratio=pos_ratio,
+        )
+        blended_scores = (
+            (1.0 - temporal_activity_alpha) * gnn_scores_for_blend
+            + temporal_activity_alpha * temporal_activity_scores
+        )
+        metrics = metrics_from_binary_scores(
+            y_true_for_blend,
+            blended_scores,
+            threshold=0.5,
+            pos_ratio=pos_ratio,
+        )
+        print(
+            "Temporal activity blend: "
+            f"gnn_AP={raw_gnn_metrics['auc_pr']:.6f}, "
+            f"prior_AP={temporal_prior_metrics['auc_pr']:.6f}, "
+            f"blended_AP={metrics['auc_pr']:.6f}, "
+            f"baseline={metrics['baseline']:.6f}, "
+            f"lift={metrics['improvement']:.6f}"
+        )
+    baseline = float(metrics.get('baseline', 0.0) or 0.0)
+    y_true_target = np.asarray(metrics.get('y_true', []))
     y_pos_probs = np.asarray(metrics.get('y_probs', []))
     target_positives = int(np.sum(y_true_target == 1)) if y_true_target.size else 0
     target_total = int(y_true_target.size)
-    target_threshold = float(metrics.get('threshold', current_threshold))
+    target_threshold = float(metrics.get('threshold', final_eval_threshold))
     target_pred_pos_rate = float(np.mean(y_pos_probs >= target_threshold)) if y_pos_probs.size else np.nan
     print(f"target positives={target_positives}, target total={target_total}")
 
@@ -3415,6 +3762,19 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
         'target_total': target_total,
         'evaluation_gnn': metrics['evaluation_gnn'],
         'rw_seed': rw_seed,
+        'raw_gnn_auc_pr': float(raw_gnn_metrics.get('auc_pr', np.nan)),
+        'raw_gnn_lift': float(raw_gnn_metrics.get('improvement', np.nan)),
+        'temporal_activity_alpha': temporal_activity_alpha,
+        'temporal_activity_prior_auc_pr': (
+            float(temporal_prior_metrics.get('auc_pr', np.nan))
+            if temporal_prior_metrics is not None
+            else np.nan
+        ),
+        'temporal_activity_prior_lift': (
+            float(temporal_prior_metrics.get('improvement', np.nan))
+            if temporal_prior_metrics is not None
+            else np.nan
+        ),
         'best_val_ap': float(best_val_ap),
         'best_val_ap_epoch': int(best_val_ap_epoch),
         'best_val_ap_smooth': float(best_val_ap_smooth),
@@ -3546,15 +3906,18 @@ def infer_dataset_name(args):
 def compact_run_parameters(args):
     keys = [
         'input_mode', 'model_type', 'rw_impl', 'rw_seeds', 'model_seeds', 'rw_walks_per_node',
-        'rw_epochs', 'rw_embedding_dim', 'rw_negative_samples', 'rw_negative_power',
+        'rw_epochs', 'rw_embedding_dim', 'rw_reference_cache', 'rw_negative_samples', 'rw_negative_power',
         'rw_restart_prob', 'rw_context_hops', 'rw_graph_scope', 'rw_prune_fanout',
         'graph_scope', 'local_num_hops', 'local_num_neighbors', 'local_train_batch_size',
         'local_eval_batch_size', 'epochs', 'batch_size', 'lr', 'weight_decay',
         'model_num_layers', 'model_hidden_channels', 'model_heads', 'model_dropout',
+        'pretrained_checkpoint', 'pretrained_threshold',
         'dual_self_hidden_dim', 'dual_gate_hidden_dim', 'dual_dropout',
         'edge_maxsimplex_fusion', 'edge_maxsimplex_ablation', 'prior_alpha',
         'prior_hidden_dim', 'prior_dropout', 'device', 'train', 'test', 'target',
-        'priority_nodes', 'results'
+        'priority_nodes', 'temporal_activity_alpha',
+        'temporal_activity_recent_fraction', 'temporal_activity_aggregation',
+        'temporal_activity_entity', 'results'
     ]
     params = {}
     for key in keys:
@@ -3596,6 +3959,28 @@ def write_minimal_summary(base_result_folder, rows, args):
     print(f"run_parameters={summary['run_parameters']}")
     print(f"summary saved to: {csv_path}")
     return summary
+
+def write_seed_results(base_result_folder, rows):
+    csv_path = os.path.join(base_result_folder, 'seed_results.csv')
+    fieldnames = [
+        'seed',
+        'rw_seed',
+        'auc_pr',
+        'random_baseline',
+        'auc_pr_over_random_baseline',
+        'raw_gnn_auc_pr',
+        'raw_gnn_lift',
+        'temporal_activity_alpha',
+        'temporal_activity_prior_auc_pr',
+        'temporal_activity_prior_lift',
+    ]
+    with open(csv_path, 'w', newline='', encoding='utf-8') as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({key: row.get(key, np.nan) for key in fieldnames})
+    print(f"per-seed results saved to: {csv_path}")
+    return csv_path
 
 
 def apply_large_tags_defaults(args):
@@ -3678,6 +4063,32 @@ def main_rwsearch():
     parser.add_argument('--priority_mask_npz', type=str, default=None)
     parser.add_argument('--priority_frac', type=float, default=0.5)
     parser.add_argument('--priority_mode', type=str, default='hard', choices=['hard','soft'])
+    parser.add_argument(
+        '--supervision_scope',
+        type=str,
+        default='all_nodes',
+        choices=['all_nodes', 'open_candidates'],
+        help='Restrict supervised loss/validation to temporal open-triangle candidates.',
+    )
+    parser.add_argument(
+        '--temporal_activity_alpha',
+        type=float,
+        default=0.0,
+        help='Blend weight for a context-only recent-activity rank prior at final evaluation.',
+    )
+    parser.add_argument('--temporal_activity_recent_fraction', type=float, default=0.15)
+    parser.add_argument(
+        '--temporal_activity_aggregation',
+        type=str,
+        default='product',
+        choices=['min', 'product', 'mean'],
+    )
+    parser.add_argument(
+        '--temporal_activity_entity',
+        type=str,
+        default='node',
+        choices=['node', 'edge'],
+    )
     parser.add_argument('--use_edge_maxsimplex_features', type=str, default='false')
     parser.add_argument('--train_edge_maxsimplex_txt', type=str, default=None)
     parser.add_argument('--test_edge_maxsimplex_txt', type=str, default=None)
@@ -3690,14 +4101,24 @@ def main_rwsearch():
     parser.add_argument('--prior_hidden_dim', type=int, default=16)
     parser.add_argument('--prior_dropout', type=float, default=0.1)
     parser.add_argument('--maxsimplex_shuffle_seed', type=int, default=2026)
-    parser.add_argument('--seeds', type=str, default="48-56")
-    parser.add_argument('--model_seeds', type=str, default="48-56")
+    parser.add_argument('--seeds', type=str, default="48")
+    parser.add_argument('--model_seeds', type=str, default="48")
     parser.add_argument('--val_seed', type=int, default=2026)
     parser.add_argument('--no_fixed_val_seed', dest='val_seed', action='store_const', const=None)
     parser.add_argument('--rw_seed', type=int, default=0)
     parser.add_argument('--rw_seeds', type=str, default="0")
     parser.add_argument('--rw_cache_mode', type=str, default='per_rw_seed', choices=['none', 'per_rw_seed'])
     parser.add_argument('--rw_cache_dir', type=str, default='.cache_rw')
+    parser.add_argument(
+        '--rw_reference_cache',
+        type=str,
+        default=None,
+        help=(
+            'Load a frozen train_rw/test_rw NPZ directly. The path may contain '
+            '{rw_seed}; graph-file hashes are intentionally ignored after strict '
+            'shape and RW-configuration validation.'
+        ),
+    )
     parser.add_argument('--rw_impl', type=str, default='fast_positive', choices=['original', 'fast_positive', 'fast_sgns', 'ppmi_svd', 'hybrid_fast_ppmi'])
     parser.add_argument('--rw_walk_length', type=int, default=10)
     parser.add_argument('--rw_walks_per_node', type=int, default=30)
@@ -3726,6 +4147,21 @@ def main_rwsearch():
     parser.add_argument('--model_hidden_channels', type=int, default=128)
     parser.add_argument('--model_heads', type=int, default=2)
     parser.add_argument('--model_dropout', type=float, default=0.1)
+    parser.add_argument(
+        '--pretrained_checkpoint',
+        type=str,
+        default=None,
+        help=(
+            'Evaluate a frozen model without retraining. The path may contain '
+            '{model_seed}, {seed}, and {rw_seed}.'
+        ),
+    )
+    parser.add_argument(
+        '--pretrained_threshold',
+        type=float,
+        default=0.5,
+        help='Classification threshold used only for F1/F2 in pretrained evaluation; AUC-PR is unaffected.',
+    )
     parser.add_argument(
         '--model_type',
         type=str,
@@ -3841,6 +4277,39 @@ def main_rwsearch():
 
     tr_feat, tr_lbl, tr_trip, tr_edges, tr_n = load_g_as_arrays(args.train)
     te_feat, te_lbl, te_trip, te_edges, te_n = load_g_as_arrays(args.test)
+    supervision_mask = torch.ones(tr_n, dtype=torch.bool)
+    if args.supervision_scope == 'open_candidates':
+        train_open_path = _resolve_protocol_triangle_path(
+            args, args.dataset, 'train', 'openTriangles'
+        )
+        train_open = {
+            tuple(sorted(map(int, triangle)))
+            for triangle in load_target_triplets(train_open_path)
+        }
+        train_future_positive = {
+            tuple(sorted(map(int, triangle)))
+            for triangle in load_target_triplets(args.priority_nodes)
+        }
+        supervision_np = np.asarray(
+            [
+                tuple(sorted(map(int, triangle))) in train_open
+                for triangle in tr_trip
+            ],
+            dtype=bool,
+        )
+        tr_lbl = np.asarray(
+            [
+                int(tuple(sorted(map(int, triangle))) in train_future_positive)
+                for triangle in tr_trip
+            ],
+            dtype=np.int64,
+        )
+        supervision_mask = torch.from_numpy(supervision_np)
+        print(
+            "Open-candidate supervision: "
+            f"eligible={int(supervision_np.sum())} "
+            f"positives={int(tr_lbl[supervision_np].sum())}"
+        )
     print(f"train: nodes={tr_n}, edges={tr_edges.shape[0]}, feature_dim={tr_feat.shape[1]}")
     print(f"test: nodes={te_n}, edges={te_edges.shape[0]}, feature_dim={te_feat.shape[1]}")
     max_feat_dim = 0
@@ -3878,6 +4347,12 @@ def main_rwsearch():
                 f"target_nodes_found={len(target_nodes)}, unique_target_triplets={len(unique_target_triplets)}"
             )
     target_mask = create_target_mask_from_nodes(target_nodes, te_n)
+    temporal_activity_scores = build_temporal_activity_target_scores(
+        args.dataset or _infer_protocol_dataset_name(args),
+        te_trip,
+        target_mask,
+        args,
+    )
 
     pos_label = args.pos_label
     if pos_label is None:
@@ -3969,6 +4444,7 @@ def main_rwsearch():
         'pairwise_aux_weight': args.pairwise_aux_weight,
         'pairwise_aux_margin': args.pairwise_aux_margin,
         'pairwise_aux_max_pairs': args.pairwise_aux_max_pairs,
+        'supervision_mask': supervision_mask,
         'lr': args.lr,
         'weight_decay': args.weight_decay,
         'epochs': args.epochs,
@@ -3988,6 +4464,10 @@ def main_rwsearch():
         'prior_hidden_dim': args.prior_hidden_dim,
         'prior_dropout': args.prior_dropout,
         'max_feat_dim': max_feat_dim,
+        'pretrained_checkpoint': args.pretrained_checkpoint,
+        'pretrained_threshold': args.pretrained_threshold,
+        'temporal_activity_scores': temporal_activity_scores,
+        'temporal_activity_alpha': args.temporal_activity_alpha,
     }
 
     rw_param_sweep = parse_bool(args.rw_param_sweep)
@@ -4120,6 +4600,7 @@ def main_rwsearch():
                     all_results.append(res)
 
     if all_results:
+        write_seed_results(base_result_folder, all_results)
         write_minimal_summary(base_result_folder, all_results, args)
     print("\n" + "=" * 50)
     print("Run complete:", base_result_folder)
