@@ -2,6 +2,14 @@
 
 本包提供 **Dual-Mapping / MLSHoL 的完整 K=2 预测流程**。只需指定数据集与模型，程序自动选择时间协议、固定候选集、训练参数、随机种子、RW、历史分支和分数融合，并输出逐种子成绩及均值/样本标准差。
 
+## 下载运行资源
+
+完整代码和运行资源可从 [Release](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/tag/k2-reproduction-20261020) 下载。
+
+- **直接运行：** 下载并解压 [`k2_reproduction_20261020.zip`](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/download/k2-reproduction-20261020/k2_reproduction_20261020.zip)，进入解压目录后安装依赖。
+- **使用GitHub源码：** 下载 [`k2_reproduction_20261020_assets.zip`](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/download/k2-reproduction-20261020/k2_reproduction_20261020_assets.zip)，解压到仓库根目录，与同名 `k2_reproduction_20261020` 文件夹合并。资源文件最终应位于本目录的 `backend/protocol`、`backend/material` 和 `backend/artifacts` 下。
+- 单独下载源码ZIP时，将源码包与资源包解压到同一个父目录即可合并。
+
 ## 快速运行
 
 建议解压到较短的路径，例如 `D:/k2`。需要 Python 3.10–3.12；本地执行检查使用 PyTorch 2.4.1+cu118 和可用的 NVIDIA GPU。先安装与机器相匹配的 PyTorch，再安装其余依赖：
@@ -61,7 +69,7 @@ python run.py --dataset NDC-substances --model dual --replay
 python run.py --dataset tags-ask-ubuntu --model mlshol --seeds 41 --device cuda:0
 ```
 
-`--replay`目前支持 tags-ask-ubuntu 与 NDC-substances 的两个模型，共12份三种子预测。预测哈希随包保存。NDC Dual复算结果为 **Lift=22.623230±8.891876**，AP=0.297334±0.116865；这确实来自两层模型。tags-ask-ubuntu完整流程的Dual/MLSHoL历史Lift均值为14.090972/14.488360，NDC MLSHoL为36.951570。
+`--replay`支持 tags-ask-ubuntu 与 NDC-substances 的两个模型，共12份随包历史预测。此选项仅重新计算已有预测的指标；正式训练使用不带 `--replay` 的默认命令。
 
 指标为 `AP = sklearn.metrics.average_precision_score`，`Lift = AP / 评价候选集正例率`。均值逐种子计算，标准差为样本标准差 `ddof=1`。单种子运行没有跨种子标准差。未完成任务保留实际完成数，不填入论文目标值。
 
@@ -73,14 +81,6 @@ results/<dataset>/<model>/per_seed.csv
 results/logs/                          # 每种子训练日志
 backend/results/jobs/<job>/<seed>/      # 配置、原始预测、检查点及资源记录
 ```
-
-## 汇报值与验证边界
-
-`reported_targets.json`保存汇报目标，**不会被写入新训练测量结果**。历史预测复算、单轮训练检查和从头三种子复现是三种不同验证。
-
-本次打包已完成：16组输入/配置检查；NDC Dual、NDC MLSHoL、Enron Dual单轮执行；4组历史三种子预测复算。没有执行全部48次正式训练，不能声称所有汇报成绩均已从本包重新训练复现。部分Dual历史结果来自两层或其他批次，改为四层后的成绩需要正式训练验证。旧稿小学候选数4189与本包来源4184也存在差异，应在最终发表前统一。
-
-来源包已有NDC MLSHoL等新训练与旧参考成绩不一致的记录。随包历史预测能复算原成绩，不等于已解决从头训练的差异；不得以历史参考值替换实测值。
 
 ## 目录与GitHub分发
 

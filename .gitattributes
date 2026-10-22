@@ -1,2 +1,2 @@
-# Keep the released reproduction files byte-identical to their SHA256 manifest.
+# Preserve reproduction-file bytes for SHA256 verification.
 k2_reproduction_20261020/** -text
