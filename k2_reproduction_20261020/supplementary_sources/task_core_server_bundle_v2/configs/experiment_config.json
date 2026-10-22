@@ -1,0 +1,41 @@
+{
+  "bootstrap_replicates": 2000,
+  "copied_project_modules": [
+    "audit_dual_mapping_information_loss.py",
+    "kclosure/__init__.py",
+    "kclosure/core.py",
+    "run_full_information_preservation_validation.py",
+    "run_h_preserving_perturbation_dev_v2.py",
+    "run_k2_residual_lower_order_conditional_redundancy.py",
+    "run_k3_residual_lower_order_conditional_redundancy.py",
+    "run_strict_timestamp_chronological_core_v1.py",
+    "run_strict_timestamp_t2_mlp_local_v1.py",
+    "scripts/run_k3_spatial_order_task_core_v1.py",
+    "scripts/task_core_common_v1.py"
+  ],
+  "frozen_hashes": {
+    "feature_manifest": "7e5ce53e9fd3149335afee5893276ca68869dcf61fa99c98401171ed949bfc1d",
+    "panel_source": "4e189ece3dbc48e9afb9971bfa450656d4d2b705dbf28615bca548e2d8e79a08",
+    "split_audit_cache": "c3622f418b421e05eb84f3003b3f4e63ee6baf2d1fc5f05a99179c9ddb407aa0"
+  },
+  "full_candidate_universe": "YES",
+  "full_data": "YES",
+  "git_commit": "8044d507243935788eee1cea58f52185c6f0bdae",
+  "hyperparameter_search": "NO",
+  "model": "frozen existing MLP",
+  "model_search": "NO",
+  "noninferiority_margin_LL": 0.02,
+  "primary_endpoint": "LogLoss",
+  "protocol": "TASK_CORE_CONFIRMATORY_V2",
+  "sampling": "NONE",
+  "seed_search": "NO",
+  "skip_completed": "YES",
+  "strict_T2": "YES",
+  "training_seeds": [
+    21001,
+    21002,
+    21003,
+    21004,
+    21005
+  ]
+}

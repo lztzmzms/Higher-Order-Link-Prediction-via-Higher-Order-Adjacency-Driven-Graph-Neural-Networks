@@ -1,0 +1,51 @@
+{
+  "epochs": 5,
+  "scale": 0.3,
+  "bounded_tanh": false,
+  "deterministic": false,
+  "history": {
+    "config": {
+      "width": 128,
+      "weight_power": 0.5
+    },
+    "epochs": 20,
+    "quality": 2.8184416137634027,
+    "fold_metrics": [
+      {
+        "AP": 0.321677304784988,
+        "Lift": 18.92219439911694,
+        "ROC_AUC": 0.9035066722518101,
+        "count": 2000,
+        "positives": 34,
+        "score_std": 0.13387522101402283
+      },
+      {
+        "AP": 0.25208366380669645,
+        "Lift": 14.828450812158612,
+        "ROC_AUC": 0.8566363473161391,
+        "count": 2000,
+        "positives": 34,
+        "score_std": 0.15509654581546783
+      }
+    ]
+  },
+  "history_seeds": [
+    41,
+    42
+  ],
+  "historical_selection": {
+    "epochs": 5,
+    "residual_scale": 0.3,
+    "metrics": {
+      "AP": 0.1670837287403553,
+      "Lift": 9.282429374464183,
+      "ROC_AUC": 0.8560760353021045,
+      "count": 1000,
+      "positives": 18,
+      "score_std": 0.18240275979042053
+    },
+    "loss": 0.969558164011687
+  },
+  "architecture": "SparseSIN",
+  "history_branch": "locked width128 history MLP ensemble41/42"
+}

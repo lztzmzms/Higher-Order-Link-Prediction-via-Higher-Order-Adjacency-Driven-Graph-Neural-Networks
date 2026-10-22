@@ -1,0 +1,92 @@
+{
+  "datasets": {
+    "NDC-substances": {
+      "test_candidates": 1602,
+      "test_positives": 35,
+      "train_candidates": 950,
+      "raw_sha256": {
+        "nverts": "26efd1804960de8169397721256dd78398a401aa6ae40f10eb943750b5c64f28",
+        "simplices": "2a8331dc0f8e7a36c836fde27170774c01e88a2d4ac57c7873e32360fb954091",
+        "times": "2a98159f970bae22c0a58eddbf391a30ec201bfaa00e8ecb80f6c092896de247"
+      },
+      "raw_event_count": 54988,
+      "reference_is_selection_set": true,
+      "models": {
+        "Dual-Mapping": {
+          "AP": 0.21793676743176799,
+          "Lift": 9.975277183591208,
+          "reference_seeds": "41",
+          "chronological_frozen_AP": 0.027269714351355324,
+          "chronological_frozen_Lift": 1.1575276118088456,
+          "chronological_candidates": 1613,
+          "chronological_positives": 38
+        },
+        "MLSHoL": {
+          "AP": 0.328047417591114,
+          "Lift": 15.015198942313274,
+          "reference_seeds": "41",
+          "chronological_frozen_AP": 0.02996248643997433,
+          "chronological_frozen_Lift": 1.271828700728384,
+          "chronological_candidates": 1613,
+          "chronological_positives": 38
+        }
+      }
+    },
+    "tags-math-sx": {
+      "test_candidates": 573,
+      "test_positives": 20,
+      "train_candidates": 25000,
+      "raw_sha256": {
+        "nverts": "a19f403460dcd536adcec31df0d25f3dcb91613e85860e2ba2d14a4493e7002e",
+        "simplices": "b84a2d4ef20513b7c70699d787e91de129f24498f2c9fb1c14504f785438daed",
+        "times": "3be86de7c951a04a23e0e5dc2e40fc03707f32e3db4127c35dcfd35c95f219d5"
+      },
+      "raw_event_count": 164411,
+      "reference_is_selection_set": true,
+      "models": {
+        "Dual-Mapping": {
+          "AP": 0.5226634877871588,
+          "Lift": 14.974308925102099,
+          "reference_seeds": "41",
+          "chronological_frozen_AP": 0.3026315789473684,
+          "chronological_frozen_Lift": 78.07894736842105,
+          "chronological_candidates": 516,
+          "chronological_positives": 2
+        },
+        "MLSHoL": {
+          "AP": 0.5191036618402125,
+          "Lift": 14.872319911722089,
+          "reference_seeds": "41",
+          "chronological_frozen_AP": 0.75,
+          "chronological_frozen_Lift": 193.5,
+          "chronological_candidates": 516,
+          "chronological_positives": 2
+        }
+      }
+    },
+    "threads-math-sx": {
+      "test_candidates": 30000,
+      "test_positives": 25,
+      "train_candidates": 18000,
+      "raw_sha256": {
+        "nverts": "319d89296995337a8678981559ab9eea8e71c2071674039ce28a5c3d248ea187",
+        "simplices": "6dea98286424b147c461fb81ac47c573785023ad5ec6f233bc9a7291a60f184b",
+        "times": "3cf682d03281bb34e53914c9ed299c20297fb4aafea2ff0c59987d7e86f1c249"
+      },
+      "raw_event_count": 719792,
+      "reference_is_selection_set": true,
+      "models": {
+        "Dual-Mapping": {
+          "AP": 0.0021762968292436714,
+          "Lift": 2.6115561950924056
+        },
+        "MLSHoL": {
+          "AP": 0.03620204995690144,
+          "Lift": 43.44245994828172
+        }
+      }
+    }
+  },
+  "source": "server_final_10seed_20261003_v2/MANIFEST.json; server_return_20261005/f/results/final_10seed/SUMMARY.csv",
+  "scope": "K2; original frozen metrics are selection-set references, not an independent baseline"
+}

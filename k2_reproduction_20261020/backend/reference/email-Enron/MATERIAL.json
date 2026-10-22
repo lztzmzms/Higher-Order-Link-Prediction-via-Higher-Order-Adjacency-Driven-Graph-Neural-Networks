@@ -1,0 +1,8 @@
+{
+  "dataset": "email-Enron",
+  "test_candidates": 2574,
+  "test_query_sha256": "46064eba89c49e5bb39a819daf77100c692217757e6ad5fd41b92ac2856fc692",
+  "future_test_labels_not_saved": true,
+  "teacher_probability_to_logit_is_fixed_monotone": true,
+  "historical_windows_overlap": true
+}

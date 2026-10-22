@@ -1,0 +1,19 @@
+{
+  "datasets": [
+    "email-Eu",
+    "NDC-substances",
+    "tags-math-sx",
+    "tags-ask-ubuntu",
+    "threads-math-sx"
+  ],
+  "excluded": [
+    "email-Enron",
+    "contact-high-school",
+    "contact-primary-school"
+  ],
+  "panel_size": 5,
+  "server_remaining": [
+    "tags-ask-ubuntu",
+    "threads-math-sx"
+  ]
+}

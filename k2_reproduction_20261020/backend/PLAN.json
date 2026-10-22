@@ -1,0 +1,474 @@
+{
+  "jobs": [
+    {
+      "id": "eef37e9163c19e4e",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "e0fba05a641136f2",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "b4f99e09b084ce09",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "2087f63cde482e64",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "7242b61d82e907d1",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "bdd378210de4af70",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "babc6f5e2bad1b72",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "35ea58ea7aada579",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "6c43d2c9c12be16f",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "e2ac65670eab8d00",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual",
+        "frequency": "control"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "7be11df1e5594970",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "f4ddc48a0bdfa05e",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority",
+        "frequency": "control"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "17d4156a32f8148a",
+      "effective": {
+        "dataset": "threads-math-sx",
+        "model": "Dual-Mapping",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "no_activity_inputs": false,
+        "history_weight": null,
+        "source_config_sha256": "36d373d8aabc5a240f4ba0f951b6888d54d37a1d29a1cf72b187d86a66939461",
+        "protocol_sha256": "72ce9510b63e273b7a344269c1129f9bc3cc5c8f70017cc10bb73ad13db25d18",
+        "sample_sha256": "6860a7306db2724748ca8e261b14682b8e105e74be257336663399af3bb1ebf1",
+        "pipeline": "native",
+        "representation_dimension": 1,
+        "evaluation_sample_sha256": "6860a7306db2724748ca8e261b14682b8e105e74be257336663399af3bb1ebf1",
+        "context_policy": "locked30000; evaluate fixed28872; no resampling",
+        "frequency": "control"
+      },
+      "seeds": [
+        206,
+        207,
+        208
+      ],
+      "source_config": "configs/threads-math-sx/Dual-Mapping.json",
+      "code": "code/threads",
+      "protocol": "protocol/threads-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "75dd2a0e07f3b3ee",
+      "effective": {
+        "dataset": "threads-math-sx",
+        "model": "MLSHoL",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "no_activity_inputs": false,
+        "history_weight": null,
+        "source_config_sha256": "36d373d8aabc5a240f4ba0f951b6888d54d37a1d29a1cf72b187d86a66939461",
+        "protocol_sha256": "72ce9510b63e273b7a344269c1129f9bc3cc5c8f70017cc10bb73ad13db25d18",
+        "sample_sha256": "6860a7306db2724748ca8e261b14682b8e105e74be257336663399af3bb1ebf1",
+        "pipeline": "native",
+        "representation_dimension": 1,
+        "evaluation_sample_sha256": "6860a7306db2724748ca8e261b14682b8e105e74be257336663399af3bb1ebf1",
+        "context_policy": "locked30000; evaluate fixed28872; no resampling",
+        "frequency": "control"
+      },
+      "seeds": [
+        206,
+        207,
+        208
+      ],
+      "source_config": "configs/threads-math-sx/MLSHoL.json",
+      "code": "code/threads",
+      "protocol": "protocol/threads-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "effective": {
+        "dataset": "contact-high-school",
+        "model": "Dual-Mapping",
+        "pipeline": "frozen",
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "rw": true,
+        "no_activity_inputs": false,
+        "frequency": "control",
+        "source_config_sha256": "ae0fa0280f7b7510b92017953d7648ccd19730a898fae0dee4247bd2096a8495"
+      },
+      "source_config": "configs/contact-high-school/Dual-Mapping.json",
+      "code": "code/high",
+      "protocol": "protocol/contact-high-school",
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "id": "a3fc12ac40a1e4ed",
+      "supported": true
+    },
+    {
+      "effective": {
+        "dataset": "contact-high-school",
+        "model": "MLSHoL",
+        "pipeline": "frozen",
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "rw": true,
+        "no_activity_inputs": false,
+        "frequency": "control",
+        "source_config_sha256": "8bd42a7e26f47ec2a57a9101db9f59ea69b934dd1182c9efa6bb7171cf45dabf"
+      },
+      "source_config": "configs/contact-high-school/MLSHoL.json",
+      "code": "code/high",
+      "protocol": "protocol/contact-high-school",
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "id": "9adcf0303f46b0f0",
+      "supported": true
+    }
+  ]
+}

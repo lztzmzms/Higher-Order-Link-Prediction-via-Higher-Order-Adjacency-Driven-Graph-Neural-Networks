@@ -1,3 +1,24 @@
+# K=2 reproduction release
+
+新增的独立复现入口在 [`k2_reproduction_20261020/`](k2_reproduction_20261020/README.md)，覆盖8数据集 × Dual-Mapping/MLSHoL × 3种子，保留完整历史分支与融合；附录包含启发式及K2–K4结构实验源码。K3模型实验不在本次入口范围内。
+
+- [下载完整包与数据资源](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/tag/k2-reproduction-20261020) · [源码与资源合并说明](k2_reproduction_20261020/GITHUB_DOWNLOAD.md)
+- [最新独立训练实测](validation/k2_release_20261022/README.md)：42/48次核验、14组完整结果；部分成绩不一致，两个MLSHoL组合未完成，不能宣称全部汇报性能已复现。
+
+```bash
+cd k2_reproduction_20261020
+# 首先按下载说明补齐资源，并安装匹配设备的PyTorch
+python -m pip install -r requirements.txt
+python run.py --dataset NDC-substances --model dual
+python run.py --dataset tags-ask-ubuntu --model dual
+```
+
+NDC Dual保留2层及其22.623230历史结果，其余Dual固定4层。训练已按作者要求暂停；本次上传没有重启实验。
+
+以下保留原有 Code Ocean 单种子运行说明，其协议与新增K=2三种子入口分别说明。
+
+---
+
 # Clean Dual-Mapping / MLSHOL
 
 Minimal runnable package for:

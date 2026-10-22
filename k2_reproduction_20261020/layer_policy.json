@@ -1,0 +1,30 @@
+{
+  "task_dim": 2,
+  "model": "Dual-Mapping",
+  "default_gnn_layers": 4,
+  "datasets": {
+    "email-Enron": {"gnn_layers": 4},
+    "email-Eu": {"gnn_layers": 4},
+    "contact-primary-school": {"gnn_layers": 4},
+    "contact-high-school": {"gnn_layers": 4},
+    "NDC-substances": {"gnn_layers": 2},
+    "tags-ask-ubuntu": {"gnn_layers": 4},
+    "tags-math-sx": {"gnn_layers": 4},
+    "threads-math-sx": {"gnn_layers": 4}
+  },
+  "depth_ablation_layers": [1, 2, 3, 4],
+  "historical_result_policy": "Keep actual trained depth and original predictions; changing defaults does not relabel historical scores.",
+  "ndc_requested_reference": {
+    "Lift_mean": 22.62322998340242,
+    "actual_gnn_layers": 2,
+    "job_id": "55055be1960621fd",
+    "Lift_sample_sd": 8.891875640287212,
+    "AP_mean": 0.29733387978186043,
+    "AP_sample_sd": 0.11686465127234621,
+    "model_seeds": [71, 72, 73],
+    "candidates": 1750,
+    "positives": 23,
+    "source": "results/six_dataset_return_analysis_20261015/source/results/jobs/55055be1960621fd",
+    "status": "ADOPTED_MAIN_RESULT_USER_APPROVED_TWO_LAYER_EXCEPTION"
+  }
+}

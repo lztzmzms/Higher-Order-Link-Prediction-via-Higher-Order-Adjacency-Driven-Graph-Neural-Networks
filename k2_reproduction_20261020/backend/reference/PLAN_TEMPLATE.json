@@ -1,0 +1,3295 @@
+{
+  "datasets": [
+    "email-Enron",
+    "contact-primary-school",
+    "email-Eu",
+    "tags-ask-ubuntu",
+    "tags-math-sx",
+    "NDC-substances"
+  ],
+  "unique_configurations": 78,
+  "logical_configurations": 108,
+  "training_tasks": 234,
+  "supported_training_tasks": 216,
+  "unsupported_struc2vec_tasks": 18,
+  "nonapplicable_logical_configurations": 0,
+  "seeds_by_dataset": {
+    "email-Enron": [
+      41,
+      42,
+      43
+    ],
+    "contact-primary-school": [
+      41,
+      42,
+      43
+    ],
+    "email-Eu": [
+      41,
+      42,
+      43
+    ],
+    "tags-ask-ubuntu": [
+      41,
+      42,
+      43
+    ],
+    "tags-math-sx": [
+      41,
+      42,
+      43
+    ],
+    "NDC-substances": [
+      71,
+      72,
+      73
+    ]
+  },
+  "jobs": [
+    {
+      "id": "27c30e2d437969c7",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "018fca51ff4965b7",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "10a7bbadbf676246",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "a8aea9c9f9afacf3",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "dcde7be191eeb314",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "452cac606a736d39232ffad876332b053a84b94ded3f1311c76a40542a117e38",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "0920a519d7c1caf0",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "cd9f35f166e035fc",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "70fd09488f69d7a2",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "8a4f15b266784d7b",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "af52710ea33b47ff",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "8acd83774d473873",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "705f544b26ee3f98",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "bbdcaa26fff8e549",
+      "effective": {
+        "dataset": "email-Enron",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "23da31a85d2417159a22f6b1b89820afe690c7dadea157e8d068a89ea1bf7133",
+        "protocol_sha256": "7ee5cc0f644e70fee77b9f41a69f137a97af1204340be3cbf00bb36aef5d6452",
+        "history_weight": null,
+        "residual_scale": 1.0,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Enron/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/email-Enron",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "a53199cb80dca732",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "95f3f480210e1a6e",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "106c801f6a3ee1d2",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "dbbb3b4a63bafccb",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "9239eef6a70f4c93",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "0f64a3bf2abe01598cdfd6a39739618ab044ef2d78154690d61cc181e1437f59",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "1f3a5c96f42f6b39",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "dc106327d860c68d",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "0cec5cdc567a3b78",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "867633607af14006",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "b96fc1f8446ce139",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "38667ee955da8588",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "f1d0b249dad82e70",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "35fd3c078e235517",
+      "effective": {
+        "dataset": "contact-primary-school",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "bad65b8eea74255783a83dbdd4b8926c6af121430b516453c093924d4d8087d6",
+        "protocol_sha256": "5d9090600ccf7b62b56ebf06f1a83a657afed41c0c84499d1a36382d9f47d473",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/contact-primary-school/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/contact-primary-school",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "2b7427aa199048cc",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "a39b6e5f24325875",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "7ce58d6a55525063",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "d429595070607dfd",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "d506b7ebf47c0627",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "ece9582365a5c62a5bc8bb936c1a0be5495ae1dc6fcfb7e4f20d51ee077eedea",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/Dual-Mapping.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "be540fc5f9a19b13",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "1650854d45fface3",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "a16a0aedfbaa16f8",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "6b30d43e9a0e0861",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "378a3ec1b5979ccb",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "043157772e0c71eb",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "2f6703c11ab3eb94",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "dbd065fbf06ae05c",
+      "effective": {
+        "dataset": "email-Eu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "130e039ec8b753f0bf6a93493ce55f8e57572820eed7675ab29b67385dcecf02",
+        "protocol_sha256": "856e26f758654ae6301fca1b746c2f471baefea76d5a5d18172b07e9858a2f3a",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/email-Eu/MLSHoL.json",
+      "code": "code/current",
+      "protocol": "protocol/email-Eu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "5ffb8301d724a83d",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "2d76b4704460e373",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "e5f7044d95eceac6",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "25c0085fc3672e52",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "1abc029a9b68457f",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "41cb17ed7aec940cdce4ef23709a9f42f9de9fdfcefe967807019e4d05a408b5",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/Dual-Mapping.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "ce13e46185855b01",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "7b4da63431a2aaf1",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "bb7ecb622da12304",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "dcb3e9d789dbd131",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "ae1c19a99ebbf54e",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "b9fec580ad24aba9",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "8c7c2112fede3bce",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "3bb3a3c8e6291ef4",
+      "effective": {
+        "dataset": "tags-ask-ubuntu",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "4190fb45179c86a8106a4de42c4e8943c979dcedf2eb2de0992f9adc1e69b1e2",
+        "protocol_sha256": "50a0d7beee29340e54166e030e1341daac56f210acc11d16a3065541a1c2e5cc",
+        "history_weight": 0.8,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-ask-ubuntu/MLSHoL.json",
+      "code": "code/legacy",
+      "protocol": "protocol/tags-ask-ubuntu",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "027b6b6ae2661ec7",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "1214465ce0b1180d",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "98b94f4b43918661",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "8e8c13043923d780",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "ee49437a064b8626",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "Dual-Mapping",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "53bcae8fa09dc471456bb05f0636a9ff24048594afbcaaf5a4c7e28959bf6e82",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.1,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/Dual-Mapping.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "fa56bfd20e7a3b1f",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "441caddd646d2fa7",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "43b8dd52e32a1f6e",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "aae7205a5138bae5",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "146d4e398623e365",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "c38ac8bce8e9581d",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "ba746c1755d91048",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "657bb28ba8780d08",
+      "effective": {
+        "dataset": "tags-math-sx",
+        "model": "MLSHoL",
+        "pipeline": "residual",
+        "rw": false,
+        "layers": 3,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "6b6eb3ca986ecbb3ae4fa429535071fec5ff27360ccb9628151ac35391c439e0",
+        "protocol_sha256": "d8d9cc8f8476d34e9ad07008fd0affd17362b9408e66afb5a64105a93d817e36",
+        "history_weight": null,
+        "residual_scale": 0.3,
+        "context_policy": "fixed history backbone; genuine zero-initialized neural residual"
+      },
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "source_config": "configs/tags-math-sx/MLSHoL.json",
+      "code": "code/residual",
+      "protocol": "protocol/tags-math-sx",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "f2d768f6d098bf89",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "e4e4ac8f85c69764",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "7344a62dda9906d4",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 1,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "55055be1960621fd",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 2,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "13a4897ef88f59db",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "Dual-Mapping",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 3,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "b8c843be0e7face73c63e987b4761762ee148cf51206d397a8d99d8f3e7c1ede",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/Dual-Mapping.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "d51cf95876477ecd",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "3ad3a41fb9dab697",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": false,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "64bfbb61859b46dc",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "DeepWalk",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "b7273993d4169294",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "LINE",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "a03b8a24b78ed1ab",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "node2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "5f1a94c3b05abee9",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 2,
+        "representation": "Struc2vec",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": false,
+      "unsupported_reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "id": "5556270c0c540bb3",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 0,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    },
+    {
+      "id": "53a7caf365460d71",
+      "effective": {
+        "dataset": "NDC-substances",
+        "model": "MLSHoL",
+        "pipeline": "native",
+        "rw": true,
+        "layers": 4,
+        "max_dim": 1,
+        "representation": "native",
+        "representation_dimension": 1,
+        "no_activity_inputs": false,
+        "source_config_sha256": "3fbc33a7bd1812c79654f21ecc45aaf2d97f8c602c8adb0a11d0df13cbb0489d",
+        "protocol_sha256": "4002126f4ddd715ad6ee1793b3d5cd3835be63831f0c9314314e06b9e3379125",
+        "history_weight": null,
+        "residual_scale": null,
+        "context_policy": "separate past-only RW graphs, zero label priority"
+      },
+      "seeds": [
+        71,
+        72,
+        73
+      ],
+      "source_config": "configs/NDC-substances/MLSHoL.json",
+      "code": "code/ndc",
+      "protocol": "protocol/NDC-substances",
+      "supported": true,
+      "unsupported_reason": ""
+    }
+  ],
+  "aliases": [
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "27c30e2d437969c7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "27c30e2d437969c7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "018fca51ff4965b7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "10a7bbadbf676246",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "27c30e2d437969c7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "a8aea9c9f9afacf3",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Enron",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "dcde7be191eeb314",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "0920a519d7c1caf0",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "cd9f35f166e035fc",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "0920a519d7c1caf0",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "0920a519d7c1caf0",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "70fd09488f69d7a2",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "8a4f15b266784d7b",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "af52710ea33b47ff",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "8acd83774d473873",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "705f544b26ee3f98",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "bbdcaa26fff8e549",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Enron",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "0920a519d7c1caf0",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "a53199cb80dca732",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "a53199cb80dca732",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "95f3f480210e1a6e",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "106c801f6a3ee1d2",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "a53199cb80dca732",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "dbbb3b4a63bafccb",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "9239eef6a70f4c93",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "1f3a5c96f42f6b39",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "dc106327d860c68d",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "1f3a5c96f42f6b39",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "1f3a5c96f42f6b39",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "0cec5cdc567a3b78",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "867633607af14006",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "b96fc1f8446ce139",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "38667ee955da8588",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "f1d0b249dad82e70",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "35fd3c078e235517",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "contact-primary-school",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "1f3a5c96f42f6b39",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "2b7427aa199048cc",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "2b7427aa199048cc",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "a39b6e5f24325875",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "7ce58d6a55525063",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "d429595070607dfd",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "d506b7ebf47c0627",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "email-Eu",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "2b7427aa199048cc",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "be540fc5f9a19b13",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "be540fc5f9a19b13",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "1650854d45fface3",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "be540fc5f9a19b13",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "a16a0aedfbaa16f8",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "6b30d43e9a0e0861",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "378a3ec1b5979ccb",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "043157772e0c71eb",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "2f6703c11ab3eb94",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "dbd065fbf06ae05c",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "email-Eu",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "be540fc5f9a19b13",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "5ffb8301d724a83d",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "5ffb8301d724a83d",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "2d76b4704460e373",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "e5f7044d95eceac6",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "25c0085fc3672e52",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "1abc029a9b68457f",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "5ffb8301d724a83d",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "ce13e46185855b01",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "ce13e46185855b01",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "7b4da63431a2aaf1",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "ce13e46185855b01",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "bb7ecb622da12304",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "dcb3e9d789dbd131",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "ae1c19a99ebbf54e",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "b9fec580ad24aba9",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "8c7c2112fede3bce",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "3bb3a3c8e6291ef4",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-ask-ubuntu",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "ce13e46185855b01",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "027b6b6ae2661ec7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "027b6b6ae2661ec7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "1214465ce0b1180d",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "98b94f4b43918661",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "027b6b6ae2661ec7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "8e8c13043923d780",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "ee49437a064b8626",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "fa56bfd20e7a3b1f",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "441caddd646d2fa7",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "fa56bfd20e7a3b1f",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "fa56bfd20e7a3b1f",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "43b8dd52e32a1f6e",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "aae7205a5138bae5",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "146d4e398623e365",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "c38ac8bce8e9581d",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "ba746c1755d91048",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "657bb28ba8780d08",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "tags-math-sx",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "fa56bfd20e7a3b1f",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "full",
+      "id": "f2d768f6d098bf89",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "True",
+      "id": "f2d768f6d098bf89",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "False",
+      "id": "e4e4ac8f85c69764",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "1",
+      "id": "7344a62dda9906d4",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "2",
+      "id": "55055be1960621fd",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "3",
+      "id": "13a4897ef88f59db",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "DUAL_DEPTH_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "value": "4",
+      "id": "f2d768f6d098bf89",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAIN_K2_RESULTS",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "full",
+      "id": "d51cf95876477ecd",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "True",
+      "id": "d51cf95876477ecd",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "RW_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "False",
+      "id": "3ad3a41fb9dab697",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "MRNL",
+      "id": "d51cf95876477ecd",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "DeepWalk",
+      "id": "64bfbb61859b46dc",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "LINE",
+      "id": "b7273993d4169294",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "node2vec",
+      "id": "a03b8a24b78ed1ab",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MRNL_COMPARISON",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "Struc2vec",
+      "id": "5f1a94c3b05abee9",
+      "state": "SKIPPED_UNSUPPORTED",
+      "reason": "genuine Struc2vec unavailable; degree-KNN substitute excluded"
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "0",
+      "id": "5556270c0c540bb3",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "1",
+      "id": "53a7caf365460d71",
+      "state": "PLANNED",
+      "reason": ""
+    },
+    {
+      "axis": "MAX_SIMPLEX_DIMENSION_ABLATION",
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "value": "2",
+      "id": "d51cf95876477ecd",
+      "state": "PLANNED",
+      "reason": ""
+    }
+  ],
+  "limitations": [
+    "All final windows have previously been inspected; exploratory paired ablation, not a fresh independent-data holdout.",
+    "NDC difficulty cohort was label-informed; retain full6000 inference context and evaluate fixed1750 subset.",
+    "Residual Dual RW means its actual two-step walk statistics, not a learned embedding.",
+    "Residual MLSHoL main has RW off; RW on adds a trained64D past-only candidate-graph SGNS branch, authorized by the user.",
+    "MRNL is K2 TRNL scalar input; all representation methods dimension1 to preserve controls. LINE uses second-order objective. Fixed existing history/strength branches are preserved equally; no additional activity feature is introduced.",
+    "Genuine Struc2vec not bundled; skip explicitly, never run old KNN substitute.",
+    "Eu/Ubuntu causal RW repairs can change older single-seed numeric references; no test-driven correction permitted."
+  ]
+}

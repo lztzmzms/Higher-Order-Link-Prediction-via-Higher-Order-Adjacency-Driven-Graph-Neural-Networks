@@ -1,0 +1,38 @@
+{
+  "metric": "Lift",
+  "targets": {
+    "email-Enron": [
+      6.141933,
+      5.205232
+    ],
+    "email-Eu": [
+      13.361857,
+      10.261838
+    ],
+    "contact-primary-school": [
+      7.804432,
+      10.657299
+    ],
+    "contact-high-school": [
+      5.97,
+      6.26
+    ],
+    "NDC-substances": [
+      22.62322998340242,
+      36.9515701970289
+    ],
+    "tags-ask-ubuntu": [
+      14.090971621988599,
+      14.48836025631168
+    ],
+    "tags-math-sx": [
+      14.126122,
+      14.182811
+    ],
+    "threads-math-sx": [
+      128.912637,
+      45.325948
+    ]
+  },
+  "status": "Historical targets; not substituted for new training measurements."
+}

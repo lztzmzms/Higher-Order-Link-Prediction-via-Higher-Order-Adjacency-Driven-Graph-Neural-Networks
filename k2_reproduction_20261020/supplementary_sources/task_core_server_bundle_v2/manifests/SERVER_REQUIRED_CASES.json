@@ -1,0 +1,547 @@
+{
+  "K4_server_case_count": 0,
+  "case_count": 60,
+  "cases": [
+    {
+      "case_id": "K3|tags-ask-ubuntu|B0|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B0|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B0|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B0|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B0|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B1|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B1|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B1|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B1|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B1|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B2|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B2|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B2|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B2|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B2|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B3|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B3|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B3|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B3|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B3|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B4|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B4|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B4|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B4|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B4|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B5|21001",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B5|21002",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B5|21003",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B5|21004",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|tags-ask-ubuntu|B5|21005",
+      "dataset": "tags-ask-ubuntu",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B0|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B0|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B0|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B0|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B0|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B0",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B1|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B1|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B1|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B1|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B1|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B1",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B2|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B2|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B2|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B2|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B2|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B2",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B3|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B3|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B3|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B3|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B3|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B3",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B4|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B4|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B4|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B4|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B4|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B4",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    },
+    {
+      "case_id": "K3|threads-math-sx|B5|21001",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21001
+    },
+    {
+      "case_id": "K3|threads-math-sx|B5|21002",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21002
+    },
+    {
+      "case_id": "K3|threads-math-sx|B5|21003",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21003
+    },
+    {
+      "case_id": "K3|threads-math-sx|B5|21004",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21004
+    },
+    {
+      "case_id": "K3|threads-math-sx|B5|21005",
+      "dataset": "threads-math-sx",
+      "dependency_stage": 1,
+      "experiment": "K3_SATURATION",
+      "model": "B5",
+      "status": "SERVER_REQUIRED",
+      "training_seed": 21005
+    }
+  ],
+  "dataset_packages": 2
+}

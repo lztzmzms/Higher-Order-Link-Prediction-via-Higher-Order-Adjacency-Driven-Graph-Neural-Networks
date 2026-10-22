@@ -1,0 +1,14 @@
+{
+  "k2_reproduction_20261020.zip": {
+    "size": 278689562,
+    "sha256": "05b771dc0b628dcfdb40c063ac85749c1f7f534ea1adc4a3490c8cd3e971f7e0"
+  },
+  "k2_reproduction_20261020_source.zip": {
+    "size": 2735419,
+    "sha256": "aa46f871fb838affae158eb7f4ad535c272d47aae44f036cc7178e7991bc45eb"
+  },
+  "k2_reproduction_20261020_assets.zip": {
+    "size": 275954165,
+    "sha256": "d0f44acb68ccd2ab1a43d53a1f54dc24953c892bd1bf3435f7a57cf4e7fa3101"
+  }
+}

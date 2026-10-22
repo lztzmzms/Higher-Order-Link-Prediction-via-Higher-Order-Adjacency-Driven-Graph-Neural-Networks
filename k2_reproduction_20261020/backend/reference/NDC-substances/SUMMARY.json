@@ -1,0 +1,107 @@
+{
+  "groups": [
+    {
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "lifts": [
+        18.70367811560719,
+        20.89473089713205,
+        12.867680906465353
+      ],
+      "mean": 17.488696639734865,
+      "sd": 4.1491586952296995,
+      "cv": 0.2372480225772046,
+      "minimum": 12.867680906465353
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "lifts": [
+        34.23393562733363,
+        46.42368561513463,
+        30.19708934861845
+      ],
+      "mean": 36.9515701970289,
+      "sd": 8.44776655927064,
+      "cv": 0.22861725534872898,
+      "minimum": 30.19708934861845
+    }
+  ],
+  "per_seed": [
+    {
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "seed": 71,
+      "AP": 0.24581976951940882,
+      "Lift": 18.70367811560719,
+      "n": 1750,
+      "positives": 23
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "seed": 72,
+      "AP": 0.2746164632194498,
+      "Lift": 20.89473089713205,
+      "n": 1750,
+      "positives": 23
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "Dual-Mapping",
+      "seed": 73,
+      "AP": 0.16911809191354465,
+      "Lift": 12.867680906465353,
+      "n": 1750,
+      "positives": 23
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "seed": 71,
+      "AP": 0.4499317253878134,
+      "Lift": 34.23393562733363,
+      "n": 1750,
+      "positives": 23
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "seed": 72,
+      "AP": 0.6101398680846266,
+      "Lift": 46.42368561513463,
+      "n": 1750,
+      "positives": 23
+    },
+    {
+      "dataset": "NDC-substances",
+      "model": "MLSHoL",
+      "seed": 73,
+      "AP": 0.39687603143898537,
+      "Lift": 30.19708934861845,
+      "n": 1750,
+      "positives": 23
+    }
+  ],
+  "acceptance": {
+    "NDC-substances": {
+      "mean_targets_met": true,
+      "variance_target_met": true,
+      "max_cv": 0.2372480225772046,
+      "objective": 1.7488696639734864,
+      "normalized_mean_target": 1.7488696639734864
+    }
+  },
+  "completed": 6,
+  "requested": 6,
+  "confirmation_seeds": [
+    71,
+    72,
+    73
+  ],
+  "independent_model_seeds": true,
+  "role": "confirmation",
+  "training_notes": {},
+  "independent_data_holdout": false,
+  "updated_epoch": 1791967214.8727155
+}

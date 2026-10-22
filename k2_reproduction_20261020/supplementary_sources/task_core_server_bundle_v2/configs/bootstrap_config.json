@@ -1,0 +1,6 @@
+{
+  "margin": 0.02,
+  "paired_by_candidate": "YES",
+  "primary_endpoint": "LogLoss",
+  "replicates": 2000
+}

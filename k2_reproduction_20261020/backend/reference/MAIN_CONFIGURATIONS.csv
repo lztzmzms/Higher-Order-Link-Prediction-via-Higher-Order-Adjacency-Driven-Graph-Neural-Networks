@@ -1,0 +1,13 @@
+﻿dataset,model,pipeline,epochs,layers,hidden,residual_scale,bounded_tanh,RW,representation,max_simplex_dim,seeds,reference_lifts,source
+email-Enron,Dual-Mapping,residual,20,2,64,0.3,True,True,candidate graph,2,"[41, 42, 43]","[6.153635809104766, 6.13221504220475, 6.139948933517571]",results\nonzero_enron_residual_confirmation_20261014/locks/email-Enron/Dual-Mapping.json
+email-Enron,MLSHoL,residual,20,3,16,1.0,True,False,"MRNL/TRNL(K2), dimension1",2,"[41, 42, 43]","[5.404515491070629, 5.547013126914446, 4.664167754670035]",results\recovery_structure_residual_20261014/locks/email-Enron/MLSHoL.json
+contact-primary-school,Dual-Mapping,residual,20,2,64,0.3,True,True,candidate graph,2,"[41, 42, 43]","[10.685870506321265, 6.3632863787070155, 6.364138920246935]",results\recovery_structure_residual_20261014/locks/contact-primary-school/Dual-Mapping.json
+contact-primary-school,MLSHoL,residual,20,3,16,0.1,True,False,"MRNL/TRNL(K2), dimension1",2,"[41, 42, 43]","[10.657300917973602, 10.658009548721006, 10.656586961961242]",results\recovery_structure_residual_20261014/locks/contact-primary-school/MLSHoL.json
+email-Eu,Dual-Mapping,native,60,4,128,,,True,candidate graph,2,"[41, 42, 43]",[],five_dataset_ablation_server_20261013\configs\email-Eu\Dual-Mapping.json
+email-Eu,MLSHoL,native,40,4,6,,,True,"MRNL/TRNL(K2), dimension1",2,"[41, 42, 43]",[],five_dataset_ablation_server_20261013\configs\email-Eu\MLSHoL.json
+tags-ask-ubuntu,Dual-Mapping,native,40,4,128,,,True,candidate graph,2,"[41, 42, 43]",[],five_dataset_ablation_server_20261013\configs\tags-ask-ubuntu\Dual-Mapping.json
+tags-ask-ubuntu,MLSHoL,native,40,4,6,,,True,"MRNL/TRNL(K2), dimension1",2,"[41, 42, 43]",[],five_dataset_ablation_server_20261013\configs\tags-ask-ubuntu\MLSHoL.json
+tags-math-sx,Dual-Mapping,residual,10,2,64,0.1,False,True,candidate graph,2,"[41, 42, 43]",[14.11734748802535],tags_math_fixed_server_20261013/input/LOCK.json
+tags-math-sx,MLSHoL,residual,5,3,16,0.3,False,False,"MRNL/TRNL(K2), dimension1",2,"[41, 42, 43]",[14.564926990241965],tags_math_fixed_server_20261013/input/LOCK.json
+NDC-substances,Dual-Mapping,native,40,4,128,,,True,candidate graph,2,"[71, 72, 73]","[18.70367811560719, 20.89473089713205, 12.867680906465353]",results\joint_expansion_20261014\round5\NDC-substances\jobs\0d8e2f16a4d4d8dc\71\CONFIG.json
+NDC-substances,MLSHoL,native,40,4,6,,,True,"MRNL/TRNL(K2), dimension1",2,"[71, 72, 73]","[34.23393562733363, 46.42368561513463, 30.19708934861845]",results\joint_expansion_20261014\round5\NDC-substances\jobs\f2ec5c0d8eec1b68\71\CONFIG.json

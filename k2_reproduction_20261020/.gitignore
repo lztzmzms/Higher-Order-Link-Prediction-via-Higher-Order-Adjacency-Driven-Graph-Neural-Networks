@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+results/
+backend/results/
+backend/artifacts/j/
+backend/artifacts/s/
+backend/artifacts/cache/
+backend/artifacts/residual/

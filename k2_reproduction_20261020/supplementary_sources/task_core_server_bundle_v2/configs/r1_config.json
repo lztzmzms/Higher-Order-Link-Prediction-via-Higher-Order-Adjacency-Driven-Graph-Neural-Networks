@@ -1,0 +1,25 @@
+{
+  "K4_status": {
+    "email-Eu": "NO_NONTRIVIAL_PERIPHERY_AFTER_SATURATION",
+    "tags-ask-ubuntu": "NO_NONTRIVIAL_PERIPHERY_AFTER_SATURATION",
+    "tags-math-sx": "NO_NONTRIVIAL_PERIPHERY_AFTER_SATURATION"
+  },
+  "doses": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    0.95
+  ],
+  "refit_scaler": "NO",
+  "retrain": "NO",
+  "server_cases": [],
+  "structural_seeds_per_dose": 10,
+  "training_seeds": [
+    21001,
+    21002,
+    21003,
+    21004,
+    21005
+  ]
+}

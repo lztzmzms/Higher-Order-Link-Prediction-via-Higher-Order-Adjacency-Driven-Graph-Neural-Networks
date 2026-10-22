@@ -1,0 +1,11 @@
+numpy==1.26.4
+scipy==1.14.1
+scikit-learn==1.5.2
+networkx==3.4.2
+gudhi==3.13.0
+joblib>=1.2
+tqdm>=4.64
+psutil>=5.9
+torch-geometric==2.6.1
+
+matplotlib==3.9.2
