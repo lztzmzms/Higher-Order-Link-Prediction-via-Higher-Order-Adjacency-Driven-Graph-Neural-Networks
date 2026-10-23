@@ -24,7 +24,7 @@ python run.py --dataset NDC-substances --model mlshol
 
 支持 email-Enron、email-Eu、contact-primary-school、contact-high-school、NDC-substances、tags-ask-ubuntu、tags-math-sx、threads-math-sx 八个数据集。
 
-- Dual-Mapping：NDC为2层，其余数据集为4层。
+- Dual-Mapping：GNN层数为4层。
 - MLSHoL：沿用各数据集的冻结配置。
 - `--check`检查输入和配置，`--verify`复核已有训练输出，`--replay`复算随包历史预测。
 
