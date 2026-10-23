@@ -226,11 +226,16 @@ def get_positive_negative_Triangles(openTriangles, openTrianles_set, simplex_tab
 
     return list(positive_sample), positive_sample_idmap, list(negative_sample), negative_sample_idmap
 
+def calculate_ap(y_true, y_prob):
+    """Return non-interpolated AP (AUC-PR) from continuous scores."""
+    return float(met.average_precision_score(y_true, y_prob))
+
+
 def evaluate(y_true, y_prob, random_Baseline):
-    precision, recall, threshold = met.precision_recall_curve(y_true, y_prob)
-    AUC_PR = met.auc(recall, precision)
-    eval = float(AUC_PR / random_Baseline)
-    return eval
+    """Return Lift = AP / evaluation-set positive prevalence."""
+    if not 0 < random_Baseline <= 1:
+        raise ValueError("Lift requires a positive prevalence in (0, 1].")
+    return float(calculate_ap(y_true, y_prob) / random_Baseline)
 
 def get_Degree_and_DegreeInv(matrix):
     diag = np.diag(matrix)

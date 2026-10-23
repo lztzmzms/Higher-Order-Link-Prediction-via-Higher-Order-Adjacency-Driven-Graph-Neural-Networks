@@ -114,6 +114,7 @@ def get_evaluation(method):
 
     print(number_of_positive)
     random_Baseline = float(number_of_positive / len(testing_triangles))
+    ap = calculate_ap(y_true, y_score)
     eval = evaluate(y_true, y_score, random_Baseline)
 
     result_folder = os.path.join(ROOT_DIR, 'Heuristics_using_HodgeLaplacian', 'results')
@@ -127,6 +128,8 @@ def get_evaluation(method):
         f'------------ parameters -----------\n'
         f'method:{method}\n'
         f'random_Baseline:{random_Baseline}\n'
+        f'AP (AUC-PR):{ap}\n'
+        f'Lift:{eval}\n'
         f'Evaluation:{eval}\n'
         '-------------------------------\n\n')
     print(msg)
