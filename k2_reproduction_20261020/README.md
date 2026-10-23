@@ -12,7 +12,7 @@
 
 ## 快速运行
 
-建议解压到较短的路径，例如 `D:/k2`。需要 Python 3.10–3.12；本地执行检查使用 PyTorch 2.4.1+cu118 和可用的 NVIDIA GPU。先安装与机器相匹配的 PyTorch，再安装其余依赖：
+本包的长缓存文件名已缩短，原名称与内容校验值见 `SHORT_PATHS.json`。建议将ZIP解压到绝对路径长度不超过100字符的目录，例如 `D:/k2`；避免层层重复嵌套解压目录。需要 Python 3.10–3.12；本地执行检查使用 PyTorch 2.4.1+cu118 和可用的 NVIDIA GPU。先安装与机器相匹配的 PyTorch，再安装其余依赖：
 
 ```bash
 python -m pip install -r requirements.txt

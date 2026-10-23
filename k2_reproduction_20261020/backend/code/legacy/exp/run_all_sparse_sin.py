@@ -1683,10 +1683,15 @@ def cache_path(dataset, split, args):
     # Windows still rejects long paths in some PyTorch file operations even
     # when the process itself supports long paths.  Keep the full cache key in
     # the digest while using a compact filename on disk.
+    full_name = name
     if os.name == "nt" and len(str(cache_dir / name)) >= 240:
         token = hashlib.sha256(name.encode("utf-8")).hexdigest()[:24]
         name = f"processed_{dataset}_{split}_{token}.pt"
-    return cache_dir / name
+    # Retain existing caches; new cache files use the complete key's digest.
+    legacy_path = cache_dir / name
+    portable_name = "c_" + hashlib.sha256(full_name.encode("utf-8")).hexdigest()[:24] + ".pt"
+    portable_path = cache_dir / portable_name
+    return legacy_path if legacy_path.is_file() else portable_path
 
 
 def structural_cache_path(dataset, split, args):
@@ -1714,10 +1719,15 @@ def structural_cache_path(dataset, split, args):
         f"{keep_tag}"
         f"_src{source_fingerprint}.pt"
     )
+    full_name = name
     if os.name == "nt" and len(str(cache_dir / name)) >= 240:
         token = hashlib.sha256(name.encode("utf-8")).hexdigest()[:24]
         name = f"structural_{dataset}_{split}_{token}.pt"
-    return cache_dir / name
+    # Retain existing caches; new cache files use the complete key's digest.
+    legacy_path = cache_dir / name
+    portable_name = "c_" + hashlib.sha256(full_name.encode("utf-8")).hexdigest()[:24] + ".pt"
+    portable_path = cache_dir / portable_name
+    return legacy_path if legacy_path.is_file() else portable_path
 
 
 def legacy_structural_cache_path(dataset, split, args):

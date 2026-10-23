@@ -1,0 +1,29 @@
+{
+  "description": "Lossless filename aliases for Windows extraction; file bytes and complete original parameter keys are preserved.",
+  "files": [
+    {
+      "original": "backend/artifacts/locked_geometry/NDC-substances/v6strength_NDC-substances_test_seed2026_hop1_maxstep35_cap1_uniform_pfauto_raw50001_n50001_ratio1_dim2_sum_TRNL_discunreachable_zero_obs20_srcb66549d500059a1c.pt",
+      "short": "backend/artifacts/locked_geometry/NDC-substances/c_181b86a30226bace9420cb55.pt",
+      "sha256": "56172de0d6f2f6d2e1c2fde3cf3e5dce5a6a2a41819955109278e5edc69e08aa",
+      "legacy_windows_name": "structural_NDC-substances_test_181b86a30226bace9420cb55.pt"
+    },
+    {
+      "original": "backend/artifacts/locked_geometry/NDC-substances/v6strength_NDC-substances_train_seed2026_hop1_maxstep35_cap1_uniform_pf0.2_raw30001_n30001_ratio1_dim2_sum_TRNL_discunreachable_zero_obs20_src324c79755e495efd.pt",
+      "short": "backend/artifacts/locked_geometry/NDC-substances/c_60017b2f4b25f4d4b9295d5e.pt",
+      "sha256": "9ba1c20be1fc97ab8fa1916e73b1eb76665ba553815121c59a3cab18e603152a",
+      "legacy_windows_name": "structural_NDC-substances_train_60017b2f4b25f4d4b9295d5e.pt"
+    },
+    {
+      "original": "backend/artifacts/locked_geometry/threads-math-sx/v6strength_threads-math-sx_test_seed2026_hop1_maxstep35_cap1_uniform_pfauto_raw50001_n50001_ratio1_dim2_sum_TRNL_discunreachable_zero_obs20_srce99fbc078920113a.pt",
+      "short": "backend/artifacts/locked_geometry/threads-math-sx/c_7de0ad6d52ef66b788d37309.pt",
+      "sha256": "b8099caab39107c4b9e82f774b9f5739b41de3ad285318a34c0d9d437a8e52df",
+      "legacy_windows_name": "structural_threads-math-sx_test_7de0ad6d52ef66b788d37309.pt"
+    },
+    {
+      "original": "backend/artifacts/locked_geometry/threads-math-sx/v6strength_threads-math-sx_train_seed2026_hop1_maxstep35_cap1_uniform_pf0.2_raw30001_n30001_ratio1_dim2_sum_TRNL_discunreachable_zero_obs20_src232c4e5bf3879071.pt",
+      "short": "backend/artifacts/locked_geometry/threads-math-sx/c_c6407a5cbcc0c751e16cc70c.pt",
+      "sha256": "997a7c6f4a537a926e1a9df81a82303ce500a104c508e347d87dff91370c788b",
+      "legacy_windows_name": "structural_threads-math-sx_train_c6407a5cbcc0c751e16cc70c.pt"
+    }
+  ]
+}
