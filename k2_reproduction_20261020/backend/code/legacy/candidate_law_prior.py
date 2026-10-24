@@ -1,4 +1,4 @@
-"""Leakage-safe legacy 31-feature candidate-law prior for K=2 closure."""
+                                                                         
 
 from __future__ import annotations
 

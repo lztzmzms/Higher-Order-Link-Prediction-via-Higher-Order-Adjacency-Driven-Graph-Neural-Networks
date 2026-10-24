@@ -1,4 +1,4 @@
-"""Use BatchNorm running statistics when a training cochain has one value per channel."""
+                                                                                         
 import torch
 from torch.nn import functional as F
 

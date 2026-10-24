@@ -2,7 +2,7 @@ import os
 import torch
 from torch.utils.data.dataloader import default_collate
 from torch_geometric.data import Data, Batch
-# from torch._six import string_classes
+                                       
 string_classes = str
 import collections.abc as container_abcs
 
@@ -12,18 +12,18 @@ from simplicial_complex.complex import Complex, Cochain, ComplexBatch, CochainBa
 int_classes = int
 
 class Collater(object):
-    """Object that converts python lists of objects into the appropiate storage format.
+    pass                                                                               
 
-    Args:
-        follow_batch: Creates assignment batch vectors for each key in the list.
-        max_dim: The maximum dimension of the cochains considered from the supplied list.
-    """
+         
+                                                                                
+                                                                                         
+       
     def __init__(self, follow_batch, max_dim=2):
         self.follow_batch = follow_batch
         self.max_dim = max_dim
 
     def collate(self, batch):
-        """Converts a data list in the right storage format."""
+        pass                                                   
         elem = batch[0]
         if isinstance(elem, Cochain):
             return CochainBatch.from_cochain_list(batch, self.follow_batch)
@@ -52,33 +52,33 @@ class Collater(object):
         return self.collate(batch)
 
 class DataLoader(torch.utils.data.DataLoader):
-    r"""Data loader which merges cochain complexes into to a mini-batch.
+    pass                                                                
 
-    Args:
-        dataset (Dataset): The dataset from which to load the data.
-        batch_size (int, optional): How many samples per batch to load.
-            (default: :obj:`1`)
-        shuffle (bool, optional): If set to :obj:`True`, the data will be
-            reshuffled at every epoch. (default: :obj:`False`)
-        follow_batch (list or tuple, optional): Creates assignment batch
-            vectors for each key in the list. (default: :obj:`[]`)
-        max_dim (int): The maximum dimension of the chains to be used in the batch.
-            (default: 2)
-    """
+         
+                                                                   
+                                                                       
+                               
+                                                                         
+                                                              
+                                                                        
+                                                                  
+                                                                                   
+                        
+       
     def __init__(self, dataset, batch_size=1, shuffle=False, follow_batch=[],
                  max_dim=2, **kwargs):
 
         if "collate_fn" in kwargs:
             del kwargs["collate_fn"]
 
-        # Save for Pytorch Lightning...
+                                       
         self.follow_batch = follow_batch
 
         super(DataLoader,
               self).__init__(dataset, batch_size, shuffle,
                              collate_fn=Collater(follow_batch, max_dim), **kwargs)
 
-def load_dataset(name, split='train', num_hops=1, max_dim=2, root=os.path.join(ROOT_DIR, 'simplicial_complex'), init_method='sum'): #需要有变化的变量列出来
+def load_dataset(name, split='train', num_hops=1, max_dim=2, root=os.path.join(ROOT_DIR, 'simplicial_complex'), init_method='sum'):             
     from simplicial_complex.dataset.generate_dataset import load_pyG_dataset, MyDataset
     if name.startswith('email-Enron'):
         print('****')

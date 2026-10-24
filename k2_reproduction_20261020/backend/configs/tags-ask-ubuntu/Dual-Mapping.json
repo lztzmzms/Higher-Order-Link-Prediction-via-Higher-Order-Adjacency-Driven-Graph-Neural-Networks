@@ -1,83 +1,10 @@
 {
   "dual": {
-    "NDC-substances": {
-      "epochs": 40,
-      "history_ap": 0.025621156244934017,
-      "history_lift": 1.970858172687232,
-      "history_scope": "2,000-candidate strict K2 cohort",
-      "name": "D_strength_edge",
-      "prior": "none",
-      "strength_edge": true,
-      "strength_feature": true
-    },
-    "email-Enron": {
-      "epochs": 60,
-      "graph_triangle_scope": "legacy_closed_open",
-      "history_ap": 0.3701585614808335,
-      "history_lift": 10.7779147103515,
-      "history_scope": "full raw-order 2,737-candidate K2 protocol; seeds 41-50",
-      "name": "D4_recent_activity",
-      "prior": "recent_activity",
-      "rw_epochs": 10,
-      "rw_walk_length": 10,
-      "rw_walks_per_node": 30,
-      "rw_window_size": 2,
-      "strength_edge": false,
-      "strength_feature": true,
-      "temporal_activity_alpha": 0.9,
-      "validation_select_temporal_alpha": false
-    },
     "tags-ask-ubuntu": {
       "epochs": 40,
-      "history_ap": 0.023327097691350565,
-      "history_lift": 2.915887211418821,
-      "history_scope": "2,000-candidate strict K2 cohort",
       "name": "D_strength",
       "prior": "none",
       "strength_edge": false,
-      "strength_feature": true
-    }
-  },
-  "mlshol": {
-    "NDC-substances": {
-      "epochs": 40,
-      "focal_gamma": 1.0,
-      "history_ap": 0.0495138201278282,
-      "history_lift": 3.808755394448323,
-      "history_scope": "V7 history-base/structural-residual branch, 2,000-candidate cohort; package uses base M_strength_ce",
-      "loss_mode": "cross_entropy",
-      "name": "M_strength_ce",
-      "strength_feature": true
-    },
-    "email-Enron": {
-      "activity_prior": true,
-      "adjacency_mode": "weighted-log",
-      "epochs": 40,
-      "focal_gamma": 1.5,
-      "history_ap": 0.288684079028486,
-      "history_lift": 8.405620471286873,
-      "history_scope": "full raw-order 2,737-candidate K2 protocol; seeds 41-43; package rebuilds the Dual RW cache from packaged protocol graphs",
-      "loss_mode": "weighted_cross_entropy",
-      "max_nodes_per_step": 75,
-      "name": "M_hybrid_alpha090_obs2",
-      "observed_2_skeleton": true,
-      "rw_full_normalization": "train_standardize",
-      "rw_input_normalization": "none",
-      "rw_scale": 2.0,
-      "rw_source": "dual_mapping_full",
-      "strength_edge": true,
-      "strength_feature": true,
-      "temporal_activity_alpha": 0.9,
-      "validation_select_activity_alpha": false
-    },
-    "tags-ask-ubuntu": {
-      "epochs": 40,
-      "focal_gamma": 1.0,
-      "history_ap": 0.08387457135588194,
-      "history_lift": 10.484321419485243,
-      "history_scope": "2,000-candidate strict K2 cohort",
-      "loss_mode": "cross_entropy",
-      "name": "M_strength_ce",
       "strength_feature": true
     }
   },

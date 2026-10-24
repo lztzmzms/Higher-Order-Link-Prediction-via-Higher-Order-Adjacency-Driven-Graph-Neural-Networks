@@ -1,4 +1,4 @@
-"""K=2 MRNL (the repository's TRNL specialization) or scalar graph embeddings."""
+                                                                                 
 import random
 from collections import defaultdict
 from pathlib import Path
@@ -7,7 +7,7 @@ import networkx as nx
 import torch
 
 def candidate_rw(p,tasks,folder):
-    """Causal 64-D SGNS on separate candidate graphs, with shared-row warm start."""
+    pass                                                                            
     from sklearn.preprocessing import StandardScaler
     import ablation_embeddings as emb
     folder.mkdir(parents=True,exist_ok=True);path=folder/'RW.npz'
@@ -38,7 +38,7 @@ def build(p, events, tasks, method, maxdim, protocol, embfolder):
     if method!='MRNL':
         import ablation_embeddings as emb
         if not (embfolder/'audit.json').exists():
-            # Unsupervised embedding training must not overwrite the downstream seed.
+                                                                                     
             with torch.random.fork_rng(devices=list(range(torch.cuda.device_count()))):emb.build_pair(p.DS,method,protocol,embfolder)
         for name in ('train','test'):
             z=np.load(embfolder/(name+'.npz'));assert z['vectors'].shape[1]==1;maps[name]=dict(zip(z['nodes'].tolist(),z['vectors']))
@@ -60,7 +60,7 @@ def build(p, events, tasks, method, maxdim, protocol, embfolder):
             if method!='MRNL':
                 for node in labeled.nodes:labeled.nodes[node]['feature']=maps[name][node].tolist()
             data=p.sin.to_pyg_data(labeled)
-            # GUDHI does not truncate supplied simplices just because expansion_dim is smaller.
+                                                                                               
             data.simplices=[s for s in data.simplices if len(s)<=maxdim+1]
             if maxdim==0:data.simplices=[[i] for i in range(data.num_nodes)]
             pyg.append(data)

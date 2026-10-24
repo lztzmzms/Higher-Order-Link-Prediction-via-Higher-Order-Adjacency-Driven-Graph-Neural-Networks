@@ -54,7 +54,7 @@ def worker(jobid,seed,smoke=False):
  else:
   adapter=mod('mls_adapter',code/'run_mlshol_seed.py');import exp.run_all_sparse_sin as engine
   assert Path(engine.__file__).resolve().is_relative_to(code.resolve())
-  # Fresh separate candidate RW graphs; no validation/test closure labels read.
+                                                                               
   def causal_rw(dataset,args,device):
    maps={}
    for split in ('train','test'):
@@ -77,7 +77,7 @@ def worker(jobid,seed,smoke=False):
    if not e['rw']:sys.argv[sys.argv.index('--rw-fusion')+1]='none'
    save(d/'MODEL_COMMAND.json',{'argv':sys.argv,'engine':engine.__file__,'engine_sha256':sha(engine.__file__),'adapter_sha256':sha(code/'run_mlshol_seed.py'),'driver_sha256':sha(__file__),'rw_repair':'separate context graph embeddings; no label priority'})
    original()
-  # Replace the union branch itself to expose separate train/test maps.
+                                                                       
   source=Path(engine.__file__).read_text(encoding='utf-8')
   start=source.index('            feature_map, args.resolved_rw_cache = load_or_build_aligned_dual_rw(')
   end=source.index('        elif args.rw_source == "dual_mapping_full":',start)

@@ -19,7 +19,7 @@ from abc import ABC, abstractmethod
 
 
 class DummyCochainMessagePassing(CochainMessagePassing):
-    """This is a dummy parameter-free message passing model used for testing."""
+    pass                                                                        
     def __init__(self, up_msg_size, down_msg_size, boundary_msg_size=None,
                  use_boundary_msg=False, use_down_msg=True):
         super(DummyCochainMessagePassing, self).__init__(up_msg_size, down_msg_size,
@@ -28,13 +28,13 @@ class DummyCochainMessagePassing(CochainMessagePassing):
                                                        use_down_msg=use_down_msg)
 
     def message_up(self, up_x_j: Tensor, up_attr: Tensor) -> Tensor:
-        # (num_up_adj, x_feature_dim) + (num_up_adj, up_feat_dim)
-        # We assume the feature dim is the same across al levels
+                                                                 
+                                                                
         return up_x_j + up_attr
 
     def message_down(self, down_x_j: Tensor, down_attr: Tensor) -> Tensor:
-        # (num_down_adj, x_feature_dim) + (num_down_adj, down_feat_dim)
-        # We assume the feature dim is the same across al levels
+                                                                       
+                                                                
         return down_x_j + down_attr
 
     def forward(self, cochain: CochainMessagePassingParams):
@@ -43,7 +43,7 @@ class DummyCochainMessagePassing(CochainMessagePassing):
                                                     up_attr=cochain.kwargs['up_attr'],
                                                     down_attr=cochain.kwargs['down_attr'],
                                                     boundary_attr=cochain.kwargs['boundary_attr'])
-        # down or boundary will be zero if one of them is not used.
+                                                                   
         return cochain.x + up_out + down_out + boundary_out
 
 
@@ -67,7 +67,7 @@ class DummyCellularMessagePassing(torch.nn.Module):
 
 
 class CINCochainConv(CochainMessagePassing):
-    """This is a dummy parameter-free message passing model used for testing.As name says: This is a cochainconv.Using upper adjacency and lower adjacecncy"""
+    pass                                                                                                                                                      
     def __init__(self, up_msg_size: int, down_msg_size: int,
                  msg_up_nn: Callable, msg_down_nn: Callable, update_nn: Callable,
                  eps: float = 0., train_eps: bool = False):
@@ -111,7 +111,7 @@ class CINCochainConv(CochainMessagePassing):
 
 
 class CINConv(torch.nn.Module):
-    """gather CINCochainConv on each dimension together"""
+    pass                                                  
     def __init__(self, up_msg_size: int, down_msg_size: int,
                  msg_up_nn: Callable, msg_down_nn: Callable, update_nn: Callable,
                  eps: float = 0., train_eps: bool = False, max_dim: int = 2):
@@ -133,10 +133,9 @@ class CINConv(torch.nn.Module):
 
 
 class EdgeCINConv(torch.nn.Module):
-    """
-    CIN convolutional layer which performs cochain message passing only
-    _up to_ 1-dimensional cells (edges).
-    """
+    pass                                                                       
+                                        
+       
     def __init__(self, up_msg_size: int, down_msg_size: int,
                  v_msg_up_nn: Callable, e_msg_down_nn: Callable, e_msg_up_nn: Callable,
                  v_update_nn: Callable, e_update_nn: Callable, eps: float = 0., train_eps=False):
@@ -160,7 +159,7 @@ class EdgeCINConv(torch.nn.Module):
 
 
 class SparseCINCochainConv(CochainMessagePassing):
-    """This is a CIN Cochain layer that operates of boundaries and upper adjacent cells."""
+    pass                                                                                   
     def __init__(self, dim: int,
                  up_msg_size: int,
                  down_msg_size: int,
@@ -196,15 +195,15 @@ class SparseCINCochainConv(CochainMessagePassing):
                                               up_weight=cochain.kwargs.get('up_weight'),
                                               boundary_attr=cochain.kwargs['boundary_attr'])
 
-        # As in GIN, we can learn an injective update function for each multi-set
+                                                                                 
         out_up += (1 + self.eps1) * cochain.x
         out_boundaries += (1 + self.eps2) * cochain.x
         out_up = self.update_up_nn(out_up)
         out_boundaries = self.update_boundaries_nn(out_boundaries)
 
-        # We need to combine the two such that the output is injective
-        # Because the cross product of countable spaces is countable, then such a function exists.
-        # And we can learn it with another MLP.
+                                                                      
+                                                                                                  
+                                               
         return self.combine_nn(torch.cat([out_up, out_boundaries], dim=-1))
 
     def reset_parameters(self):
@@ -235,11 +234,11 @@ class Catter(torch.nn.Module):
     
     
 class SparseCINConv(torch.nn.Module):
-    """A cellular version of GIN which performs message passing from  cellular upper
-    neighbors and boundaries, but not from lower neighbors (hence why "Sparse")
-    """
+    pass                                                                            
+                                                                               
+       
 
-    # TODO: Refactor the way we pass networks externally to allow for different networks per dim.
+                                                                                                 
     def __init__(self, up_msg_size: int, down_msg_size: int, boundary_msg_size: Optional[int],
                  passed_msg_up_nn: Optional[Callable], passed_msg_boundaries_nn: Optional[Callable],
                  passed_update_up_nn: Optional[Callable],
@@ -343,7 +342,7 @@ class OrientedConv(CochainMessagePassing):
         reset(self.update_down_nn)
         reset(self.update_nn)
 
-    # TODO: As a temporary hack, we pass the orientation through the up and down attributes.
+                                                                                            
     def message_up(self, up_x_j: Tensor, up_attr: Tensor) -> Tensor:
         if self.orient:
             return up_x_j * up_attr
@@ -358,11 +357,10 @@ class OrientedConv(CochainMessagePassing):
 class InitReduceConv(torch.nn.Module):
 
     def __init__(self, reduce='add'):
-        """
-
-        Args:
-            reduce (str): Way to aggregate boundaries. Can be "sum, add, mean, min, max"
-        """
+        pass
+             
+                                                                                        
+           
         super(InitReduceConv, self).__init__()
         self.reduce = reduce
 
@@ -378,13 +376,12 @@ class AbstractEmbedVEWithReduce(torch.nn.Module, ABC):
                  v_embed_layer: Callable,
                  e_embed_layer: Optional[Callable],
                  init_reduce: InitReduceConv):
-        """
-
-        Args:
-            v_embed_layer: Layer to embed the integer features of the vertices
-            e_embed_layer: Layer (potentially None) to embed the integer features of the edges.
-            init_reduce: Layer to initialise the 2D cell features and potentially the edge features.
-        """
+        pass
+             
+                                                                              
+                                                                                               
+                                                                                                    
+           
         super(AbstractEmbedVEWithReduce, self).__init__()
         self.v_embed_layer = v_embed_layer
         self.e_embed_layer = e_embed_layer
@@ -415,13 +412,13 @@ class AbstractEmbedVEWithReduce(torch.nn.Module, ABC):
         ex = reduced_ex
         if e_params.x is not None:
             ex = self.e_embed_layer(self._prepare_e_inputs(e_params))
-            # The output of this should be the same size as the vertex features.
+                                                                                
             assert ex.size(1) == vx.size(1)
         out.append(ex)
 
         if c_params is not None:
-            # We divide by two in case this was obtained from node aggregation.
-            # The division should not do any harm if this is an aggregation of learned embeddings.
+                                                                               
+                                                                                                  
             cx = self.init_reduce(reduced_ex, c_params.boundary_index) / 2.
             out.append(cx)
 
@@ -444,14 +441,14 @@ class EmbedVEWithReduce(AbstractEmbedVEWithReduce):
         assert v_params.x is not None
         assert v_params.x.dim() == 2
         assert v_params.x.size(1) == 1
-        # The embedding layer expects integers so we convert the tensor to int.
+                                                                               
         return v_params.x.squeeze(1).to(dtype=torch.long)
     
     def _prepare_e_inputs(self, e_params):
         assert self.e_embed_layer is not None
         assert e_params.x.dim() == 2
         assert e_params.x.size(1) == 1
-        # The embedding layer expects integers so we convert the tensor to int.
+                                                                               
         return e_params.x.squeeze(1).to(dtype=torch.long)
 
 
@@ -466,13 +463,13 @@ class OGBEmbedVEWithReduce(AbstractEmbedVEWithReduce):
     def _prepare_v_inputs(self, v_params):
         assert v_params.x is not None
         assert v_params.x.dim() == 2
-        # Inputs in ogbg-mol* datasets are already long.
-        # This is to test the layer with other datasets.
+                                                        
+                                                        
         return v_params.x.to(dtype=torch.long)
     
     def _prepare_e_inputs(self, e_params):
         assert self.e_embed_layer is not None
         assert e_params.x.dim() == 2
-        # Inputs in ogbg-mol* datasets are already long.
-        # This is to test the layer with other datasets.
+                                                        
+                                                        
         return e_params.x.to(dtype=torch.long)

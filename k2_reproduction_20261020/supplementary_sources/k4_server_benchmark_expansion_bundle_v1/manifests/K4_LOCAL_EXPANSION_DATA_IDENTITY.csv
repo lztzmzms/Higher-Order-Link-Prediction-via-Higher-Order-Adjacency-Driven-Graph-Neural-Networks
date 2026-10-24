@@ -1,5 +1,0 @@
-dataset,events,nodes,timestamp_groups,min_timestamp,max_timestamp,same_timestamp_split_violations,violation_cuts,missing_timestamps,malformed_simplices,duplicate_event_semantics,raw_order_timestamp_sorted,raw_order_inversions,timestamp_order_hash,canonical_status,cut_40,cut_60,cut_80,max_timestamp_block_size,timestamp_block_split_feasible,download_status,notes
-NDC-classes,49724,1161,5891,59926694400000,63641635200000,0,,0,0,30564,NO,,12775269e547fd44e2e83daa9355d2cf8dfde42977a1d45eb3dd62055c8a3b1f,PASS,19892,29836,39775,2339,YES,SUCCESS,
-congress-bills,260851,1718,5936,719646,731923,0,,0,0,62706,NO,,754dc6db62c652eb3d42bc71276b8ecfd4f4fd0d44408e9e18fd9f22b2417f9e,PASS,104337,156511,208714,1692,YES,SUCCESS,
-DAWN,2272433,2558,32,8017,8048,0,,0,0,1970080,NO,,14ba2a463537072431b2b67242427b6c72c40aa7acf11c221cb68402931903d6,PASS,935828,1358988,1821574,98655,YES,SUCCESS,
-music-rap-genius,,,,,,,,,,,,,,UNAVAILABLE,,,,,,FAILED_CANONICAL_SOURCE,The official ScHoLP-Data tree contains no music-rap-genius directory/files; no third-party substitute was used.

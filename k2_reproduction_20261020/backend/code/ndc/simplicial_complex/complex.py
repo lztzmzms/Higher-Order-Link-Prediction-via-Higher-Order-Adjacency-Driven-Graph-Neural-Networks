@@ -38,28 +38,27 @@ from typing import List
 
 
 class Cochain(object):
-    """
-    Class representing a cochain on k-dim cells (i.e. vector-valued signals on k-dim cells).
+    pass                                                                                            
 
-    Args:
-        dim: dim of the cells in the cochain
-        x: feature matrix, shape [num_cells, num_features]; may not be available
-        upper_index: upper adjacency, matrix, shape [2, num_upper_connections];
-            may not be available, e.g. when `dim` is the top level dim of a complex
-        lower_index: lower adjacency, matrix, shape [2, num_lower_connections];
-            may not be available, e.g. when `dim` is 0
-        shared_boundaries: a tensor of shape (num_lower_adjacencies,) specifying the indices of
-            the shared boundary for each lower adjacency
-        shared_coboundaries: a tensor of shape (num_upper_adjacencies,) specifying the indices of
-            the shared coboundary for each upper adjacency
-        boundary_index: boundary adjacency, matrix, shape [2, num_boundaries_connections];
-            may not be available, e.g. when `dim` is 0
-        upper_orient: a tensor of shape (num_upper_adjacencies,) specifying the relative
-            orientation (+-1) with respect to the cells from upper_index
-        lower_orient: a tensor of shape (num_lower_adjacencies,) specifying the relative
-            orientation (+-1) with respect to the cells from lower_index
-        y: labels over cells in the cochain, shape [num_cells,]
-    """
+         
+                                            
+                                                                                
+                                                                               
+                                                                                   
+                                                                               
+                                                      
+                                                                                               
+                                                        
+                                                                                                 
+                                                          
+                                                                                          
+                                                      
+                                                                                        
+                                                                        
+                                                                                        
+                                                                        
+                                                               
+       
     def __init__(self, dim: int, x: Tensor = None, upper_index: Adj = None, lower_index: Adj = None,
                  shared_boundaries: Tensor = None, shared_coboundaries: Tensor = None, mapping: Tensor = None,
                  boundary_index: Adj = None, upper_orient=None, lower_orient=None, y=None, **kwargs):
@@ -68,10 +67,10 @@ class Cochain(object):
             assert shared_boundaries is None
             assert boundary_index is None
 
-        # Note, everything that is not of form __smth__ is made None during batching
-        # So dim must be stored like this.
+                                                                                    
+                                          
         self.__dim__ = dim
-        # TODO: check default for x
+                                   
         self.__x = x
         self.upper_index = upper_index
         self.lower_index = lower_index
@@ -83,7 +82,7 @@ class Cochain(object):
         self.lower_orient = lower_orient
         self.__oriented__ = False
         self.__hodge_laplacian__ = None
-        # TODO: Figure out what to do with mapping.
+                                                   
         self.__mapping = mapping
         for key, item in kwargs.items():
             if key == 'num_cells':
@@ -97,20 +96,20 @@ class Cochain(object):
 
     @property
     def dim(self):
-        """Returns the dimension of the cells in this cochain.
+        pass                                                  
 
-        This field should not have a setter. The dimension of a cochain cannot be changed.
-        """
+                                                                                          
+           
         return self.__dim__
     
     @property
     def x(self):
-        """Returns the vector values (features) associated with the cells."""
+        pass                                                                 
         return self.__x
 
     @x.setter
     def x(self, new_x):
-        """Sets the vector values (features) associated with the cells."""
+        pass                                                              
         if new_x is None:
             logging.warning("Cochain features were set to None. ")
         else:
@@ -119,42 +118,40 @@ class Cochain(object):
 
     @property
     def keys(self):
-        """Returns all names of cochain attributes."""
+        pass                                          
         keys = [key for key in self.__dict__.keys() if self[key] is not None]
         keys = [key for key in keys if key[:2] != '__' and key[-2:] != '__']
         return keys
 
     def __getitem__(self, key):
-        """Gets the data of the attribute :obj:`key`."""
+        pass                                            
         return getattr(self, key, None)
 
     def __setitem__(self, key, value):
-        """Sets the attribute :obj:`key` to :obj:`value`."""
+        pass                                                
         setattr(self, key, value)
 
     def __contains__(self, key):
-        """Returns :obj:`True`, if the attribute :obj:`key` is present in the data."""
+        pass                                                                          
         return key in self.keys
 
     def __cat_dim__(self, key, value):
-        """
-        Returns the dimension for which :obj:`value` of attribute
-        :obj:`key` will get concatenated when creating batches.
-        """
+        pass                                                                 
+                                                               
+           
         if key in ['upper_index', 'lower_index', 'shared_boundaries',
                    'shared_coboundaries', 'boundary_index']:
             return -1
-        # by default, concatenate sparse matrices diagonally.
+                                                             
         elif isinstance(value, SparseTensor):
             return (0, 1)
         return 0
 
     def __inc__(self, key, value):
-        """
-        Returns the incremental count to cumulatively increase the value
-        of the next attribute of :obj:`key` when creating batches.
-        """
-        # TODO: value is not used in this method. Can it be removed?
+        pass                                                                        
+                                                                  
+           
+                                                                    
         if key in ['upper_index', 'lower_index']:
             inc = self.num_cells
         elif key in ['shared_boundaries']:
@@ -173,19 +170,18 @@ class Cochain(object):
         return inc
     
     def __call__(self, *keys):
-        """
-        Iterates over all attributes :obj:`*keys` in the cochain, yielding
-        their attribute names and content.
-        If :obj:`*keys` is not given this method will iterative over all
-        present attributes.
-        """
+        pass                                                                          
+                                          
+                                                                        
+                           
+           
         for key in sorted(self.keys) if not keys else keys:
             if key in self:
                 yield key, self[key]
 
     @property
     def num_cells(self):
-        """Returns the number of cells in the cochain."""
+        pass                                             
         if hasattr(self, '__num_cells__'):
             return self.__num_cells__
         if self.x is not None:
@@ -197,13 +193,13 @@ class Cochain(object):
 
     @num_cells.setter
     def num_cells(self, num_cells):
-        """Sets the number of cells in the cochain."""
-        # TODO: Add more checks here
+        pass                                          
+                                    
         self.__num_cells__ = num_cells
 
     @property
     def num_cells_up(self):
-        """Returns the number of cells in the higher-dimensional cochain of co-dimension 1."""
+        pass                                                                                  
         if hasattr(self, '__num_cells_up__'):
             return self.__num_cells_up__
         elif self.shared_coboundaries is not None:
@@ -214,13 +210,13 @@ class Cochain(object):
 
     @num_cells_up.setter
     def num_cells_up(self, num_cells_up):
-        """Sets the number of cells in the higher-dimensional cochain of co-dimension 1."""
-        # TODO: Add more checks here
+        pass                                                                               
+                                    
         self.__num_cells_up__ = num_cells_up
 
     @property
     def num_cells_down(self):
-        """Returns the number of cells in the lower-dimensional cochain of co-dimension 1."""
+        pass                                                                                 
         if self.dim == 0:
             return None
         if hasattr(self, '__num_cells_down__'):
@@ -231,13 +227,13 @@ class Cochain(object):
 
     @num_cells_down.setter
     def num_cells_down(self, num_cells_down):
-        """Sets the number of cells in the lower-dimensional cochain of co-dimension 1."""
-        # TODO: Add more checks here
+        pass                                                                              
+                                    
         self.__num_cells_down__ = num_cells_down
         
     @property
     def num_features(self):
-        """Returns the number of features per cell in the cochain."""
+        pass                                                         
         if self.x is None:
             return 0
         return 1 if self.x.dim() == 1 else self.x.size(1)
@@ -246,8 +242,8 @@ class Cochain(object):
         if torch.is_tensor(item):
             return func(item)
         elif isinstance(item, SparseTensor):
-            # Not all apply methods are supported for `SparseTensor`, e.g.,
-            # `contiguous()`. We can get around it by capturing the exception.
+                                                                           
+                                                                              
             try:
                 return func(item)
             except AttributeError:
@@ -260,30 +256,27 @@ class Cochain(object):
             return item
 
     def apply(self, func, *keys):
-        """
-            Applies the function :obj:`func` to all tensor attributes
-            :obj:`*keys`. If :obj:`*keys` is not given, :obj:`func` is applied to
-            all present attributes.
-        """
+        pass                                                                     
+                                                                                 
+                                   
+           
         for key, item in self(*keys):
             self[key] = self.__apply__(item, func)
         return self
 
     def contiguous(self, *keys):
-        """
-            Ensures a contiguous memory layout for all attributes :obj:`*keys`.
-            If :obj:`*keys` is not given, all present attributes are ensured to
-            have a contiguous memory layout.
-        """
+        pass                                                                               
+                                                                               
+                                            
+           
         return self.apply(lambda x: x.contiguous(), *keys)
 
     def to(self, device, *keys, **kwargs):
-        """
-            Performs tensor dtype and/or device conversion to all attributes
-            :obj:`*keys`.
-            If :obj:`*keys` is not given, the conversion is applied to all present
-            attributes.
-        """
+        pass                                                                            
+                         
+                                                                                  
+                       
+           
         return self.apply(lambda x: x.to(device, **kwargs), *keys)
 
     def clone(self):
@@ -298,11 +291,11 @@ class Cochain(object):
 
 
 class CochainBatch(Cochain):
-    """A datastructure for storing a batch of cochains.
+    pass                                               
 
-    Similarly to PyTorch Geometric, the batched cochain consists of a big cochain formed of multiple
-    independent cochains on sets of disconnected cells.
-    """
+                                                                                                    
+                                                       
+       
 
     def __init__(self, dim, batch=None, ptr=None, **kwargs):
         super(CochainBatch, self).__init__(dim, **kwargs)
@@ -326,13 +319,12 @@ class CochainBatch(Cochain):
 
     @classmethod
     def from_cochain_list(cls, data_list, follow_batch=[]):
-        """
-            Constructs a batch object from a python list holding
-            :class:`Cochain` objects.
-            The assignment vector :obj:`batch` is created on the fly.
-            Additionally, creates assignment batch vectors for each key in
-            :obj:`follow_batch`.
-        """
+        pass                                                                
+                                     
+                                                                     
+                                                                          
+                                
+           
         keys = list(set.union(*[set(data.keys) for data in data_list]))
         assert 'batch' not in keys and 'ptr' not in keys
 
@@ -359,7 +351,7 @@ class CochainBatch(Cochain):
                 item = data[key]
 
                 if item is not None:
-                    # Increase values by `cumsum` value.
+                                                        
                     cum = cumsum[key][-1]
                     if isinstance(item, Tensor) and item.dtype != torch.bool:
                         if not isinstance(cum, int) or cum != 0:
@@ -373,13 +365,13 @@ class CochainBatch(Cochain):
                     elif isinstance(item, (int, float)):
                         item = item + cum
 
-                    # Treat 0-dimensional tensors as 1-dimensional.
+                                                                   
                     if isinstance(item, Tensor) and item.dim() == 0:
                         item = item.unsqueeze(0)
 
                     batch[key].append(item)
 
-                    # Gather the size of the `cat` dimension.
+                                                             
                     size = 1
                     cat_dim = data.__cat_dim__(key, data[key])
                     cat_dims[key] = cat_dim
@@ -390,7 +382,7 @@ class CochainBatch(Cochain):
                         size = torch.tensor(item.sizes())[torch.tensor(cat_dim)]
                         device = item.device()
                     
-                    # TODO: do we really need slices, and, are we managing them correctly?
+                                                                                          
                     slices[key].append(size + slices[key][-1])
                     
                     if key in follow_batch:
@@ -435,7 +427,7 @@ class CochainBatch(Cochain):
                 batch.batch.append(item)
                 batch.ptr.append(batch.ptr[-1] + num_cells)
 
-        # Fix initial slice values:
+                                   
         for key in keys:
             slices[key][0] = slices[key][1] - slices[key][1]
 
@@ -465,40 +457,40 @@ class CochainBatch(Cochain):
         if isinstance(idx, str):
             return super(CochainBatch, self).__getitem__(idx)
         elif isinstance(idx, int):
-            # TODO: is the 'get_example' method needed for now?
-            #return self.get_example(idx)
+                                                               
+                                         
             raise NotImplementedError
         else:
-            # TODO: is the 'index_select' method needed for now?
-            # return self.index_select(idx)
+                                                                
+                                           
             raise NotImplementedError
 
     def to_cochain_list(self) -> List[Cochain]:
-        r"""Reconstructs the list of :class:`torch_geometric.data.Data` objects
-        from the batch object.
-        The batch object must have been created via :meth:`from_data_list` in
-        order to be able to reconstruct the initial objects."""
-        # TODO: is the 'to_cochain_list' method needed for now?
-        #return [self.get_example(i) for i in range(self.num_cochains)]
+        pass                                                                   
+                              
+                                                                             
+                                                               
+                                                               
+                                                                       
         raise NotImplementedError
 
 
     @property
     def num_cochains(self) -> int:
-        """Returns the number of cochains in the batch."""
+        pass                                              
         if self.__num_cochains__ is not None:
             return self.__num_cochains__
         return self.ptr.numel() + 1
 
 
 class Complex(object):
-    """Class representing a cochain complex or an attributed cellular complex.
+    pass                                                                      
 
-    Args:
-        cochains: A list of cochains forming the cochain complex
-        y: A tensor of shape (1,) containing a label for the complex for complex-level tasks.
-        dimension: The dimension of the complex.
-    """
+         
+                                                                
+                                                                                             
+                                                
+       
     def __init__(self, *cochains: Cochain, y: torch.Tensor = None, dimension: int = None):
         if len(cochains) == 0:
             raise ValueError('At least one cochain is required.')
@@ -541,8 +533,8 @@ class Complex(object):
                     cochain.num_cells_down = num_cells_down
                     
     def to(self, device, **kwargs):
-        """Performs tensor dtype and/or device conversion to cochains and label y, if set."""
-        # TODO: handle device conversion for specific attributes via `*keys` parameter
+        pass                                                                                 
+                                                                                      
         for dim in range(self.dimension + 1):
             self.cochains[dim] = self.cochains[dim].to(device, **kwargs)
         if self.y is not None:
@@ -555,29 +547,28 @@ class Complex(object):
                            include_top_features=True,
                            include_down_features=True,
                            include_boundary_features=True) -> CochainMessagePassingParams:
-        """
-        Conveniently constructs all necessary input parameters to perform higher-dim
-        message passing on the cochain of specified `dim`.
+        pass                                                                                    
+                                                          
 
-        Args:
-            dim: The dimension from which to extract the parameters
-            max_dim: The maximum dimension of interest.
-                This is only used in conjunction with include_top_features.
-            include_top_features: Whether to include the top features from level max_dim+1.
-            include_down_features: Include the features for down adjacency
-            include_boundary_features: Include the features for the boundary
-        Returns:
-            An object of type CochainMessagePassingParams
-        """
+             
+                                                                   
+                                                       
+                                                                           
+                                                                                           
+                                                                          
+                                                                            
+                
+                                                         
+           
         if dim in self.cochains:
             cells = self.cochains[dim]
             x = cells.x
-            # Add up features
+                             
             upper_index, upper_features = None, None
             upper_weight = None
-            # We also check that dim+1 does exist in the current complex. This cochain might have been
-            # extracted from a higher dimensional complex by a batching operation, and dim+1
-            # might not exist anymore even though cells.upper_index is present.
+                                                                                                      
+                                                                                            
+                                                                               
             if cells.upper_index is not None and (dim+1) in self.cochains:
                 upper_index = cells.upper_index
                 if self.cochains[dim + 1].x is not None and (dim < max_dim or include_top_features):
@@ -585,14 +576,14 @@ class Complex(object):
                                                         self.cochains[dim].shared_coboundaries)
                 upper_weight = getattr(cells, "upper_weight", None)
 
-            # Add down features
+                               
             lower_index, lower_features = None, None
             if include_down_features and cells.lower_index is not None:
                 lower_index = cells.lower_index
                 if dim > 0 and self.cochains[dim - 1].x is not None:
                     lower_features = torch.index_select(self.cochains[dim - 1].x, 0,
                                                         self.cochains[dim].shared_boundaries)
-            # Add boundary features
+                                   
             boundary_index, boundary_features = None, None
             if include_boundary_features and cells.boundary_index is not None:
                 boundary_index = cells.boundary_index
@@ -613,16 +604,16 @@ class Complex(object):
                                include_top_features=True,
                                include_down_features=True,
                                include_boundary_features=True) -> List[CochainMessagePassingParams]:
-        """Extracts the cochain parameters for message passing on the cochains up to max_dim.
+        pass                                                                                 
 
-        Args:
-            max_dim: The maximum dimension of the complex for which to extract the parameters.
-            include_top_features: Whether to include the features from level max_dim+1.
-            include_down_features: Include the features for down adjacent cells.
-            include_boundary_features: Include the features for the boundary cells.
-        Returns:
-            A list of elements of type CochainMessagePassingParams.
-        """
+             
+                                                                                              
+                                                                                       
+                                                                                
+                                                                                   
+                
+                                                                   
+           
         all_params = []
         return_dim = min(max_dim, self.dimension)
         for dim in range(return_dim+1):
@@ -633,11 +624,11 @@ class Complex(object):
         return all_params
 
     def get_labels(self, dim=None):
-        """Returns target labels.
+        pass                     
 
-        If `dim`==k (integer in [0, self.dimension]) then the labels over k-cells are returned.
-        In the case `dim` is None the complex-wise label is returned.
-        """
+                                                                                               
+                                                                     
+           
         if dim is None:
             y = self.y
         else:
@@ -649,42 +640,42 @@ class Complex(object):
         return y
 
     def set_xs(self, xs: List[Tensor]):
-        """Sets the features of the cochains to the values in the list"""
+        pass                                                             
         assert (self.dimension + 1) >= len(xs)
         for i, x in enumerate(xs):
             self.cochains[i].x = x
             
     @property
     def keys(self):
-        """Returns all names of complex attributes."""
+        pass                                          
         keys = [key for key in self.__dict__.keys() if self[key] is not None]
         keys = [key for key in keys if key[:2] != '__' and key[-2:] != '__']
         return keys
     
     def __getitem__(self, key):
-        """Gets the data of the attribute :obj:`key`."""
+        pass                                            
         return getattr(self, key, None)
 
     def __setitem__(self, key, value):
-        """Sets the attribute :obj:`key` to :obj:`value`."""
+        pass                                                
         setattr(self, key, value)
     
     def __contains__(self, key):
-        """Returns :obj:`True`, if the attribute :obj:`key` is present in the data."""
+        pass                                                                          
         return key in self.keys
 
 
 class ComplexBatch(Complex):
-    """Class representing a batch of cochain complexes.
+    pass                                               
 
-    This is stored as a single cochain complex formed of batched cochains.
+                                                                          
 
-    Args:
-        cochains: A list of cochain batches that will be put together in a complex batch
-        dimension: The dimension of the resulting complex.
-        y: A tensor of labels for the complexes in the batch.
-        num_complexes: The number of complexes in the batch.
-    """
+         
+                                                                                        
+                                                          
+                                                             
+                                                            
+       
     def __init__(self,
                  *cochains: CochainBatch,
                  dimension: int,
@@ -696,16 +687,16 @@ class ComplexBatch(Complex):
 
     @classmethod
     def from_complex_list(cls, data_list: List[Complex], follow_batch=[], max_dim: int = 2):
-        """Constructs a ComplexBatch from a list of complexes.
+        pass                                                  
 
-        Args:
-            data_list: a list of complexes from which the batch is built.
-            follow_batch: creates assignment batch vectors for each key in
-                :obj:`follow_batch`.
-            max_dim: the maximum cochain dimension considered when constructing the batch.
-        Returns:
-            A ComplexBatch object.
-        """
+             
+                                                                         
+                                                                          
+                                    
+                                                                                          
+                
+                                  
+           
 
         dimension = max([data.dimension for data in data_list])
         dimension = min(dimension, max_dim)
@@ -715,11 +706,11 @@ class ComplexBatch(Complex):
         for comp in data_list:
             for dim in range(dimension+1):
                 if dim not in comp.cochains:
-                    # If a dim-cochain is not present for the current complex, we instantiate one.
+                                                                                                  
                     cochains[dim].append(Cochain(dim=dim))
                     if dim-1 in comp.cochains:
-                        # If the cochain below exists in the complex, we need to add the number of
-                        # boundaries to the newly initialised complex, otherwise batching will not work.
+                                                                                                  
+                                                                                                        
                         cochains[dim][-1].num_cells_down = comp.cochains[dim - 1].num_cells
                 else:
                     cochains[dim].append(comp.cochains[dim])

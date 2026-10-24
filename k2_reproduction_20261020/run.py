@@ -1,4 +1,4 @@
-"""Public two-argument interface for the frozen K2 full pipelines."""
+                                                                     
 import argparse
 import csv
 import hashlib
@@ -60,7 +60,6 @@ def main():
     parser.add_argument('--model',required=True,help='dual / Dual-Mapping or mlshol / MLSHoL')
     parser.add_argument('--check',action='store_true',help='Validate files, candidates and the resolved configuration without training.')
     parser.add_argument('--verify',action='store_true',help='Recompute metrics from current completed training outputs.')
-    parser.add_argument('--replay',action='store_true',help='Recompute the bundled historical outputs; does not retrain.')
     parser.add_argument('--smoke',action='store_true',help='One-epoch execution check; not a scientific result.')
     parser.add_argument('--device',default='auto',help='auto / cpu / cuda:0')
     parser.add_argument('--seeds',help='Optional comma-separated subset of the frozen seeds.')
@@ -80,17 +79,6 @@ def main():
         seeds=[int(x) for x in args.seeds.split(',')]
         if not seeds or not set(seeds)<=set(j['seeds']):parser.error('seeds must be a subset of '+str(j['seeds']))
         j['seeds']=seeds
-    if args.replay:
-        folder=ROOT/'reference_predictions'/dataset/model
-        files=sorted(folder.glob('*/PREDICTIONS.npz'))
-        if not files:parser.error('No verified historical predictions bundled for this pair; use training.')
-        import numpy as np
-        rows=[]
-        for p in files:
-            meta=read(p.parent/'SOURCE.json')
-            assert hashlib.sha256(p.read_bytes()).hexdigest()==meta['prediction_sha256']
-            rows.append(dict(seed=int(p.parent.name),historical_layers=meta['layers'],**score_file(p)))
-        print(json.dumps(dict(mode='ARCHIVED_REPLAY_NO_TRAINING',rows=rows,Lift_mean=float(np.mean([r['Lift'] for r in rows])),Lift_sample_sd=float(np.std([r['Lift'] for r in rows],ddof=1))),indent=2));return
     if args._worker:
         import torch
         sys.path.insert(0,str(BACKEND))
@@ -117,7 +105,7 @@ def main():
         print(json.dumps(dict(status='PASS',dataset=dataset,model=model,configuration=j['effective'],seeds=j['seeds'],candidates=len(y),positives=int(y.sum()),inference_context=context),indent=2));return
     if args.verify:summarize(j);return
     (BACKEND/'results').mkdir(exist_ok=True)
-    # The native engine reads the immutable master plan; no other pair is launched.
+                                                                                   
     planfile=BACKEND/'results/PLAN.json'
     if not planfile.exists():planfile.write_text(json.dumps(plan,indent=2),encoding='utf-8')
     for seed in j['seeds'][:1] if args.smoke else j['seeds']:

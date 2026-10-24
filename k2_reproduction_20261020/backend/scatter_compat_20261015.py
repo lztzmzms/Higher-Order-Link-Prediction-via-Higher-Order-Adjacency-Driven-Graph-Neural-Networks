@@ -1,4 +1,4 @@
-"""Prefer installed torch_scatter; otherwise use the bundle's existing native backend."""
+                                                                                         
 import hashlib
 import importlib
 import importlib.util
@@ -13,7 +13,7 @@ def ensure_scatter():
         return {'backend':'installed_torch_scatter','module':getattr(module,'__file__',None)}
     except ModuleNotFoundError as exc:
         if exc.name!='torch_scatter':raise
-    # Exactly the implementation already packaged for current/legacy/NDC models.
+                                                                                
     path=ROOT/'code/current/torch_scatter/__init__.py'
     if not path.is_file():raise RuntimeError('Packaged torch_scatter compatibility file missing: '+str(path))
     spec=importlib.util.spec_from_file_location('torch_scatter',path,submodule_search_locations=[str(path.parent)])

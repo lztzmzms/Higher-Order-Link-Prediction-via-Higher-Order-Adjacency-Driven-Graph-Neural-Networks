@@ -1,4 +1,4 @@
-"""Leakage-safe legacy 31-feature candidate-law prior for K=2 closure."""
+                                                                         
 
 from __future__ import annotations
 
@@ -220,8 +220,8 @@ def build_or_load_candidate_law_prior(
         "test_score_hash": _hash_array(test_scores),
         "history_only": True,
     }
-    # The run launcher may clear/recreate model cache folders between variants.
-    # Ensure the final cache directory exists at the write site as well.
+                                                                               
+                                                                        
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(cache_path, train_scores=train_scores, test_scores=test_scores)
     audit_path.write_text(json.dumps(audit, indent=2), encoding="utf-8")

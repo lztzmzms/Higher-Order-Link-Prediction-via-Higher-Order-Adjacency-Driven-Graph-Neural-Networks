@@ -1,7 +1,0 @@
-﻿dataset,event_order,train_cut,test_cut,events,candidates,positives,negatives,inference_context_candidates,same_timestamp_split,evaluation_candidate_sha256,previously_inspected_test
-email-Enron,"timestamp,row_id",6529,8706,10883,2574,119,2455,2574,False,46064eba89c49e5bb39a819daf77100c692217757e6ad5fd41b92ac2856fc692,True
-contact-primary-school,"timestamp,row_id",3205,4273,5343,4184,22,4162,4184,False,c31720af9a8f1cc1f554197aa3a8a3a23a9111d16e52d0bb5cd173b7e441efce,True
-email-Eu,"timestamp,row_id",69738,92984,116230,3222,31,3191,3222,False,f5bd05f90102712a98de99690485671be59c2ad136d7855cef6e42a0c5f0e58e,True
-tags-ask-ubuntu,"timestamp,row_id",162739,216986,271233,4414,36,4378,4414,False,58b0721ddfda92132ed006153a070da3974f952966978cea88cdfd067426cc10,True
-tags-math-sx,"timestamp,row_id",98646,131528,164411,2000,26,1974,2000,False,5fb6ccd503676f960f9f55d8c182fe012e6d020ec5290b15945e1bdcd74713b7,True
-NDC-substances,"timestamp,row_id",32978,43967,54988,1750,23,1727,6000,False,9906f5a2c7ab93068e18edd696005b6da0f6adc475c7f8f4d585f390c6061e62,True

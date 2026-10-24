@@ -1,9 +1,9 @@
-"""Leakage-safe historical interaction-strength features for temporal HOP.
+                                                                          
 
-Every statistic in this module is computed from the supplied context events
-only.  Callers are responsible for passing events with ``timestamp < T``.
-No closure labels or future events are accepted by the public builders.
-"""
+                                                                           
+                                                                         
+                                                                       
+   
 
 from __future__ import annotations
 
@@ -40,13 +40,13 @@ def build_boundary_strength(
     cutoff: float,
     decay_lambda: float = 0.0,
 ) -> Dict[Edge, EdgeStrength]:
-    """Build edge strength using only events whose timestamp is before cutoff."""
+    pass                                                                         
     context_events = [
         event for event in context_events if float(event["time"]) < float(cutoff)
     ]
     if float(decay_lambda) <= 0.0:
         earliest = min((float(event["time"]) for event in context_events), default=float(cutoff))
-        # Automatic, unit-safe half-life: 15% of the observed context span.
+                                                                           
         half_life = max(0.15 * (float(cutoff) - earliest), 1.0)
         decay_lambda = math.log(2.0) / half_life
     counts = defaultdict(float)

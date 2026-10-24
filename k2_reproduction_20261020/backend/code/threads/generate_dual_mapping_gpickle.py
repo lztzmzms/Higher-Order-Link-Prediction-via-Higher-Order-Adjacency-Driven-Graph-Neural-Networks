@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Build Dual-Mapping triangle-node graphs for node classification.
+                                                                   
 
-The Dual-Mapping process follows the paper's Triangle-to-Node idea:
-each 2-simplex candidate (triangle, open or closed) is mapped to one
-node in a derived graph, and two derived nodes are connected when their
-source triangles share a common 1-face (an original graph edge).
+                                                                   
+                                                                    
+                                                                       
+                                                                
 
-The generated NetworkX gpickle files are compatible with
-node_classfication-emmbedding.py: every node has "triplet", "label",
-and "features" attributes.
-"""
+                                                        
+                                                                    
+                          
+   
 
 from __future__ import annotations
 

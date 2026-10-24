@@ -1,22 +1,22 @@
 #!/usr/bin/env python
-"""Dual-Mapping triangle closure prediction from raw timestamped simplices.
+                                                                           
 
-This script intentionally does not read or write gpickle files.  It rebuilds
-the temporal closure task directly from the three raw files:
+                                                                            
+                                                            
 
-    nverts.txt, simplices.txt, times.txt
+                                        
 
-Protocol:
-    0-20 context -> 20-40 future closure is a supervised training task.
-    0-40 context -> 40-60 future closure is a supervised training task.
-    0-60 context -> 60-80 future closure is the validation task.
-    0-80 context -> 80-100 future closure is the final test task.
+         
+                                                                       
+                                                                       
+                                                                
+                                                                 
 
-Dual-Mapping:
-    open triangle -> derived graph node
-    shared lower face (edge) -> derived graph edge
-    local topological features + GraphSAGE message passing -> closure score
-"""
+             
+                                       
+                                                  
+                                                                           
+   
 
 from __future__ import annotations
 
@@ -45,15 +45,15 @@ from interaction_strength import (
 )
 
 try:
-    from scipy import sparse  # noqa: F401  # kept to fail early if scipy is absent
-except Exception:  # pragma: no cover - dependency check only
+    from scipy import sparse                                                       
+except Exception:                                            
     sparse = None
 
 try:
     from sklearn.metrics import average_precision_score
     from sklearn.preprocessing import StandardScaler
     from scipy.stats import rankdata
-except Exception as exc:  # pragma: no cover - dependency check only
+except Exception as exc:                                            
     raise RuntimeError("scikit-learn is required for AP evaluation and scaling.") from exc
 
 
@@ -61,9 +61,9 @@ Triangle = Tuple[int, int, int]
 Edge = Tuple[int, int]
 
 
-# ---------------------------------------------------------------------------
-# 1. argument parser
-# ---------------------------------------------------------------------------
+                                                                             
+                    
+                                                                             
 
 
 def parse_args() -> argparse.Namespace:
@@ -195,9 +195,9 @@ def resolve_input_path(path_text: str) -> Path:
     raise FileNotFoundError(f"Input file not found: {path_text}")
 
 
-# ---------------------------------------------------------------------------
-# 2. load raw timestamped simplices
-# ---------------------------------------------------------------------------
+                                                                             
+                                   
+                                                                             
 
 
 def read_int_lines(path: Path) -> List[int]:
@@ -271,9 +271,9 @@ def load_timestamped_simplices(nverts_path, simplices_path, times_path, event_or
     return simplices, stats
 
 
-# ---------------------------------------------------------------------------
-# 3. temporal split
-# ---------------------------------------------------------------------------
+                                                                             
+                   
+                                                                             
 
 
 def temporal_split(simplices, split=(0.2, 0.4, 0.6, 0.8)):
@@ -292,9 +292,9 @@ def temporal_split(simplices, split=(0.2, 0.4, 0.6, 0.8)):
     return contexts, futures
 
 
-# ---------------------------------------------------------------------------
-# 4. build observed simplicial state
-# ---------------------------------------------------------------------------
+                                                                             
+                                    
+                                                                             
 
 
 def build_observed_state(S_context):
@@ -305,7 +305,7 @@ def build_observed_state(S_context):
     for simplex in S_context:
         V = simplex["vertices"]
 
-        # Downward closure: any observed higher simplex contains all lower faces.
+                                                                                 
         for r in range(1, len(V) + 1):
             for face in combinations(V, r):
                 observed_simplices_by_size[r].add(tuple(sorted(face)))
@@ -354,9 +354,9 @@ def build_edge_upper_adjacency(observed_triangles: Iterable[Triangle]):
     return edge_upper_neighbors, edge_upper_weight
 
 
-# ---------------------------------------------------------------------------
-# 5. enumerate open triangles
-# ---------------------------------------------------------------------------
+                                                                             
+                             
+                                                                             
 
 
 def enumerate_open_triangles(observed_edges, observed_triangles):
@@ -374,9 +374,9 @@ def enumerate_open_triangles(observed_edges, observed_triangles):
     return open_triangles
 
 
-# ---------------------------------------------------------------------------
-# 6. label candidates using future window
-# ---------------------------------------------------------------------------
+                                                                             
+                                         
+                                                                             
 
 
 def triangles_closed_in_future(future_simplices):
@@ -393,9 +393,9 @@ def label_candidates(candidates: Sequence[Triangle], future_triangles: Set[Trian
     return np.asarray([1 if tri in future_triangles else 0 for tri in candidates], dtype=np.int64)
 
 
-# ---------------------------------------------------------------------------
-# 7. build dual graph
-# ---------------------------------------------------------------------------
+                                                                             
+                     
+                                                                             
 
 
 def triangle_faces(tri: Triangle) -> Tuple[Edge, Edge, Edge]:
@@ -450,7 +450,7 @@ def build_dual_graph(
             ],
             dtype=np.float32,
         )
-        # edge_index is directed, so edge_weight must be aligned and directed too.
+                                                                                  
         directed_weights = np.concatenate([weights, weights]).astype(np.float32)
     else:
         edge_pairs = np.empty((0, 2), dtype=np.int64)
@@ -476,9 +476,9 @@ def dual_degrees(num_nodes: int, edge_pairs: np.ndarray) -> np.ndarray:
     return degrees
 
 
-# ---------------------------------------------------------------------------
-# 8. build local structural features
-# ---------------------------------------------------------------------------
+                                                                             
+                                    
+                                                                             
 
 
 COUNT_FEATURES = {
@@ -628,7 +628,7 @@ def build_features(
         a, b, c = tri
         faces = triangle_faces(tri)
 
-        # Lower edge line-degree in the observed 1-skeleton.
+                                                            
         edge_degrees = [
             max(0, node_degree.get(u, 0) + node_degree.get(v, 0) - 2)
             for u, v in faces
@@ -859,11 +859,11 @@ def build_closure_task(
     rw_steps=4,
     args=None,
 ):
-    """Build one independent temporal closure task.
+    pass                                           
 
-    The state, candidates, derived graph, and features come only from the
-    context window.  The future window is used only to create labels.
-    """
+                                                                         
+                                                                     
+       
     state = build_observed_state(context_simplices)
     candidates = enumerate_open_triangles(state["edges"], state["triangles"])
     future_closed = triangles_closed_in_future(future_simplices)
@@ -1078,14 +1078,14 @@ def build_bounded_skipgram_pairs(
     priority_ids: Set[int],
     args,
 ) -> Tuple[np.ndarray, np.ndarray, dict]:
-    """Generate random-walk pairs with a strict allocation cap.
+    pass                                                       
 
-    Small graphs retain the original complete walk multiset.  When the
-    requested multiset would exceed ``rw_max_pairs``, every node receives one
-    start walk first and the remaining starts are sampled with the original
-    priority-node bias.  Pair arrays are preallocated, so peak memory is known
-    before training and no multi-gigabyte Python pair list is constructed.
-    """
+                                                                      
+                                                                             
+                                                                           
+                                                                              
+                                                                          
+       
     walk_length = int(args.rw_walk_length)
     window = int(args.rw_window_size)
     walks_per_node = int(args.rw_walks_per_node)
@@ -1129,8 +1129,8 @@ def build_bounded_skipgram_pairs(
             for start in start_nodes
         )
     else:
-        # Preserve the original continuous-RNG walk sequence exactly whenever
-        # the complete pair set fits under the memory cap.
+                                                                             
+                                                          
         walk_iter = iter(
             generate_random_walks(adjacency, start_nodes, walk_length, int(args.embedding_seed))
         )
@@ -1296,7 +1296,7 @@ def attach_aligned_rw_and_priority_features(tasks: Sequence[dict], priority_task
 
 
 def apply_information_mode_features(tasks: Sequence[dict], args) -> None:
-    """Add the D-only node-activity channel without removing shared RW/priority."""
+    pass                                                                           
     for task in tasks:
         if args.information_mode == "full":
             task["priority_features"] = np.hstack(
@@ -1304,9 +1304,9 @@ def apply_information_mode_features(tasks: Sequence[dict], args) -> None:
             ).astype(np.float32)
 
 
-# ---------------------------------------------------------------------------
-# 9. model definition
-# ---------------------------------------------------------------------------
+                                                                             
+                     
+                                                                             
 
 
 def require_torch():
@@ -1314,7 +1314,7 @@ def require_torch():
         import torch
         import torch.nn as nn
         import torch.nn.functional as F
-    except Exception as exc:  # pragma: no cover - environment dependent
+    except Exception as exc:                                            
         raise RuntimeError(
             "PyTorch is required for training. Use an environment with torch "
             "or pass --skip_training to only build and save the protocol data."
@@ -1475,9 +1475,9 @@ def make_model_classes():
     return torch, nn, F, DualMappingGNN
 
 
-# ---------------------------------------------------------------------------
-# 10. training and evaluation
-# ---------------------------------------------------------------------------
+                                                                             
+                             
+                                                                             
 
 
 def set_seed(seed: int, torch=None):
@@ -1826,9 +1826,9 @@ def train_one_seed(
     }
 
 
-# ---------------------------------------------------------------------------
-# 11. save outputs
-# ---------------------------------------------------------------------------
+                                                                             
+                  
+                                                                             
 
 
 def save_pickle(path: Path, obj):
@@ -2088,7 +2088,7 @@ def main():
     global_feature_stats = attach_aligned_rw_and_priority_features(all_tasks, train_tasks, args)
     apply_information_mode_features(all_tasks, args)
 
-    # Leakage audit and interpretable strength artifacts for the final cutoff.
+                                                                              
     audit_rows = []
     for edge_id, (edge, record) in enumerate(sorted(test_task["boundary_strength"].items())):
         audit_rows.append(

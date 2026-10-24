@@ -1,4 +1,4 @@
-"""Portable, locked recovery backbone plus genuinely trained structure residual."""
+                                                                                   
 import os
 for key in ('OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS'):
     os.environ[key] = '1'
@@ -32,12 +32,12 @@ def worker(job, seed, smoke=False):
     if (d/('DONE.json' if smoke else 'RESULT.json')).exists(): return
     cfg=load(ROOT/job['source_config']); assert sha(ROOT/job['source_config'])==e['source_config_sha256']
     material=ROOT/'material'/ds
-    # Materialize compressed arrays once; repeated NPZ indexing decompresses on every row.
+                                                                                          
     z=dict(np.load(material/'EVENTS.npz')); offsets=np.r_[0,np.cumsum(z['counts'])]
     events=[(t.item(),int(ix),tuple(map(int,z['vertices'][offsets[i]:offsets[i+1]]))) for i,(t,ix) in enumerate(zip(z['times'],z['indices']))]
     tasks={name:dict(np.load(material/(name+'.npz'))) for name in ('train','test')}
     actual_y=np.load(material/'EVALUATION.npz')['y']
-    # Future labels are absent from the feature/pretraining material.
+                                                                     
     assert 'y' not in tasks['test']
     for t in tasks.values():
         t['cut']=int(t['cut']);t['label_end']=int(t['label_end'])
@@ -53,7 +53,7 @@ def worker(job, seed, smoke=False):
     (p.OUT/'cache').mkdir(parents=True,exist_ok=True)
     started=time.time()
     if ds=='tags-math-sx':
-        # Exact previously locked two-seed history MLP. Reused, not reselected.
+                                                                               
         cache=ROOT/'artifacts/teacher'/ds/('smoke' if smoke else 'full')
         cache.mkdir(parents=True,exist_ok=True)
         basefile=cache/'BASE.npz'
@@ -106,13 +106,13 @@ def worker(job, seed, smoke=False):
         else:
             import representation_geometry as geometry
             geometry.build(p,events,tasks,'MRNL',maxdim,ROOT/'protocol'/ds,None)
-        # The locked tags helper seeds *after* geometry preparation.
+                                                                    
         if ds=='tags-math-sx':p.seed(seed)
         core=p.SparseSIN(num_input_features=1,num_classes=2,num_layers=3,hidden=16,dropout_rate=.2,max_dim=maxdim,readout='mean',final_readout='sum').to(device)
         torch.nn.init.zeros_(core.lin2.weight);torch.nn.init.zeros_(core.lin2.bias)
         rw_values=None
         if e['rw']:
-            # The original control has no RW. This is a real added, trained branch.
+                                                                                   
             import representation_geometry as geometry
             rng=torch.get_rng_state();cuda_rng=torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None
             rw_values=geometry.candidate_rw(p,tasks,ROOT/'artifacts/residual_rw'/ds/('smoke' if smoke else 'full'))
@@ -143,12 +143,12 @@ def worker(job, seed, smoke=False):
             for batch in loader:
                 batch=batch.to(device);opt.zero_grad();logits=net(batch) if e['rw'] else net(batch,return_logits=True);scores=batch.cochains[0].history_base_logit.flatten()+perturb(logits[:,1]-logits[:,0]);loss=torch.nn.functional.binary_cross_entropy_with_logits(scores,batch.y.view(-1).float(),pos_weight=weight);assert torch.isfinite(loss);loss.backward();torch.nn.utils.clip_grad_norm_(net.parameters(),1.);opt.step();values.append(float(loss))
             return float(np.mean(values))
-    # Match the historical RNG order, including cached/rebuilt geometry effects.
+                                                                                
     if torch.cuda.is_available():torch.cuda.reset_peak_memory_stats()
-    # The tags reference did not iterate an evaluation DataLoader before training.
-    # Preserve RNG around this zero-init assertion to retain its exact protocol.
+                                                                                  
+                                                                                
     if ds=='tags-math-sx':
-        # Do not introduce an extra loader/forward into the original tags protocol.
+                                                                                   
         if model=='MLSHoL':assert torch.count_nonzero(core.lin2.weight)==0 and torch.count_nonzero(core.lin2.bias)==0
         else:
             for head in (net.base_head[-1],net.residual_head[-1]):assert torch.count_nonzero(head.weight)==0 and torch.count_nonzero(head.bias)==0

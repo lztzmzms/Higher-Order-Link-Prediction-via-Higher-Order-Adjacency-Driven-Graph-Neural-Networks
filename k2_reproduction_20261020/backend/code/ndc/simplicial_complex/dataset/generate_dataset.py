@@ -27,7 +27,7 @@ class MyDataset(InMemoryComplexDataset):
         self.split = split
         self.num_hops = num_hops
         self.init_method = init_method
-        # self.labelling_method = labelling_method
+                                                  
         super(MyDataset, self).__init__(root, max_dim=max_dim, num_classes=num_classes,
                                         init_method=init_method, include_down_adj=include_down_adj)
         self.data, self.slices = torch.load(self.processed_paths[0])
@@ -37,14 +37,14 @@ class MyDataset(InMemoryComplexDataset):
     @property
     def raw_file_names(self):
         file_path = os.path.join(ROOT_DIR, 'dataset', self.split, self.name, f'{labelling_method}' + '/')
-        # file_path = os.path.join(ROOT_DIR, 'dataset', self.split, self.name + '/')
+                                                                                    
         filename = '*{}_hops.pt'.format(self.num_hops)
         return file_path
 
     @property
     def processed_dir(self):
         file_path = os.path.join(ROOT_DIR, 'simplicial_complex', self.split, self.name, f'{labelling_method}')
-        # file_path = os.path.join(ROOT_DIR, 'simplicial_complex', self.split, self.name)
+                                                                                         
         file_path += f"_down_adj" if self.include_down_adj else ""
         return file_path
 
@@ -57,8 +57,8 @@ class MyDataset(InMemoryComplexDataset):
         file_path = self.raw_file_names
         print(file_path)
         graph_list_path = os.path.join(ROOT_DIR, 'simplicial_complex', self.split, f'{labelling_method}'+f'{self.num_hops}'+'{}_graph_list.pt'.format(self.name))
-        # graph_list_path = os.path.join(ROOT_DIR, 'simplicial_complex', self.split,
-        #                                '{}_graph_list.pt'.format(self.name))
+                                                                                    
+                                                                              
         filter = '*'
         if not os.path.exists(graph_list_path):
             for file in glob(file_path + filter + '{}_hops.pt'.format(self.num_hops)):

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run one dataset's selected MLSHoL configuration on shared K=2 indices."""
+                                                                            
 
 from __future__ import annotations
 

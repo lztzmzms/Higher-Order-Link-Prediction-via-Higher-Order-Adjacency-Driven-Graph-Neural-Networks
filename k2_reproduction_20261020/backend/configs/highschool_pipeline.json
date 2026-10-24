@@ -1,0 +1,14 @@
+{
+  "mlshol_max_nodes_per_step": {
+    "contact-high-school": 35
+  },
+  "historical_fusion": {
+    "contact-high-school": {
+      "Dual-Mapping": 0.01,
+      "MLSHoL": 0.01
+    }
+  },
+  "history_rerank": {
+    "contact-high-school": true
+  }
+}

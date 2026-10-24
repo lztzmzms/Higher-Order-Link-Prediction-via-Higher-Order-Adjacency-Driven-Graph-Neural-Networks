@@ -1,8 +1,0 @@
-{
-  "dataset": "contact-primary-school",
-  "test_candidates": 4184,
-  "test_query_sha256": "c31720af9a8f1cc1f554197aa3a8a3a23a9111d16e52d0bb5cd173b7e441efce",
-  "future_test_labels_not_saved": true,
-  "teacher_probability_to_logit_is_fixed_monotone": true,
-  "historical_windows_overlap": true
-}

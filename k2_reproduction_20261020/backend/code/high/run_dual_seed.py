@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run one dataset's frozen Dual-Mapping configuration on the shared protocol."""
+                                                                                 
 
 from __future__ import annotations
 
@@ -86,8 +86,8 @@ def main():
     import node_classfication_embedding_original_rwsearch as dual
 
     if spec.get("strength_edge_mode") == "unit":
-        # Keep the weighted-neighbor branch and its trainable parameters,
-        # but remove multiplicity information from every adjacency weight.
+                                                                         
+                                                                          
         def unit_weights(triplets, edges, pair_counts, scale=1.0):
             return np.ones(len(edges), dtype=np.float32)
         dual._derived_edge_strength_weights = unit_weights
@@ -118,11 +118,11 @@ def main():
         return valid, "shared protocol indices must partition all candidates and retain both classes"
 
     dual.validate_stratified_split_indices = shared_split_validator
-    # The Dual entry point uses --priority_nodes both to rebuild open-candidate
-    # labels and to prioritize positive training nodes.  Passing only the fit
-    # positives erases every validation positive.  Always pass the complete
-    # 60--80% positive set; the frozen fit/validation indices still prevent
-    # validation rows from entering optimization.
+                                                                               
+                                                                             
+                                                                           
+                                                                           
+                                                 
     train_positive = data_root / "dataset" / "train" / f"{args.dataset}_new_closures_train.txt"
 
     positive_triangles = set(read_triangles(train_positive))

@@ -1,4 +1,4 @@
-"""Only adjacency frequency changes. Frozen history, features and RW stay fixed."""
+                                                                                   
 from collections import Counter
 from itertools import combinations
 import json, math

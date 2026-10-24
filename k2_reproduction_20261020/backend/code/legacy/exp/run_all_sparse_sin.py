@@ -45,14 +45,14 @@ DEFAULT_DATASETS = [
     "threads-ask-ubuntu",
 ]
 
-# Defaults preserve the historical source-order protocol. Controlled
-# timestamp experiments can redirect all protocol assets without touching it.
+                                                                    
+                                                                             
 DATA_ROOT = Path(ROOT_DIR)
 EVENT_ORDER = "raw"
 
 
 class SkipGramNS(nn.Module):
-    """Dual-Mapping aligned-union random-walk embedding model."""
+    pass                                                         
 
     def __init__(self, num_nodes, dim):
         super().__init__()
@@ -83,7 +83,7 @@ class SkipGramNS(nn.Module):
 
 
 class SparseSINWithDualRW(nn.Module):
-    """SparseSIN encoder fused with an aligned Dual-Mapping RW vector."""
+    pass                                                                 
 
     def __init__(self, args):
         super().__init__()
@@ -150,9 +150,9 @@ class SparseSINWithDualRW(nn.Module):
         if self.fusion_mode == "rw_only":
             fusion_dim = args.rw_proj_dim
         elif self.fusion_mode == "none":
-            # A no-RW run can still use the history head and/or interaction
-            # strength channel.  The previous process-control path returned
-            # bare SparseSIN here, silently dropping those requested inputs.
+                                                                           
+                                                                           
+                                                                            
             fusion_dim = sin_dim
         else:
             fusion_dim = sin_dim + args.rw_proj_dim
@@ -176,15 +176,15 @@ class SparseSINWithDualRW(nn.Module):
                 nn.Sigmoid(),
             )
         if self.history_feature_mode == "history_base_structural_residual":
-            # History is the base ranking; the structural branch is a
-            # zero-initialized, candidate-conditioned correction.  This keeps
-            # the first joint forward pass exactly equal to the history head.
+                                                                     
+                                                                             
+                                                                             
             self.history_pretrained = bool(self.history_pretrained_checkpoint)
             if self.history_pretrained:
-                # This is deliberately the same 64->64->64->1 HistoryMLP
-                # used by run_v13_history_pretrain.py.  The checkpoint is
-                # loaded below and its positive logit is represented as [0,z]
-                # so softmax([0,z]) == sigmoid(z).
+                                                                        
+                                                                         
+                                                                             
+                                                  
                 history_hidden = 64
                 self.history_pretrained_net = nn.Sequential(
                     nn.Linear(self.history_feature_dim, 64), nn.ReLU(), nn.Dropout(0.1),
@@ -396,11 +396,11 @@ def construct_labeled_networkx_graph(
         raise ValueError(f"Only TRNL is supported by this runner, got {labelling}")
     node_list = list(k_hop_subgraph.nodes)
     edge_list = list(k_hop_subgraph.edges)
-    # The K=2 task already observes all three target edges at cutoff.  When
-    # the ``keep_target_links`` ablation is enabled, message passing receives
-    # the original local graph while TRNL node labels are still computed on a
-    # target-edge-removed view.  This isolates the effect of preserving the
-    # known edges without changing the distance-label definition.
+                                                                           
+                                                                             
+                                                                             
+                                                                           
+                                                                 
     embeddings = trnl_node_labeling(
         k_hop_subgraph if label_graph is None else label_graph,
         tri,
@@ -418,18 +418,18 @@ def construct_labeled_networkx_graph(
             simplex = sorted(set(old_simplex) & node_set)
             if len(simplex) >= 3:
                 observed_simplices.add(tuple(simplex))
-    # Keep only inclusion-maximal observed simplices.  The old implementation
-    # compared every ordered pair and called ``original.index`` inside the
-    # nested loop, which became quadratic twice over on dense local histories.
-    # Sorting by decreasing size lets us compare each simplex only with the
-    # already retained maximal set while preserving the same downward-closure
-    # pruning semantics.
+                                                                             
+                                                                          
+                                                                              
+                                                                           
+                                                                             
+                        
     simplex_keys = {tuple(sorted(simplex)) for simplex in observed_simplices}
     simplex_keys.update(tuple(sorted(edge)) for edge in edge_list)
     if observed_2_skeleton:
-        # Materialize only the downward-closed 1/2-skeleton.  This avoids
-        # inserting a large historical simplex into GUDHI before truncating
-        # it to dimension two.
+                                                                         
+                                                                           
+                              
         skeleton = set()
         for key in simplex_keys:
             vertices = tuple(key)
@@ -592,7 +592,7 @@ def get_old_simplices(dataset, split, args=None):
 
 
 def resolve_maxsimplex_feature_path(dataset, split, feature_dir):
-    """Resolve TSV-formatted maximal-simplex features, regardless of suffix."""
+    pass                                                                       
     feature_dir = Path(feature_dir)
     stem = f"{dataset}_{split}_edge_maxsimplex_features"
     candidates = [
@@ -609,7 +609,7 @@ def resolve_maxsimplex_feature_path(dataset, split, feature_dir):
 
 
 def validate_maxsimplex_feature_path(dataset, split, feature_path, args):
-    """Validate the feature cache against the exact raw protocol cutoff."""
+    pass                                                                   
     raw_dir = Path(DATA_ROOT) / "dataset" / "raw_data" / dataset
     gpickle_dir = Path(DATA_ROOT) / "gpickle" / dataset
     gpickle_name = (
@@ -638,13 +638,13 @@ def validate_maxsimplex_feature_path(dataset, split, feature_path, args):
 
 
 def build_temporal_activity_map(dataset, split, args):
-    """Context-only activity prior for each open-triangle candidate.
+    pass                                                            
 
-    By default this uses the observed context only.  An explicit context
-    ratio of 1.0 is a transductive raw-event diagnostic and must be reported
-    separately because it includes post-cutoff events, although it still
-    never reads the future-label file while constructing the score.
-    """
+                                                                        
+                                                                            
+                                                                        
+                                                                   
+       
     if split == "early":
         context_fraction = 0.4
     elif split == "train":
@@ -782,7 +782,7 @@ def build_temporal_activity_map(dataset, split, args):
 
 
 def build_interaction_strength_map(dataset, split, args):
-    """Build boundary strength from timestamped events strictly before T."""
+    pass                                                                    
     if split == "early":
         context_fraction = 0.4
     elif split == "train":
@@ -801,9 +801,9 @@ def build_interaction_strength_map(dataset, split, args):
     )
     context_end = int(context_fraction * len(simplices))
     if EVENT_ORDER == "raw":
-        # Raw-order is an event-index protocol.  Use a cutoff above every
-        # retained context timestamp so no valid raw-history event is dropped
-        # merely because its timestamp is out of order.
+                                                                         
+                                                                             
+                                                       
         cutoff = (
             float(max(timestamps[:context_end]) + 1)
             if context_end
@@ -1010,7 +1010,7 @@ def skipgram_pairs_per_walk(walk_positions, window_size):
 
 
 def build_bounded_aligned_rw_pairs(indptr, indices, num_nodes, priority_mask, args):
-    """Build a preallocated random-walk pair corpus with a strict cap."""
+    pass                                                                 
     rng = np.random.default_rng(args.rw_seed)
     nodes = np.arange(num_nodes, dtype=np.int64)
     priority_indices = np.flatnonzero(priority_mask).astype(np.int64, copy=False)
@@ -1299,14 +1299,14 @@ def load_or_build_aligned_dual_rw(dataset, args, device):
 
 
 def load_dual_mapping_full_rw(dataset, args):
-    """Load the exact full-graph Dual-Mapping RW vectors for train/test.
+    pass                                                                
 
-    The original Dual-Mapping graph contains historical closed triangles as
-    well as the open triangle candidates.  Its cache stores separate train
-    and test coordinate matrices.  We align those matrices to triangle IDs
-    from the corresponding gpickle files and expose only the candidate rows
-    needed by SparseSIN.
-    """
+                                                                           
+                                                                          
+                                                                          
+                                                                           
+                        
+       
     if not args.rw_reference_cache:
         raise ValueError(
             "--rw-source dual_mapping_full requires --rw-reference-cache "
@@ -1551,9 +1551,9 @@ def build_pyg_samples(dataset, split, args):
     ) = select_sampled_candidates(dataset, split, args)
     graph = node_label_transform(nx.read_graphml(paths["graph"]))
     old_simplices = get_old_simplices(dataset, split, args)
-    # Index the fixed history prefix once.  The previous implementation
-    # scanned every historical simplex for every candidate, which made the
-    # complete 60% NDC run spend most of its time before GUDHI was called.
+                                                                       
+                                                                          
+                                                                          
     history_simplices_by_node = defaultdict(list)
     for old_simplex in old_simplices:
         simplex = tuple(sorted(set(old_simplex)))
@@ -1680,14 +1680,14 @@ def cache_path(dataset, split, args):
         f"{keep_tag}"
         f"_src{source_fingerprint}.pt"
     )
-    # Windows still rejects long paths in some PyTorch file operations even
-    # when the process itself supports long paths.  Keep the full cache key in
-    # the digest while using a compact filename on disk.
+                                                                           
+                                                                              
+                                                        
     full_name = name
     if os.name == "nt" and len(str(cache_dir / name)) >= 240:
         token = hashlib.sha256(name.encode("utf-8")).hexdigest()[:24]
         name = f"processed_{dataset}_{split}_{token}.pt"
-    # Retain existing caches; new cache files use the complete key's digest.
+                                                                            
     legacy_path = cache_dir / name
     portable_name = "c_" + hashlib.sha256(full_name.encode("utf-8")).hexdigest()[:24] + ".pt"
     portable_path = cache_dir / portable_name
@@ -1695,7 +1695,7 @@ def cache_path(dataset, split, args):
 
 
 def structural_cache_path(dataset, split, args):
-    """RW-independent complex cache so feature searches do not rebuild GUDHI."""
+    pass                                                                        
     cache_dir = Path(args.cache_dir) if args.cache_dir else Path(args.output_dir) / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
     sampling_mode, configured_positive_fraction, raw_cap, complex_cap, _, _ = (
@@ -1723,7 +1723,7 @@ def structural_cache_path(dataset, split, args):
     if os.name == "nt" and len(str(cache_dir / name)) >= 240:
         token = hashlib.sha256(name.encode("utf-8")).hexdigest()[:24]
         name = f"structural_{dataset}_{split}_{token}.pt"
-    # Retain existing caches; new cache files use the complete key's digest.
+                                                                            
     legacy_path = cache_dir / name
     portable_name = "c_" + hashlib.sha256(full_name.encode("utf-8")).hexdigest()[:24] + ".pt"
     portable_path = cache_dir / portable_name
@@ -1731,7 +1731,7 @@ def structural_cache_path(dataset, split, args):
 
 
 def legacy_structural_cache_path(dataset, split, args):
-    """Find a pre-v5 cache with exactly the same structural sampling key."""
+    pass                                                                    
     cache_dir = Path(args.cache_dir) if args.cache_dir else Path(args.output_dir) / "cache"
     sampling_mode, configured_positive_fraction, raw_cap, complex_cap, _, _ = (
         split_sampling_parameters(split, args)
@@ -1896,7 +1896,7 @@ def load_or_build_complexes(dataset, split, args):
         init_method=args.init_method,
         expand_cliques=not args.observed_2_skeleton,
     )
-    # Keep the large structural cache independent of RW parameters.
+                                                                   
     for complex_data in complexes:
         if hasattr(complex_data.cochains[0], "rw_feature"):
             delattr(complex_data.cochains[0], "rw_feature")
@@ -1955,7 +1955,7 @@ def compute_loss(logits, labels, args, class_weights=None):
 
 
 def compute_pairwise_aux_loss(logits, labels, margin=0.0, max_pairs=4096):
-    """A small ranking regularizer used only on fit batches."""
+    pass                                                       
     labels = labels.view(-1).long()
     positive = labels == 1
     negative = labels == 0
@@ -2039,7 +2039,7 @@ def evaluate_model(model, loader, device, args, class_weights=None, fusion_alpha
         y_pred_np = (y_prob_np >= 0.5).astype(np.int64)
 
     if len(np.unique(y_true_np)) == 2:
-        # Average precision is the only PR-area metric used by this runner.
+                                                                           
         auc_pr = float(met.average_precision_score(y_true_np, y_prob_np))
         roc_auc = float(met.roc_auc_score(y_true_np, y_prob_np))
         f1 = float(met.f1_score(y_true_np, y_pred_np, zero_division=0))
@@ -2314,8 +2314,8 @@ def train_dataset(dataset, args, device):
             ) = load_dual_mapping_full_rw(dataset, args)
         else:
             raise ValueError(f"Unsupported RW source: {args.rw_source}")
-        # RW generation has its own seed. Restore the model/data seed before
-        # constructing cached samples or initializing the classifier.
+                                                                            
+                                                                     
         seed_everything(args.seed)
     else:
         args.dual_rw_feature_maps = {}
@@ -2358,9 +2358,9 @@ def train_dataset(dataset, args, device):
         if not fit_complexes or not val_complexes:
             raise RuntimeError(f"{dataset}: no valid temporal fit/validation complexes")
     elif args.no_validation:
-        # Final refit mode: the caller has already frozen the configuration and
-        # epoch budget on an external development window.  Do not create a
-        # second hidden split or select a checkpoint from labels in this task.
+                                                                               
+                                                                          
+                                                                              
         fit_complexes = list(train_complexes)
         val_complexes = []
     else:
@@ -2445,9 +2445,9 @@ def train_dataset(dataset, args, device):
               and hasattr(model, "history_pretrained_net")
               and freeze
           ):
-              # model.train() recursively re-enables dropout.  A frozen
-              # pretrained history head must also stay in eval mode so the
-              # residual starts from the exact saved H ranking.
+                                                                       
+                                                                          
+                                                               
               model.history_pretrained_net.eval()
           train_loss = 0.0
           train_items = 0
@@ -2474,12 +2474,12 @@ def train_dataset(dataset, args, device):
                     if parameter.grad is not None
                 ) ** 0.5)
                 if not np.isfinite(local_branch_grad_norm) or local_branch_grad_norm <= 0:
-                    # The history-base/structural-residual head deliberately
-                    # starts with a zero residual projection.  Its first
-                    # backward pass therefore has zero gradient through the
-                    # structural branch by construction; after optimizer.step
-                    # the next batch must have a nonzero gradient.  Defer the
-                    # connectivity assertion for that one warm-up batch.
+                                                                            
+                                                                        
+                                                                           
+                                                                             
+                                                                             
+                                                                        
                     if args.history_feature_mode == "history_base_structural_residual":
                         print(
                             "MLSHOL_LOCAL_BRANCH_GRAD_DEFERRED_ZERO_RESIDUAL=YES",
@@ -3156,7 +3156,7 @@ def main():
     for seed in args.seeds:
         args.seed = seed
         for dataset in args.datasets:
-            # Dataset runs are independent of argument order.
+                                                             
             seed_everything(seed)
             print(f"=== {dataset} | seed={seed} ===", flush=True)
             try:

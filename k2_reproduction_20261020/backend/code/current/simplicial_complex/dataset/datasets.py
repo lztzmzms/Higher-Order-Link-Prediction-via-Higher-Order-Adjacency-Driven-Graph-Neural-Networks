@@ -44,16 +44,16 @@ def __repr__(obj):
 
 
 class ComplexDataset(Dataset, ABC):
-    """Base class for cochain complex datasets.
+    pass                                       
 
-    This class mirrors
-    https://github.com/rusty1s/pytorch_geometric/blob/76d61eaa9fc8702aa25f29dfaa5134a169d0f1f6/torch_geometric/data/dataset.py#L19
-    """
+                      
+                                                                                                                                  
+       
 
     def __init__(self, root=None, transform=None, pre_transform=None, pre_filter=None,
                  max_dim: int = None, num_classes: int = None, init_method: str = 'sum',
                  cellular: bool = False):
-        # These have to be initialised before calling the super class.
+                                                                      
         self._max_dim = max_dim
         self._num_features = [None for _ in range(max_dim+1)]
         self._init_method = init_method
@@ -79,7 +79,7 @@ class ComplexDataset(Dataset, ABC):
 
     @property
     def processed_dir(self):
-        """This is overwritten, so the cellular complex data is placed in another folder"""
+        pass                                                                               
         prefix = "cell_" if self._cellular else ""
         return osp.join(self.root, f'{prefix}complex_dim{self.max_dim}_{self._init_method}')
 
@@ -107,28 +107,28 @@ class ComplexDataset(Dataset, ABC):
 
 
 class InMemoryComplexDataset(ComplexDataset):
-    """Wrapper around ComplexDataset with functionality such as batching and storing the dataset.
+    pass                                                                                         
 
-    This class mirrors
-    https://github.com/rusty1s/pytorch_geometric/blob/master/torch_geometric/data/in_memory_dataset.py
-    """
+                      
+                                                                                                      
+       
 
     @property
     def raw_file_names(self):
-        r"""The name of the files to find in the :obj:`self.raw_dir` folder in
-        order to skip the download."""
+        pass                                                                  
+                                      
         raise NotImplementedError
 
     @property
     def processed_file_names(self):
-        r"""The name of the files to find in the :obj:`self.processed_dir`
-        folder in order to skip the processing."""
+        pass                                                              
+                                                  
         raise NotImplementedError
 
 
 
     def process(self):
-        r"""Processes the dataset to the :obj:`self.processed_dir` folder."""
+        pass                                                                 
         raise NotImplementedError
     
     def __init__(self, root=None, transform=None, pre_transform=None,
@@ -167,7 +167,7 @@ class InMemoryComplexDataset(ComplexDataset):
             cat_dim = 0
             s[cat_dim] = slice(start, end)
         else:
-            # TODO: come up with a better method to handle this
+                                                               
             assert targets[start] is None
             s = start
 
@@ -221,8 +221,8 @@ class InMemoryComplexDataset(ComplexDataset):
     
     @staticmethod
     def collate(data_list, max_dim):
-        r"""Collates a python list of data objects to the internal storage
-        format of :class:`InMemoryComplexDataset`."""
+        pass                                                              
+                                                     
         
         def init_keys(dim, keys):
             cochain = Cochain(dim)
@@ -246,7 +246,7 @@ class InMemoryComplexDataset(ComplexDataset):
 
 
         keys = collect_keys(data_list, max_dim)
-        #print(data_list)
+                         
         types = {}
         cat_dims = {}
         tensor_dims = {}
@@ -257,15 +257,15 @@ class InMemoryComplexDataset(ComplexDataset):
         
         for complex in data_list:
 
-            # Collect cochain-wise items
+                                        
             for dim in range(0, max_dim + 1):
 
-                # Get cochain, if present
+                                         
                 cochain = None
                 if dim in complex.cochains:
                     cochain = complex.cochains[dim]
                 
-                # Iterate on keys
+                                 
                 for key in keys[dim]:
                     if cochain is not None and hasattr(cochain, key) and cochain[key] is not None:
                         data[dim][key].append(cochain[key])
@@ -291,8 +291,8 @@ class InMemoryComplexDataset(ComplexDataset):
                         s = slices[dim][key][-1] + 0
                     slices[dim][key].append(s)
                     
-                # Handle non-keys
-                # TODO: could they be considered as keys as well?
+                                 
+                                                                 
                 num = None
                 num_up = None
                 num_down = None
@@ -307,7 +307,7 @@ class InMemoryComplexDataset(ComplexDataset):
                 data[dim].__num_cells_up__.append(num_up)
                 data[dim].__num_cells_down__.append(num_down)
                     
-            # Collect complex-wise label(s) and dims
+                                                    
             if not hasattr(complex, 'y'):
                 complex.y = None
             if isinstance(complex.y, Tensor):
@@ -315,9 +315,9 @@ class InMemoryComplexDataset(ComplexDataset):
             data['labels'].append(complex.y)
             data['dims'].append(complex.dimension)
 
-        # Pack lists into tensors
+                                 
         
-        # Cochains
+                  
         for dim in range(0, max_dim + 1):
             for key in keys[dim]:
                 if types[key] is Tensor and len(data_list) > 1:
@@ -326,14 +326,14 @@ class InMemoryComplexDataset(ComplexDataset):
                         data[dim][key] = torch.cat(data[dim][key], dim=cat_dim)
                     else:
                         data[dim][key] = torch.stack(data[dim][key])
-                elif types[key] is Tensor:  # Don't duplicate attributes...
+                elif types[key] is Tensor:                                 
                     data[dim][key] = data[dim][key][0]
                 elif types[key] is int or types[key] is float:
                     data[dim][key] = torch.tensor(data[dim][key])
 
                 slices[dim][key] = torch.tensor(slices[dim][key], dtype=torch.long)
         
-        # Labels and dims
+                         
         print(data)
         item = data['labels'][0]
         if isinstance(item, Tensor) and len(data_list) > 1:

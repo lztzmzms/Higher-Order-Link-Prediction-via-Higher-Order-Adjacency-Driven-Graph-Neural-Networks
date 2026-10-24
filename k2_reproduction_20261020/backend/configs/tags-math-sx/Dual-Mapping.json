@@ -8,44 +8,10 @@
       "width": 128,
       "weight_power": 0.5
     },
-    "epochs": 20,
-    "quality": 2.8184416137634027,
-    "fold_metrics": [
-      {
-        "AP": 0.321677304784988,
-        "Lift": 18.92219439911694,
-        "ROC_AUC": 0.9035066722518101,
-        "count": 2000,
-        "positives": 34,
-        "score_std": 0.13387522101402283
-      },
-      {
-        "AP": 0.25208366380669645,
-        "Lift": 14.828450812158612,
-        "ROC_AUC": 0.8566363473161391,
-        "count": 2000,
-        "positives": 34,
-        "score_std": 0.15509654581546783
-      }
-    ]
+    "epochs": 20
   },
   "history_seeds": [
     41,
     42
-  ],
-  "historical_selection": {
-    "epochs": 10,
-    "residual_scale": 0.1,
-    "metrics": {
-      "AP": 0.16202866257682852,
-      "Lift": 9.001592365379363,
-      "ROC_AUC": 0.8542090970807874,
-      "count": 1000,
-      "positives": 18,
-      "score_std": 0.16206367313861847
-    },
-    "loss": 1.2784078121185303
-  },
-  "architecture": "DualMappingGNN(GraphSAGE)",
-  "history_branch": "locked width128 history MLP ensemble41/42"
+  ]
 }

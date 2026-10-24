@@ -1,9 +1,9 @@
-# node-classfication-emmbedding.py
-# 已支持：
-#  - 通过 --priority_nodes 指定优先节点文件（每行或以空格/逗号分隔）
-#  - 或通过 --priority_mask_npz 指定 npz 文件（含布尔数组 key "priority" 或首数组）
-#  - 通过 --seeds 指定随机种子，例如: "42", "42,43,44", "42-51"
-#  注意：若同时提供两种 priority 参数，优先使用 --priority_mask_npz。
+                                  
+      
+                                              
+                                                                 
+                                                    
+                                                   
 
 import os
 import re
@@ -64,12 +64,12 @@ try:
 except ImportError:
     from torch_geometric.nn import global_mean_pool
 
-# 性能相关设置
+        
 torch.backends.cudnn.benchmark = True
 
-# ============ 随机种子 ============
-# node-classfication_with_skipgram_emb.py
-# 集成基于 自定义随机游走 + 简易 skip-gram 训练的节点嵌入，避免tensorflow依赖冲突和PyG版本问题
+                                
+                                         
+                                                              
 def set_global_seed(seed, deterministic=False):
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -222,7 +222,7 @@ def _unique_extend(items, seen, out, sources, source):
 def _build_legacy_protocol_gpickle_graph(
         close_path, open_path, new_closures_path, split_name,
         feature_mode='ids', closed_label=1, graph_triangle_scope='legacy_closed_open'):
-    """Build protocol gpickle with the original node-classification label semantics."""
+    pass                                                                               
     try:
         from generate_dual_mapping_gpickle import (
             read_triangles, build_face_index, build_lower_adjacency_edges,
@@ -242,19 +242,19 @@ def _build_legacy_protocol_gpickle_graph(
     sources = defaultdict(set)
     open_set = set(open_triangles)
     if graph_triangle_scope == 'open_only':
-        # Candidate-only graph: nodes are exactly open-triangle candidates.
-        # Positives are the candidates that close in the future window.
+                                                                           
+                                                                       
         _unique_extend(open_triangles, seen, triplets, sources, 'open')
         for tri in new_closures:
             if tri in open_set and tri in sources:
                 sources[tri].add('new_closure')
     else:
         _unique_extend(close_triangles, seen, triplets, sources, 'closed')
-        # Node identity and ordering must be label independent.  The historical
-        # implementation placed future test closures before negative open
-        # candidates, making test node IDs depend on future labels even though
-        # the topology was unchanged.  Keep the protocol-file open order for
-        # both splits and attach future-closure status only as a scoring label.
+                                                                               
+                                                                         
+                                                                              
+                                                                            
+                                                                               
         _unique_extend(open_triangles, seen, triplets, sources, 'open')
         for tri in new_closures:
             if tri in sources:
@@ -316,7 +316,7 @@ def _build_legacy_protocol_gpickle_graph(
     return graph, stats
 
 def _generate_protocol_gpickles_for_raw_mode(args, base_result_folder):
-    """Generate Dual-Mapping gpickle files from protocol triangle txt files."""
+    pass                                                                       
     try:
         from generate_dual_mapping_gpickle import write_gpickle
     except Exception as exc:
@@ -385,7 +385,7 @@ def _generate_protocol_gpickles_for_raw_mode(args, base_result_folder):
     print(f"protocol priority_nodes: {args.priority_nodes}")
     print(f"protocol gpickle generation stats: {stats_path}")
 
-# ============ 实用函数 ================
+                                    
 def parse_pos_ratio(s):
     if s is None:
         return None
@@ -441,7 +441,7 @@ def _file_hash(path, block_size=1 << 20):
             h.update(b)
     return h.hexdigest()
 
-# ============ 数据加载 ================
+                                    
 def _stable_hash_payload(payload):
     data = json.dumps(payload, sort_keys=True, default=str).encode('utf-8')
     return hashlib.md5(data).hexdigest()
@@ -497,7 +497,7 @@ def load_g_as_arrays(gpickle_path, cache_dir=".cache_graph"):
                         num_nodes=np.array(num_nodes))
     return arr_features, arr_labels, triplets, edges, num_nodes
 
-# ============ TripletNetwork ================
+                                              
 class TripletNetworkFast:
     def __init__(self, triplets):
         self.triplet_to_node = {t: i for i, t in enumerate(triplets)}
@@ -786,7 +786,7 @@ def apply_edge_maxsimplex_ablation(tr_max_feat, te_max_feat, args):
 
 
 def validate_open_candidate_maxsimplex_values(te_trip, target_nodes, te_max_feat, feature_path, column):
-    """The shared-maximal-simplex count must be zero for every open test candidate."""
+    pass                                                                              
     with Path(feature_path).open("r", encoding="utf-8", newline="") as handle:
         header = handle.readline().rstrip("\r\n").split("\t")
     if column not in header:
@@ -1033,21 +1033,20 @@ def create_target_mask_from_nodes(target_nodes, num_nodes):
             mask[n] = True
     return mask
 
-# ============ 自定义简单随机游走替代 PyG 的 random_walk ================
+                                                             
 def simple_random_walk(edge_index, start_nodes, walk_length):
-    """
-    自定义随机游走实现，替代 torch_geometric.utils.random_walk
-    edge_index: shape [2, E] tensor
-    start_nodes: shape [num_walks] tensor
-    walk_length: int
-    返回 shape [num_walks, walk_length+1] tensor
-    """
+    pass                                                  
+                                   
+                                         
+                    
+                                              
+       
     device = edge_index.device
     num_walks = start_nodes.size(0)
     walks = torch.full((num_walks, walk_length + 1), -1, dtype=torch.long, device=device)
     walks[:, 0] = start_nodes
 
-    # 构建邻接表 (CPU，用列表)
+                     
     edge_index_cpu = edge_index.cpu()
     num_nodes = int(torch.max(edge_index_cpu)) + 1
     neighbors = [[] for _ in range(num_nodes)]
@@ -1078,7 +1077,7 @@ def generate_random_walks(edge_index, num_nodes, walk_length=10, walks_per_node=
     walks = torch.cat(walks, dim=0)
     return walks
 
-# ============ SkipGram模型及训练 ================
+                                             
 class SkipGramModel(nn.Module):
     def __init__(self, num_nodes, embedding_dim):
         super().__init__()
@@ -1221,7 +1220,7 @@ def skipgram_pairs_per_walk(walk_positions, window_size):
 def build_bounded_fast_pairs(neighbors, num_nodes, walk_length=10, walks_per_node=20,
                              window_size=2, max_pairs=20_000_000,
                              restart_prob=0.0, chunk_starts=2048):
-    """Preallocate a bounded positive-pair corpus for random-walk SkipGram."""
+    pass                                                                      
     num_nodes = max(0, int(num_nodes))
     walk_length = max(0, int(walk_length))
     walks_per_node = max(0, int(walks_per_node))
@@ -1304,9 +1303,9 @@ def build_bounded_fast_pairs(neighbors, num_nodes, walk_length=10, walks_per_nod
         'generated_pairs': int(cursor),
         'pair_cap': int(max_pairs),
         'capped': bool(requested_pairs > max_pairs),
-        # Preserve the legacy per-node-chunk shuffle boundaries.  The old
-        # implementation shuffled each yielded chunk independently rather
-        # than globally shuffling the complete corpus.
+                                                                         
+                                                                         
+                                                      
         'chunk_pair_offsets': tuple(chunk_pair_offsets),
     }
     return centers[:cursor], contexts[:cursor], stats
@@ -1902,21 +1901,20 @@ def generate_or_load_rw_embeddings(args, edge_index_train, tr_n, edge_index_test
     print_rw_diagnostics(args, tr_node_emb, te_node_emb)
     return tr_node_emb, te_node_emb
 
-# ============ 可配置的多层 GAT 网络 ============
+                                         
 
 class MultiLayerGAT(nn.Module):
-    """
-    更灵活的 GAT 网络：
-     - num_layers: GAT 层数（>=1）
-     - in_channels: 输入特征维度
-     - hidden_channels: 每层的隐藏维度（GAT 每头的输出维度）
-     - heads: 每层的 attention heads（可为 int 或列表）
-     - dropout: dropout 概率
-     - use_batchnorm/use_layernorm: 归一化选项
-     - residual: 是否在层之间使用残差连接
-     - use_mlp_head: 是否在 GAT 后接多层 MLP 分类头
-     - mlp_layers: MLP head 层数
-    """
+    pass                
+                              
+                          
+                                            
+                                             
+                          
+                                         
+                             
+                                         
+                              
+       
     def __init__(self,
                  in_channels,
                  hidden_channels=128,
@@ -1942,12 +1940,12 @@ class MultiLayerGAT(nn.Module):
         self.activation = activation
         self.use_mlp_head = use_mlp_head
         self.use_strength_edge_weight = bool(use_strength_edge_weight)
-        # Optional memory-saving recomputation for the large history-only
-        # reconstruction graphs.  This does not change the architecture or
-        # hyperparameters; it only trades activation memory for compute.
+                                                                         
+                                                                          
+                                                                        
         self.gradient_checkpointing = os.environ.get('K2_GRADIENT_CHECKPOINT', '0') == '1'
 
-        # heads 可以是单个 int 或列表
+                             
         if isinstance(heads, int):
             heads = [heads] * num_layers
         else:
@@ -1960,11 +1958,11 @@ class MultiLayerGAT(nn.Module):
         for i in range(num_layers):
             h = heads[i]
             out_h = hidden_channels
-            concat = True if (i < num_layers - 1) else False  # 最后一层可以不 concat（我们保持 concat=True 统一处理）
-            # 使用 concat=True 保持行为可解释：输出维度 = hidden_channels * heads
+            concat = True if (i < num_layers - 1) else False                                         
+                                                                   
             layer = GATConv(prev_channels, out_h, heads=h, concat=True, dropout=dropout)
             self.gat_layers.append(layer)
-            # 归一化层：BN 对于节点数 > 1 有利，LayerNorm 作为可选项
+                                                  
             if use_batchnorm:
                 self.norms.append(nn.BatchNorm1d(out_h * h))
             elif use_layernorm:
@@ -1972,8 +1970,8 @@ class MultiLayerGAT(nn.Module):
             else:
                 self.norms.append(nn.Identity())
             prev_channels = out_h * h
-            # 若 residual 并且维度不匹配，准备线性映射
-        # residual mapping 每层一个（除首层），映射上一层输出到当前输出维度
+                                       
+                                                   
         self.res_mappings = nn.ModuleList()
         prev = in_channels
         for i in range(num_layers):
@@ -1995,7 +1993,7 @@ class MultiLayerGAT(nn.Module):
                 self.weighted_neighbor_mappings.append(nn.Linear(prev, curr, bias=False))
                 prev = curr
 
-        # 最后的分类头（可为简单线性或多层 MLP）
+                               
         head_in = hidden_channels * heads[-1]
         if use_mlp_head:
             mlp = []
@@ -2013,10 +2011,10 @@ class MultiLayerGAT(nn.Module):
         else:
             self.classifier = nn.Linear(head_in, out_channels)
 
-        # 可选的全局池化（未使用但预留）
+                         
         self.global_pool = global_mean_pool
 
-        # 权重初始化
+               
         self._init_weights(method=weight_init)
 
     def _init_weights(self, method='xavier'):
@@ -2035,7 +2033,7 @@ class MultiLayerGAT(nn.Module):
                     nn.init.zeros_(m.bias)
             elif isinstance(m, nn.Embedding):
                 nn.init.xavier_uniform_(m.weight)
-            # GATConv 内部参数由 PyG 管理，但在需要时也可尝试初始化其 lin parameters（略）
+                                                                  
 
     @staticmethod
     def _weighted_neighbor_mean(x, edge_index, edge_weight):
@@ -2062,7 +2060,7 @@ class MultiLayerGAT(nn.Module):
                     weighted_message = self.weighted_neighbor_mappings[layer_index](
                         self._weighted_neighbor_mean(layer_input, edge_index, edge_weight)
                     )
-                out = layer_module(layer_input, edge_index)  # 输出维度 = hidden * heads
+                out = layer_module(layer_input, edge_index)                         
                 if weighted_message is not None:
                     out = out + weighted_message
                 norm = self.norms[layer_index]
@@ -2070,9 +2068,9 @@ class MultiLayerGAT(nn.Module):
                     try:
                         out = norm(out)
                     except Exception:
-                        # BN 需要形状 [N, C]，LayerNorm 支持不同形状
+                                                         
                         out = out
-                # Activation
+                            
                 if self.activation == 'leaky_relu':
                     out = F.leaky_relu(out, negative_slope=0.2)
                 else:
@@ -2082,7 +2080,7 @@ class MultiLayerGAT(nn.Module):
                 if self.residual:
                     res_map = self.res_mappings[layer_index]
                     res = res_map(layer_input)
-                    out = out + res  # 残差相加
+                    out = out + res        
                 return out
 
             if self.training and self.gradient_checkpointing:
@@ -2092,7 +2090,7 @@ class MultiLayerGAT(nn.Module):
             else:
                 h = encode_one_layer(h)
 
-        # 若给定 batch，则可以做 pooling（留作扩展）
+                                      
         if batch is not None:
             h = self.global_pool(h, batch)
 
@@ -2163,7 +2161,7 @@ class PriorLogitGAT(nn.Module):
         )
         return logits
 
-# ============ 新增：统一 compute_auc_pr（与 GPU.py 中实现一致） ============
+                                                                
 class DualAdjGATMinimal(nn.Module):
     def __init__(self,
                  in_channels,
@@ -2271,10 +2269,10 @@ class DualAdjGATMinimal(nn.Module):
                     nn.Sigmoid(),
                 )
         elif self.history_feature_mode == 'history_base_structural_residual':
-            # This mode makes the historical score the base score and learns a
-            # zero-initialized, candidate-conditioned structural correction.
-            # The zero init gives an auditable starting point: before any
-            # joint updates, the model ranking is exactly the history head.
+                                                                              
+                                                                            
+                                                                         
+                                                                           
             if history_pretrained_checkpoint:
                 self.history_pretrained = True
                 history_hidden = 64
@@ -2372,16 +2370,15 @@ def sanitize_score_array(scores, context="score"):
     )
 
 def compute_auc_pr(y_true, y_score_pos):
-    """
-    更健壮的 AUC-PR 计算函数
-    输入:
-      y_true: numpy array shape [N], values in {0,1}
-      y_score_pos: numpy array shape [N], predicted probability for positive class (float)
-    返回:
-      auc_pr: float (or np.nan if undefined)
-      improvement: auc_pr / baseline (or np.nan if baseline == 0)
-      baseline: positive rate
-    """
+    pass                    
+       
+                                                    
+                                                                                          
+       
+                                            
+                                                                 
+                             
+       
     if y_true is None or len(y_true) == 0:
         return np.nan, np.nan, np.nan
 
@@ -2392,12 +2389,12 @@ def compute_auc_pr(y_true, y_score_pos):
     if pos_count == 0:
         return np.nan, np.nan, baseline
     if neg_count == 0:
-        # 若没有负样本，认为 auc_pr = 1.0（极端情况），improvement 以 baseline 为分母
+                                                                 
         return 1.0, (1.0 / baseline) if baseline > 0 else np.nan, baseline
 
     try:
-        # Official AUC-PR: non-interpolated step integration.  This keeps the
-        # random/constant-score baseline equal to the positive prevalence.
+                                                                             
+                                                                          
         auc_pr = float(average_precision_score(y_true, y_score_pos))
     except Exception:
         auc_pr = np.nan
@@ -3082,13 +3079,13 @@ def build_temporal_activity_aligned_scores(dataset, split, triplets, indices, ar
     if not 0.0 <= alpha <= 1.0:
         raise ValueError("--temporal_activity_alpha must be in [0, 1].")
 
-    # Reuse the MLSHOL protocol's event reader and cutoff.  The older helper
-    # builds a dictionary only for the protocol text file's candidates.  A
-    # gpickle can legitimately contain a larger (or sampled) candidate set, so
-    # looking up those triangles in that dictionary can spuriously fail.  We
-    # therefore compute the same history-only raw score directly for the
-    # supplied triangles and rank over the union of protocol-file candidates
-    # and supplied triangles.
+                                                                            
+                                                                          
+                                                                              
+                                                                            
+                                                                        
+                                                                            
+                             
     import exp.run_all_sparse_sin as mlshol_protocol
     mlshol_protocol.DATA_ROOT = Path(
         getattr(args, 'protocol_data_root', None) or Path(__file__).resolve().parent
@@ -3152,8 +3149,8 @@ def build_temporal_activity_aligned_scores(dataset, split, triplets, indices, ar
             for triangle in mlshol_protocol.read_triangles(protocol_paths['open'])
         ]
     except (FileNotFoundError, ValueError):
-        # The aligned gpickle remains usable when no protocol candidate file is
-        # present; in that case the supplied triangles define the rank domain.
+                                                                               
+                                                                              
         protocol_triangles = []
     rank_domain = list(dict.fromkeys(protocol_triangles + aligned_triangles))
     raw_scores = []
@@ -3209,23 +3206,23 @@ def build_temporal_activity_aligned_scores(dataset, split, triplets, indices, ar
     return scores
 
 def build_maxsimplex_rank_aligned_scores(triplets, indices, feature_path, column='tri_all_edges_shared_count'):
-    """Return a history-only rank prior from maximal-simplex edge features.
+    pass                                                                   
 
-    This is kept separate from the learned prior-logit branch so that the
-    legacy candidate-law experiment can reproduce its direct rank signal
-    without changing the random-walk input to the GNN.  The feature file is
-    generated from the context gpickle/raw cutoff; no future labels are read.
-    """
+                                                                         
+                                                                        
+                                                                           
+                                                                             
+       
     feature_dict, feature_dim = load_edge_maxsimplex_features(feature_path)
-    # The TSV parser preserves the feature header order only through the
-    # returned vectors; reload the header to resolve the requested column.
+                                                                        
+                                                                          
     with open(feature_path, 'r', encoding='utf-8', newline='') as handle:
         header = handle.readline().rstrip('\n\r').split('\t')
     if column not in header:
         raise ValueError(
             f"Maximal-simplex prior column {column!r} not found in {feature_path}"
         )
-    column_index = header.index(column) - 1  # vector excludes the triplet key
+    column_index = header.index(column) - 1                                   
     if column_index < 0 or column_index >= feature_dim:
         raise ValueError(f"Invalid maximal-simplex prior column index for {column!r}")
     aligned = np.asarray(indices, dtype=np.int64)
@@ -3303,7 +3300,7 @@ def test(model, data, target_mask, threshold=0.5, pos_ratio=None, pos_label=0, d
             "threshold": threshold
         }
 
-    # 使用 pos_ratio / threshold 计算预测标签（保持与原代码一致）
+                                               
     if pos_ratio is not None and pos_ratio > 0:
         n_targets = len(y_pos_probs)
         k = int(np.ceil(n_targets * float(pos_ratio)))
@@ -3321,7 +3318,7 @@ def test(model, data, target_mask, threshold=0.5, pos_ratio=None, pos_label=0, d
         y_pred_labels = (y_pos_probs > threshold).astype(int)
         actual_threshold = threshold
 
-    # 混淆矩阵与常规指标（使用 sklearn 的 confusion_matrix / f1 / fbeta）
+                                                           
     tn, fp, fn, tp = confusion_matrix(y_true, y_pred_labels, labels=[0, 1]).ravel()
     class0_acc = tn / (tn + fp) if (tn + fp) > 0 else 0
     class1_acc = tp / (tp + fn) if (tp + fn) > 0 else 0
@@ -3332,12 +3329,12 @@ def test(model, data, target_mask, threshold=0.5, pos_ratio=None, pos_label=0, d
     except Exception:
         mcc = np.nan
 
-    # 使用统一的 compute_auc_pr 来计算 auc_pr, improvement, baseline
+                                                            
     auc_pr, improvement, baseline = compute_auc_pr(y_true, y_pos_probs)
 
-    # precision/recall 曲线与 average_precision 在多类情况下计算并返回数组
+                                                          
     if len(np.unique(y_true)) < 2:
-        # 单类情况下我们用与 compute_auc_pr 一致的处理方式返回简单数组
+                                                
         if len(y_true) > 0 and y_true[0] == 0:
             precision_arr = np.array([1.0])
             recall_arr = np.array([1.0])
@@ -3352,7 +3349,7 @@ def test(model, data, target_mask, threshold=0.5, pos_ratio=None, pos_label=0, d
         except Exception:
             average_precision = np.nan
 
-    # evaluation_gnn 与 GPU.py 保持一致使用 improvement（auc_pr / baseline）
+                                                                   
     evaluation_gnn = improvement if not np.isnan(improvement) else 0.0
 
     return {
@@ -3401,7 +3398,7 @@ def save_predictions(preds_logits, targets, target_indices, triplet_network, fil
             triplet_str = "|".join(map(str, triplet)) if triplet else "None"
             f.write(f'{node_id},"{triplet_str}",{true_label},{pred_label},{prob:.6f}\n')
 
-# ============ 实验流程 ============
+                                
 def safe_average_precision_metric(y_true, y_score):
     y_true = np.asarray(y_true)
     y_score = sanitize_score_array(y_score, context="average precision scores")
@@ -3752,14 +3749,14 @@ def build_priority_holdout_selector(priority_mask, train_n, val_seed=2026, prior
     return priority_train_mask, selector_val_mask, selector_val_y, selector_info, info
 
 def adapt_gatconv_checkpoint_keys(checkpoint_state, model_state):
-    """Bridge PyG GATConv state-dict names across old and new releases."""
+    pass                                                                  
     adapted = checkpoint_state.copy()
     model_keys = set(model_state.keys())
     converted = []
 
-    # Newer PyG stores the shared homogeneous projection as ``lin.weight``.
-    # Older PyG exposes the same projection through both ``lin_src`` and
-    # ``lin_dst``.  Use the identical tensor for both aliases.
+                                                                           
+                                                                        
+                                                              
     for key in list(adapted.keys()):
         suffix = '.lin.weight'
         if not key.endswith(suffix) or key in model_keys:
@@ -3773,8 +3770,8 @@ def adapt_gatconv_checkpoint_keys(checkpoint_state, model_state):
             adapted[dst_key] = weight
             converted.append((key, f'{src_key}, {dst_key}'))
 
-    # Also support the reverse direction so the frozen artifact remains
-    # portable if it is later produced by an older PyG release.
+                                                                       
+                                                               
     for model_key in model_keys:
         suffix = '.lin.weight'
         if not model_key.endswith(suffix) or model_key in adapted:
@@ -3831,7 +3828,7 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
 
     print(f"1. [种子 {seed}] 初始化模型...")
 
-    # model_cfg 包含命令行传入的模型超参
+                            
     if model_cfg is None:
         model_cfg = {}
 
@@ -3909,9 +3906,9 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
         )
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=float(model_cfg.get('lr', 0.005)), weight_decay=float(model_cfg.get('weight_decay', 1e-4)))
-    # ``verbose`` was deprecated and was removed from the PyTorch 2.8 API.
-    # Omitting it keeps the scheduler policy identical across old and new
-    # PyTorch releases; only the scheduler's optional console message changes.
+                                                                          
+                                                                         
+                                                                              
     scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=5)
 
     print(f"2. [种子 {seed}] 创建分层验证集...")
@@ -3976,9 +3973,9 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
             eligible_idx, val_indices, assume_unique=False
         )
     if bool(model_cfg.get('no_validation', False)):
-        # Final refit mode: use every eligible training candidate and leave
-        # the hidden validation mask empty.  The epoch budget is frozen on
-        # the external development task before this function is called.
+                                                                           
+                                                                          
+                                                                       
         val_indices = np.array([], dtype=np.int64)
         train_indices = np.asarray(eligible_idx, dtype=np.int64)
     val_mask = torch.zeros(train_n, dtype=torch.bool)
@@ -4320,12 +4317,12 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
 
     training_seconds = time.perf_counter() - training_started
 
-    # Match the performance-critical behavior of the lztcode reference while
-    # keeping this release's minimal output contract.  The previous minimal
-    # runner captured the best validation checkpoint in memory but accidentally
-    # evaluated and summarized the last epoch instead.  Restoring the in-memory
-    # state avoids writing per-seed checkpoint files and the other diagnostic
-    # artifacts produced by the full reference runner.
+                                                                            
+                                                                           
+                                                                               
+                                                                               
+                                                                             
+                                                      
     if best_model_state is not None:
         model.load_state_dict(best_model_state)
     final_eval_threshold = (
@@ -4380,8 +4377,8 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
             validation_ap = safe_average_precision_metric(
                 val_labels_for_alpha, blended_validation
             )
-            # Prefer the smaller prior weight on ties so an unhelpful prior can
-            # never dominate merely because of equal validation AP.
+                                                                               
+                                                                   
             alpha_key = (float(validation_ap), -float(alpha))
             if best_alpha_key is None or alpha_key > best_alpha_key:
                 best_alpha_key = alpha_key
@@ -4490,9 +4487,9 @@ def run_experiment(seed, base_result_folder, data_train, data_test,
     )
     print(f"target positives={target_positives}, target total={target_total}")
 
-    # Keep the validation score channel for downstream fusions.  This is
-    # computed after the validation-selected checkpoint is frozen and is
-    # never populated from the final 80--100% labels.
+                                                                        
+                                                                        
+                                                     
     if val_mask.any():
         if graph_scope == 'local':
             val_indices_tensor = torch.where(val_mask)[0]
@@ -5193,8 +5190,8 @@ def main_rwsearch():
         print("Validation-rule search is disabled for exact_fast runs; ignoring --enable_selection_rule_search.")
     args.enable_selection_rule_search = 'false'
     if args.run_mode == 'exact_fast':
-        # exact_fast is the restored high-performance line: no selector holdout,
-        # no deterministic CUDA path, no checkpoint variants unless explicitly requested.
+                                                                                
+                                                                                         
         pass
     deterministic = parse_bool(args.deterministic)
     reuse_splits = parse_bool(args.reuse_splits)
@@ -5842,11 +5839,11 @@ def main_rwsearch():
                     raise
                 if res:
                     res['rw_seconds'] = float(rw_seconds)
-                    # Persist the aligned target score channel so later
-                    # validation-only fusions can be reproduced without
-                    # rerunning the model.  The arrays contain the final
-                    # evaluation labels only as paired audit output; no
-                    # feature construction or model selection reads them.
+                                                                       
+                                                                       
+                                                                        
+                                                                       
+                                                                         
                     prediction_path = os.path.join(rw_folder, f'target_scores_seed_{model_seed}.npz')
                     target_triplets_for_save = np.asarray(
                         [triplet_network.get_triplet_by_node(int(node_id)) for node_id in target_nodes],

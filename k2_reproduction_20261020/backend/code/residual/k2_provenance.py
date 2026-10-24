@@ -1,4 +1,4 @@
-"""Strict provenance helpers for leakage-sensitive K=2 feature caches."""
+                                                                         
 
 from __future__ import annotations
 

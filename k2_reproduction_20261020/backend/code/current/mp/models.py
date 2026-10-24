@@ -9,7 +9,7 @@ from mp.nn import get_nonlinearity, get_pooling_fn, pool_complex, get_graph_norm
 from simplicial_complex.complex import ComplexBatch, CochainBatch
 m = torch.nn.Sigmoid()
 class SIN0(torch.nn.Module):
-    """A simplicial version of GIN using upper and lower adjacencies"""
+    pass                                                               
     def __init__(self, num_input_features, num_classes, num_layers, hidden, dropout_rate: float = 0.5,
                  max_dim: int = 2, jump_mode=None, nonlinearity='relu', readout='sum'):
         super(SIN0, self).__init__()
@@ -96,7 +96,7 @@ class SIN0(torch.nn.Module):
         return self.__class__.__name__
 
 class SparseSIN(torch.nn.Module):
-    """A simplicial version of GIN using upper adjacencies and boundary adjacencies"""
+    pass                                                                              
 
     def __init__(self, num_input_features, num_classes, num_layers, hidden, dropout_rate: float = 0.8,
                  max_dim: int = 2, jump_mode=None, nonlinearity='relu', readout='sum', use_coboundaries=False, train_eps=False, final_hidden_multiplier: int = 2,
@@ -104,9 +104,9 @@ class SparseSIN(torch.nn.Module):
         super(SparseSIN, self).__init__()
 
         self.max_dim = max_dim
-        # None is dimension-generic and is exactly (0, 1, 2) for the legacy
-        # max_dim=2 default.  It additionally includes dimension 3 only when a
-        # caller explicitly requests max_dim=3.
+                                                                           
+                                                                              
+                                               
         if readout_dims is not None:
             self.readout_dims = tuple([dim for dim in readout_dims if dim <= max_dim])
         else:
@@ -149,14 +149,14 @@ class SparseSIN(torch.nn.Module):
         self.lin2.reset_parameters()
 
     def pool_complex(self, xs, data):
-        # All complexes have nodes so we can extract the batch size from cochains[0]
+                                                                                    
         batch_size = data.cochains[0].batch.max() + 1
-        # print(batch_size)
-        # The MP output is of shape [message_passing_dim, batch_size, feature_dim]
+                           
+                                                                                  
         pooled_xs = torch.zeros(self.max_dim + 1, batch_size, xs[0].size(-1),
                                 device=batch_size.device)
         for i in range(len(xs)):
-            # It's very important that size is supplied.
+                                                        
             pooled_xs[i, :, :] = self.pooling_fn(xs[i], data.cochains[i].batch, size=batch_size)
         new_xs = []
         for i in range(self.max_dim + 1):
@@ -194,7 +194,7 @@ class SparseSIN(torch.nn.Module):
             xs = self.jump_complex(jump_xs)
 
         xs = self.pool_complex(xs, data)
-        # Select the dimensions we want at the end.
+                                                   
         xs = [xs[i] for i in self.readout_dims]
 
         if include_partial:
@@ -205,7 +205,7 @@ class SparseSIN(torch.nn.Module):
         for i, x in enumerate(xs):
             if self.apply_dropout_before == 'lin1':
                 x = F.dropout(x, p=self.dropout_rate, training=self.training)
-            new_xs.append(act(self.lin1s[self.readout_dims[i]](x)))           #对每一个dimension用不同的readout
+            new_xs.append(act(self.lin1s[self.readout_dims[i]](x)))                                    
 
         x = torch.stack(new_xs, dim=0)
 
@@ -238,7 +238,7 @@ class SparseSIN(torch.nn.Module):
     def __repr__(self):
         return self.__class__.__name__
 
-#TODO: GIN training to make a comparison with SparseSIN
+                                                       
 
 
 

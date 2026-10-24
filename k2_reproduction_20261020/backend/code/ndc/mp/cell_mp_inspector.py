@@ -35,7 +35,7 @@ except ModuleNotFoundError:
 
 
 class CellularInspector(Inspector):
-    """Wrapper of the PyTorch Geometric Inspector so to adapt it to our use cases."""
+    pass                                                                             
 
     def __init__(self, cls):
         super().__init__(cls)
