@@ -1,12 +1,13 @@
 # Higher-Order Link Prediction
 
-本仓库提供 8 个数据集的 K=2 Dual-Mapping / MLSHoL 实验入口。
+本仓库提供 8 个数据集的 K=2 Dual-Mapping / MLSHoL 实验入口、AP 版启发式指标，以及 K2–K4 task-core 实验。
 
 ## 下载与运行
 
 - [完整运行包](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/download/k2-reproduction-20261020/k2_reproduction_20261020.zip)：包含代码及必要资源，解压后进入 `k2_reproduction_20261020`。
 - 使用本仓库源码时，下载[配套资源包](https://github.com/lztzmzms/Higher-Order-Link-Prediction-via-Higher-Order-Adjacency-Driven-Graph-Neural-Networks/releases/download/k2-reproduction-20261020/k2_reproduction_20261020_assets.zip)，解压到仓库根目录，与同名 `k2_reproduction_20261020` 文件夹合并。
 - [运行说明](k2_reproduction_20261020/README.md) · [数据集与模型配置](k2_reproduction_20261020/backend/PLAN.json)
+- [启发式与 K2–K4 task-core 实验](k2_reproduction_20261020/supplementary_sources/README.md)
 
 先安装适合设备的 PyTorch（参考版本 2.4.1），然后执行：
 

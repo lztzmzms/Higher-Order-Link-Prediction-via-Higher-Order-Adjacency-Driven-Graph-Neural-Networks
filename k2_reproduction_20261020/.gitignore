@@ -6,3 +6,6 @@ backend/artifacts/j/
 backend/artifacts/s/
 backend/artifacts/cache/
 backend/artifacts/residual/
+supplementary_sources/**/output/
+supplementary_sources/**/server_results/
+supplementary_sources/**/logs/
