@@ -4,6 +4,8 @@ import itertools
 import json
 from pathlib import Path
 import pickle
+import io
+import zipfile
 
 import numpy as np
 import scipy.sparse as sp
@@ -30,11 +32,23 @@ def read_events(dataset, raw_dir=None):
         raise FileNotFoundError('Missing input: ' + ', '.join(str(p) for p in paths if not p.is_file()))
     else:
         path = PACKAGE / 'backend/material' / dataset / 'EVENTS.npz'
-        if not path.is_file():
+        prepared = ROOT / 'data' / dataset / 'events.npz'
+        if not prepared.is_file():
+            prepared = PACKAGE / 'data' / dataset / 'events.npz'
+        archive = PACKAGE / 'data' / dataset / 'inputs.zip'
+        if path.is_file() or prepared.is_file():
+            path = path if path.is_file() else prepared
+            with np.load(path, allow_pickle=False) as z:
+                counts, times, vertices = z['counts'], z['times'], z['vertices']
+            inputs = [path]
+        elif archive.is_file():
+            with zipfile.ZipFile(archive) as z:
+                prefix = f'protocol/dataset/raw_data/{dataset}/'
+                names = [prefix + f'{dataset}-{suffix}.txt' for suffix in ('nverts','times','simplices')]
+                counts, times, vertices = [np.loadtxt(io.BytesIO(z.read(name)), dtype=np.int64, ndmin=1) for name in names]
+            inputs = [archive]
+        else:
             raise FileNotFoundError(f'No input events for {dataset}; provide --raw-dir.')
-        with np.load(path, allow_pickle=False) as z:
-            counts, times, vertices = z['counts'], z['times'], z['vertices']
-        inputs = [path]
     if len(counts) != len(times) or np.any(counts < 0) or int(counts.sum()) != len(vertices):
         raise ValueError('Event counts, timestamps and simplex vertices do not align.')
     if len(counts) < 2:

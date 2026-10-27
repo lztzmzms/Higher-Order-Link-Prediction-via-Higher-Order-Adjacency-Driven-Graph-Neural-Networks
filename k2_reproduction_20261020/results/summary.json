@@ -1,0 +1,182 @@
+[
+  {
+    "dataset": "NDC-substances",
+    "model": "Dual-Mapping",
+    "seeds": [
+      71,
+      72,
+      73
+    ],
+    "AP_mean": 0.29733387978186043,
+    "AP_std": 0.11686465127234621,
+    "Lift_mean": 22.62322998340242
+  },
+  {
+    "dataset": "NDC-substances",
+    "model": "MLSHoL",
+    "seeds": [
+      71,
+      72,
+      73
+    ],
+    "AP_mean": 0.3126310794920744,
+    "AP_std": 0.11996136440854578,
+    "Lift_mean": 23.787147352657836
+  },
+  {
+    "dataset": "contact-high-school",
+    "model": "Dual-Mapping",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.05083288102053098,
+    "AP_std": 0.0005959763765012968,
+    "Lift_mean": 6.336660034081713
+  },
+  {
+    "dataset": "contact-high-school",
+    "model": "MLSHoL",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.05051197847664488,
+    "AP_std": 0.0013513949144300502,
+    "Lift_mean": 6.296657376670717
+  },
+  {
+    "dataset": "contact-primary-school",
+    "model": "Dual-Mapping",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.05599675296743154,
+    "AP_std": 0.00033599148610425505,
+    "Lift_mean": 10.649564291624253
+  },
+  {
+    "dataset": "contact-primary-school",
+    "model": "MLSHoL",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.056019016765488185,
+    "AP_std": 0.00015739684967598373,
+    "Lift_mean": 10.653798461218297
+  },
+  {
+    "dataset": "email-Enron",
+    "model": "Dual-Mapping",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.283446625196127,
+    "AP_std": 0.0018873785788550044,
+    "Lift_mean": 6.13102196012463
+  },
+  {
+    "dataset": "email-Enron",
+    "model": "MLSHoL",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.2845821978266467,
+    "AP_std": 0.0008645372579639728,
+    "Lift_mean": 6.155584682401585
+  },
+  {
+    "dataset": "email-Eu",
+    "model": "Dual-Mapping",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.15610533621308695,
+    "AP_std": 0.0003370946670684704,
+    "Lift_mean": 16.224883654147295
+  },
+  {
+    "dataset": "email-Eu",
+    "model": "MLSHoL",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.15981328220999344,
+    "AP_std": 0.0021227311236568284,
+    "Lift_mean": 16.61027081550319
+  },
+  {
+    "dataset": "tags-ask-ubuntu",
+    "model": "Dual-Mapping",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.09938233414679737,
+    "AP_std": 0.0007042517548430006,
+    "Lift_mean": 12.185378414554544
+  },
+  {
+    "dataset": "tags-ask-ubuntu",
+    "model": "MLSHoL",
+    "seeds": [
+      9101,
+      9102,
+      9103
+    ],
+    "AP_mean": 0.10173555966206121,
+    "AP_std": 0.005013380993628852,
+    "Lift_mean": 12.473910009676063
+  },
+  {
+    "dataset": "tags-math-sx",
+    "model": "Dual-Mapping",
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "AP_mean": 0.1849558959108947,
+    "AP_std": 0.0006760977042090639,
+    "Lift_mean": 14.227376608530363
+  },
+  {
+    "dataset": "tags-math-sx",
+    "model": "MLSHoL",
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "AP_mean": 0.18394947104072756,
+    "AP_std": 0.0012494816155329152,
+    "Lift_mean": 14.149959310825196
+  },
+  {
+    "dataset": "threads-math-sx",
+    "model": "Dual-Mapping",
+    "seeds": [
+      206,
+      207,
+      208
+    ],
+    "AP_mean": 0.12055421202627357,
+    "AP_std": 0.04512278441090512,
+    "Lift_mean": 128.91263739342853
+  }
+]

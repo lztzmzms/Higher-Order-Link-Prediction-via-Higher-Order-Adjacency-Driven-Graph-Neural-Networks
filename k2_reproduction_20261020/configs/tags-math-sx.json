@@ -1,0 +1,151 @@
+{
+  "dataset": "tags-math-sx",
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "mechanism": "teacher_joint",
+  "train_fraction": 0.6,
+  "test_fraction": 0.8,
+  "label_end_fraction": 1.0,
+  "random_walk": {
+    "enabled": true,
+    "kind": "candidate_dual_diffusion",
+    "steps": 2
+  },
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "selected_joint_steps": {
+        "41": 25,
+        "42": 25,
+        "43": 25
+      },
+      "source_jobs": [],
+      "rolling_origin": null,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    },
+    "MLSHoL": {
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "selected_joint_steps": {
+        "41": 50,
+        "42": 50,
+        "43": 50
+      },
+      "source_jobs": [],
+      "rolling_origin": null,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    }
+  },
+  "train_cut": 98646,
+  "target_cut": 131528,
+  "label_end": 164411,
+  "mls_neighbors": 30,
+  "timestamp_boundary": "original_frozen_event_cuts",
+  "inherited_selection_bias": true,
+  "source_experiment": "fixed_F_transfer_to_original_tags_math_K2_cohort",
+  "mlshol_rw_change": "Original specified SparseSIN/F experiments had RW disabled. User explicitly requested enabling RW on both models; MLSHoL now concatenates learned candidate RW features before the original joint head. No original no-RW score is reported as an RW result.",
+  "mls_observed_2_skeleton": true,
+  "mls_expand_cliques": false,
+  "pipeline": "joint",
+  "original_configurations": {
+    "Dual-Mapping": {
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "parameters": {
+        "epochs": 10,
+        "scale": 0.1,
+        "bounded_tanh": false,
+        "deterministic": false,
+        "history": {
+          "config": {
+            "width": 128,
+            "weight_power": 0.5
+          },
+          "epochs": 20
+        },
+        "history_seeds": [
+          41,
+          42
+        ]
+      },
+      "rw_enabled": true,
+      "layers": 4,
+      "max_dim": 2,
+      "source_job": "df64aea53b8b9fa0",
+      "original_rw_enabled": true
+    },
+    "MLSHoL": {
+      "seeds": [
+        41,
+        42,
+        43
+      ],
+      "parameters": {
+        "epochs": 5,
+        "scale": 0.3,
+        "bounded_tanh": false,
+        "deterministic": false,
+        "history": {
+          "config": {
+            "width": 128,
+            "weight_power": 0.5
+          },
+          "epochs": 20
+        },
+        "history_seeds": [
+          41,
+          42
+        ]
+      },
+      "rw_enabled": true,
+      "layers": 3,
+      "max_dim": 2,
+      "source_job": "368cd4eb31b6fad8",
+      "original_rw_enabled": false
+    }
+  },
+  "original_history": {
+    "ensemble_seeds": [
+      41,
+      42
+    ],
+    "epochs": 20,
+    "width": 128,
+    "weight_power": 0.5
+  }
+}

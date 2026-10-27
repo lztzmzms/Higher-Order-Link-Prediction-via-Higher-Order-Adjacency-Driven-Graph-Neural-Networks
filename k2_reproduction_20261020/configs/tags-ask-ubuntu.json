@@ -1,0 +1,89 @@
+{
+  "dataset": "tags-ask-ubuntu",
+  "seeds": [
+    9101,
+    9102,
+    9103
+  ],
+  "mechanism": "teacher_joint",
+  "train_fraction": 0.6,
+  "test_fraction": 0.8,
+  "label_end_fraction": 1.0,
+  "random_walk": {
+    "enabled": true,
+    "kind": "candidate_dual_diffusion",
+    "steps": 2
+  },
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        9101,
+        9102,
+        9103
+      ],
+      "selected_joint_steps": {
+        "9101": 25,
+        "9102": 25,
+        "9103": 25
+      },
+      "source_jobs": [
+        "7e0441c04d8eaf787a9a",
+        "ba59ca79b6ba9e23585f",
+        "8ae54a3bb0b67eab8014"
+      ],
+      "rolling_origin": null,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    },
+    "MLSHoL": {
+      "seeds": [
+        9101,
+        9102,
+        9103
+      ],
+      "selected_joint_steps": {
+        "9101": 50,
+        "9102": 50,
+        "9103": 50
+      },
+      "source_jobs": [
+        "eebc8e4cd26c17114f8b",
+        "c0ed2d7853dca9647ccc",
+        "c692daf8b425d1f20d5d"
+      ],
+      "rolling_origin": null,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    }
+  },
+  "train_cut": 162739,
+  "target_cut": 216986,
+  "label_end": 271233,
+  "mls_neighbors": 15,
+  "timestamp_boundary": "original_frozen_event_cuts_empty_positions_retained",
+  "inherited_selection_bias": true,
+  "source_experiment": "results/h_joint_representation_10h/cross_dataset",
+  "mlshol_rw_change": "Original specified SparseSIN/F experiments had RW disabled. User explicitly requested enabling RW on both models; MLSHoL now concatenates learned candidate RW features before the original joint head. No original no-RW score is reported as an RW result.",
+  "mls_observed_2_skeleton": false,
+  "mls_expand_cliques": true
+}

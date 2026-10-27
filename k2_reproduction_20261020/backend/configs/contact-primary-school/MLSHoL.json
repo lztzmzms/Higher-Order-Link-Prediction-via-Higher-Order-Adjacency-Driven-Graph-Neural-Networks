@@ -1,6 +1,0 @@
-{
-  "epochs": 20,
-  "scale": 0.1,
-  "bounded_tanh": true,
-  "deterministic": true
-}

@@ -1,0 +1,5 @@
+.venv/
+.agents/
+__pycache__/
+*.py[cod]
+.k2_integration/

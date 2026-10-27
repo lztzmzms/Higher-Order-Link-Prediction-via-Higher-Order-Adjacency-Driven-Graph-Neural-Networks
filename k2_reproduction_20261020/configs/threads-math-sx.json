@@ -1,0 +1,52 @@
+{
+  "dataset": "threads-math-sx",
+  "pipeline": "native",
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        206,
+        207,
+        208
+      ],
+      "parameters": {
+        "epochs": 40,
+        "name": "D_small_regularized",
+        "prior": "none",
+        "rw_epochs": 5,
+        "rw_walks_per_node": 20,
+        "strength_edge": false,
+        "strength_feature": true
+      },
+      "rw_enabled": true,
+      "layers": 4,
+      "max_dim": 2,
+      "source_job": "980c00de119255e1",
+      "original_rw_enabled": true
+    },
+    "MLSHoL": {
+      "seeds": [
+        206,
+        207,
+        208
+      ],
+      "parameters": {
+        "adjacency_mode": "weighted-log",
+        "epochs": 40,
+        "focal_gamma": 1.0,
+        "loss_mode": "cross_entropy",
+        "max_nodes_per_step": 35,
+        "name": "M_threads_40k",
+        "rw_source": "aligned_union",
+        "strength_edge": true,
+        "strength_feature": true
+      },
+      "rw_enabled": true,
+      "layers": 4,
+      "max_dim": 2,
+      "source_job": "df7c3549bf6a6bee",
+      "original_rw_enabled": true
+    }
+  },
+  "rw_seed": 0,
+  "protocol_note": "Original complete context graphs, shared train/validation indices, locked final base_indices; no resampling"
+}

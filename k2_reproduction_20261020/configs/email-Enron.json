@@ -1,0 +1,89 @@
+{
+  "dataset": "email-Enron",
+  "seeds": [
+    9101,
+    9102,
+    9103
+  ],
+  "mechanism": "teacher_joint",
+  "train_fraction": 0.6,
+  "test_fraction": 0.8,
+  "label_end_fraction": 1.0,
+  "random_walk": {
+    "enabled": true,
+    "kind": "candidate_dual_diffusion",
+    "steps": 2
+  },
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        9101,
+        9102,
+        9103
+      ],
+      "selected_joint_steps": {
+        "9101": 25,
+        "9102": 25,
+        "9103": 25
+      },
+      "source_jobs": [
+        "f2084c6d001f895e2afb",
+        "27408d69fa88f3418801",
+        "d4279e10c24f31951d67"
+      ],
+      "rolling_origin": 55,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    },
+    "MLSHoL": {
+      "seeds": [
+        9101,
+        9102,
+        9103
+      ],
+      "selected_joint_steps": {
+        "9101": 25,
+        "9102": 50,
+        "9103": 50
+      },
+      "source_jobs": [
+        "89195f692eb613a00957",
+        "5ef08fd06271343dadd1",
+        "ef808e850524c0596caa"
+      ],
+      "rolling_origin": 55,
+      "teacher_steps": 200,
+      "lr": 0.0003,
+      "structure_lr_ratio": 0.1,
+      "rank_weight": 10.0,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "teacher_policy": "freeze",
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true
+    }
+  },
+  "train_cut": 6529,
+  "target_cut": 8706,
+  "label_end": 10883,
+  "mls_neighbors": 30,
+  "timestamp_boundary": "original_frozen_event_cuts",
+  "inherited_selection_bias": true,
+  "source_experiment": "results/h_joint_representation_10h/interim_final_window/20261026_095027",
+  "mlshol_rw_change": "Original specified SparseSIN/F experiments had RW disabled. User explicitly requested enabling RW on both models; MLSHoL now concatenates learned candidate RW features before the original joint head. No original no-RW score is reported as an RW result.",
+  "mls_observed_2_skeleton": true,
+  "mls_expand_cliques": false
+}
