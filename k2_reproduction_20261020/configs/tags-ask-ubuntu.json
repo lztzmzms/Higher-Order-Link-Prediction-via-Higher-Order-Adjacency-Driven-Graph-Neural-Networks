@@ -82,6 +82,6 @@
   "mls_neighbors": 15,
   "timestamp_boundary": "original_frozen_event_cuts_empty_positions_retained",
   "source_experiment": "results/h_joint_representation_10h/cross_dataset",
-  "mls_observed_2_skeleton": false
+  "mls_observed_2_skeleton": false,
   "mls_expand_cliques": true
 }
