@@ -81,7 +81,6 @@
   "label_end": 172035,
   "mls_neighbors": 30,
   "timestamp_boundary": "strict_left_at_tied_timestamp",
-  "inherited_selection_bias": true,
   "source_experiment": "results/contact_high_school_recipe_selected_exploration_20261026",
   "mlshol_rw_change": "Original specified SparseSIN/F experiments had RW disabled. User explicitly requested enabling RW on both models; MLSHoL now concatenates learned candidate RW features before the original joint head. No original no-RW score is reported as an RW result.",
   "mls_observed_2_skeleton": true,
