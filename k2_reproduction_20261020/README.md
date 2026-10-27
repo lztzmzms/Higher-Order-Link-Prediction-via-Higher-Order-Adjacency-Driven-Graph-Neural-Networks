@@ -23,6 +23,6 @@ python reproduce.py --dataset threads-math-sx
 
 随附结果覆盖八个数据集、两个模型各三个种子，共 48 行真实运行结果和 16 组汇总。threads-math 的 MLSHoL 种子 207、208 由核对过的原同配置真实预测重算，种子 206 与本版重跑结果完全一致。
 
-配对 AP 差值、测试样本规模和随机波动解释见 [STATISTICS.md](STATISTICS.md)。执行 `python evaluate.py --compare` 可从已有结果重新生成该说明；不会训练模型或增加正式结果字段。
+执行 `python evaluate.py --compare` 可从已有结果重新生成该说明；不会训练模型或增加正式结果字段。
 
 其他实验仍位于 [supplementary_sources/](supplementary_sources/README.md)，与本次 K=2 替换分开保留。
