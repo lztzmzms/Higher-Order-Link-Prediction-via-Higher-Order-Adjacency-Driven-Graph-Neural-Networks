@@ -82,5 +82,6 @@
   "mls_neighbors": 30,
   "timestamp_boundary": "original_frozen_event_cuts",
   "source_experiment": "results/h_joint_representation_10h/interim_final_window/20261026_095027",
+  "mls_observed_2_skeleton": true
   "mls_expand_cliques": false
 }
