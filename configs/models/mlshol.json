@@ -1,7 +1,0 @@
-{
-  "model": "MLSHoL",
-  "structure_encoder": "SparseSIN",
-  "embedding_dim": 32,
-  "history_fusion": "after original structural readout plus RW",
-  "selection": "dataset JSON models/MLSHoL overrides"
-}
