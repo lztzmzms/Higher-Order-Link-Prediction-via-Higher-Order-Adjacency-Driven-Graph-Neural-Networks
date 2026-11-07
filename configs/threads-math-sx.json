@@ -1,0 +1,82 @@
+{
+  "dataset": "threads-math-sx",
+  "pipeline": "historynet_joint",
+  "default_scheme": "component_joint",
+  "mechanism": "component_joint",
+  "use_history": true,
+  "seeds": [
+    9111,
+    9113,
+    9114,
+    9117,
+    9118,
+    9119
+  ],
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        9111,
+        9119,
+        9117
+      ],
+      "lr": 0.003,
+      "structure_lr_ratio": 0.1,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true,
+      "gnn": "GAT",
+      "gat_heads": 4,
+      "epochs": 25
+    },
+    "MLSHoL": {
+      "seeds": [
+        9118,
+        9113,
+        9114
+      ],
+      "lr": 0.003,
+      "structure_lr_ratio": 0.1,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true,
+      "structure_encoder": "SparseSIN",
+      "fusion_stage": "after structural readout",
+      "epochs": 25
+    }
+  },
+  "protocol_note": "Original complete context graphs, shared train/validation indices, locked final base_indices; no resampling",
+  "random_walk": {
+    "enabled": true,
+    "kind": "candidate_dual_diffusion",
+    "steps": 2
+  },
+  "component_joint": {
+    "dimensions": 2,
+    "mask_indices": [],
+    "positive_score_indices": [
+      0,
+      1
+    ],
+    "final_H_input": false,
+    "final_H_residual": false,
+    "teacher": false
+  },
+  "component_generator_config": {
+    "ensemble_seeds": [
+      41,
+      42
+    ],
+    "epochs": 20,
+    "width": 128,
+    "weight_power": 0.5
+  },
+  "component_generator": "threads-math-sx"
+}

@@ -1,5 +1,11 @@
-.venv/
-.agents/
 __pycache__/
-*.py[cod]
-.k2_integration/
+*.pyc
+.venv/
+.cache/
+outputs/
+*.pt
+*.pth
+.DS_Store
+server_results/
+server_*.log
+server_*.pid

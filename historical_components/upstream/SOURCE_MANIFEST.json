@@ -1,0 +1,125 @@
+[
+  {
+    "module": "core",
+    "source": "history_source/chronological_recovery_6h.py",
+    "source_sha256": "a61950373a4fa37e7dec41ab36c3e53e5115f3b9d1bad445d516d97d53dfeecc",
+    "definitions": [
+      "aggregate",
+      "finite_matrix",
+      "top_features",
+      "score_metrics"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "temporal",
+    "source": "history_source/strict_temporal_recovery_two.py",
+    "source_sha256": "62a275e9980441d85acb6b28250676ea4dfd87f41e2b1673b5b3204f7b08b60b",
+    "definitions": [
+      "sha",
+      "cutoff",
+      "uniform_open_candidates",
+      "attach_labels"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "event_features",
+    "source": "history_source/strict_event_training_two.py",
+    "source_sha256": "73f1ed54f991622f7dc50cf011d690d9c3b7721fa2360b7c31fc1cfae419b932",
+    "definitions": [
+      "History",
+      "prefix_state"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "source_training",
+    "source": "history_source/strict_training_source_ablation_two.py",
+    "source_sha256": "ae79c10b350446d6ad0a9b553cb35af8dfacc4b236873c49d91285d5a7c74943",
+    "definitions": [
+      "train_data",
+      "columns"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "legacy",
+    "source": "history_source/strict_target_search_2h.py",
+    "source_sha256": "e3d432995bbd6f8d17c44c2e969c79809b40052fa31a4cf16b8be4b9727146f5",
+    "definitions": [
+      "train",
+      "cols",
+      "estimator",
+      "predict"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "rank_predictor",
+    "source": "history_source/strict_rank_units_recovery_1h.py",
+    "source_sha256": "91740b33893e80f4e189b76e98401cb3ef901a72d9dc38e964902d1e4888b498",
+    "definitions": [
+      "clock_features",
+      "community_features",
+      "feature_indices",
+      "training",
+      "pair_indices",
+      "predict",
+      "stack_predict",
+      "robust_quality"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "broad",
+    "source": "history_source/causal_broad_extension_features.py",
+    "source_sha256": "f0d0d014df822cccc85e40ee4132d6221841eea8b2f3f7ed2f7f605cb9d0fd27",
+    "definitions": [
+      "novel_features"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "enron_local",
+    "source": "history_source/enron_top_rerank.py",
+    "source_sha256": "4919c9c790ab4791a3c2da3a8ba686a68b1c1aedde8a6657584bc2b1baa513c4",
+    "definitions": [
+      "eligible",
+      "fit_score"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "enron_bounded",
+    "source": "history_source/enron_bounded_rerank.py",
+    "source_sha256": "32429091f9a1399a76c6f8ffe956fbcae0ddbb39c0ee33e1921b70a9bb4d8bec",
+    "definitions": [
+      "localized",
+      "bounded_order",
+      "rearrange"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "highschool_rules",
+    "source": "history_source/results/contact_high_school_recipe_selected_exploration_20261026/prepare_retained_recipe.py",
+    "source_sha256": "306455e6ba3378016ab4994039f7abd89169fe34c5e7e511e4a50cf31c953148",
+    "definitions": [
+      "signal_values",
+      "rank",
+      "direction_selection",
+      "replay"
+    ],
+    "computational_statements_preserved": true
+  },
+  {
+    "module": "tag_features",
+    "source": "history_source/k2_reproduction_20261020/backend/code/residual/input/code/core.py",
+    "source_sha256": "62edd973635a373e7c41c24f2a84f7d7ebd098d174c91960144188be64647112",
+    "definitions": [
+      "History"
+    ],
+    "computational_statements_preserved": true
+  }
+]

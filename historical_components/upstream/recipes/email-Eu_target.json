@@ -1,0 +1,25 @@
+{
+  "route": {
+    "kind": "current",
+    "config": {
+      "family": "PAIR_MLP",
+      "leaf": 1,
+      "C": 0.01,
+      "epochs": 40,
+      "view": "augmented",
+      "units": "fixed",
+      "sampler": "uniform",
+      "deduplicate": true,
+      "recent_weight": 0.0,
+      "balanced": false,
+      "fusion": 0.2,
+      "profile": "dense20",
+      "phase": "complete_direction_v2",
+      "input_rank": false,
+      "probability_ensemble": false,
+      "duration_match": false,
+      "origin_policy": "dense"
+    }
+  },
+  "max_selection_label_end": 92984
+}

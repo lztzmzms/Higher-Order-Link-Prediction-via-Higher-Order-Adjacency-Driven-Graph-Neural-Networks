@@ -1,0 +1,25 @@
+{
+  "route": {
+    "kind": "current",
+    "config": {
+      "family": "PAIR_AP",
+      "leaf": 1,
+      "C": 0.1,
+      "epochs": 40,
+      "view": "augmented",
+      "units": "fixed",
+      "sampler": "full",
+      "deduplicate": false,
+      "recent_weight": 4.0,
+      "balanced": false,
+      "fusion": 0.0,
+      "profile": "dense20",
+      "phase": "complete_direction_v2",
+      "input_rank": true,
+      "probability_ensemble": true,
+      "duration_match": false,
+      "origin_policy": "nonoverlap"
+    }
+  },
+  "max_selection_label_end": 216986
+}

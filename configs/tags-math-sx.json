@@ -1,0 +1,102 @@
+{
+  "dataset": "tags-math-sx",
+  "seeds": [
+    9113,
+    9114,
+    9116,
+    9117
+  ],
+  "mechanism": "component_joint",
+  "train_fraction": 0.6,
+  "test_fraction": 0.8,
+  "label_end_fraction": 1.0,
+  "random_walk": {
+    "enabled": true,
+    "kind": "candidate_dual_diffusion",
+    "steps": 2
+  },
+  "models": {
+    "Dual-Mapping": {
+      "seeds": [
+        9117,
+        9114,
+        9113
+      ],
+      "lr": 0.003,
+      "structure_lr_ratio": 0.1,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true,
+      "gnn": "GAT",
+      "gat_heads": 4,
+      "epochs": 25
+    },
+    "MLSHoL": {
+      "seeds": [
+        9117,
+        9116,
+        9114
+      ],
+      "lr": 0.003,
+      "structure_lr_ratio": 0.1,
+      "batch_size": 32,
+      "hidden": 32,
+      "dropout": 0.05,
+      "depth": 3,
+      "weight_decay": 0.0001,
+      "loss_weight": 1.0,
+      "rw_enabled": true,
+      "structure_encoder": "SparseSIN",
+      "fusion_stage": "after structural readout",
+      "epochs": 25
+    }
+  },
+  "train_cut": 98646,
+  "target_cut": 131528,
+  "label_end": 164411,
+  "mls_neighbors": 30,
+  "timestamp_boundary": "original_frozen_event_cuts",
+  "mls_observed_2_skeleton": true,
+  "mls_expand_cliques": false,
+  "pipeline": "component_joint",
+  "original_history": {
+    "ensemble_seeds": [
+      41,
+      42
+    ],
+    "epochs": 20,
+    "width": 128,
+    "weight_power": 0.5
+  },
+  "use_history": true,
+  "default_scheme": "component_joint",
+  "component_generator": "tags-math-sx",
+  "component_joint": {
+    "dimensions": 2,
+    "mask_indices": [],
+    "positive_score_indices": [
+      0,
+      1
+    ],
+    "rank_normalization": "(average_rank - 0.5) / N within fixed prediction-origin candidate cohort",
+    "mask_handling": "independent unrestricted random projection; constant availability under frozen_fit",
+    "standardization": "StandardScaler fit on permitted training candidates only; float64 transforms",
+    "clip": [
+      -8.0,
+      8.0
+    ],
+    "objective": "real-link-label weighted BCE only",
+    "class_weight": "min(10, sqrt((1-p)/p)); p over all allowed fit candidates",
+    "teacher": false,
+    "final_H_input": false,
+    "final_H_residual": false,
+    "fixed_H_fusion": false
+  },
+  "component_generator_config": {
+    "recipe_policy": "frozen_fit"
+  }
+}

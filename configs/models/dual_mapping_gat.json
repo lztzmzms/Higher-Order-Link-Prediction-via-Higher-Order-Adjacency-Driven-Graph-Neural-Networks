@@ -1,0 +1,11 @@
+{
+  "model": "Dual-Mapping",
+  "gnn": "GAT",
+  "gat_heads": 4,
+  "hidden_dim": 64,
+  "embedding_dim": 32,
+  "depth": 3,
+  "dropout": 0.05,
+  "edge_attributes": "original derived-graph weights when present; unit weights otherwise",
+  "selection": "dataset JSON models/Dual-Mapping overrides"
+}

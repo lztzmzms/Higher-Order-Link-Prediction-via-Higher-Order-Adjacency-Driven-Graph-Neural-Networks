@@ -1,0 +1,13 @@
+{
+  "selected": {
+    "config": {
+      "family": "PAIR_LR",
+      "strength": 0.01,
+      "pool": 200,
+      "features": 64,
+      "feature_mode": "raw"
+    },
+    "alpha": 0.2,
+    "max_move": 10
+  }
+}

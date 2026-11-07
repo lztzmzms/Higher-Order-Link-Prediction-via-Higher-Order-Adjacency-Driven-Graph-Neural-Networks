@@ -1,0 +1,454 @@
+{
+  "email-Enron": [
+    {
+      "file": "10.npz",
+      "fraction": 0.1,
+      "cut": 1088,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/10.npz",
+      "candidate_sha256": "fc9f5197e11812c65104ea80c0fcc599f81484f967111d45ea4a64b60b07ee13"
+    },
+    {
+      "file": "15.npz",
+      "fraction": 0.15,
+      "cut": 1632,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/15.npz",
+      "candidate_sha256": "a7daadd4fdbeb047cb22e80e59dbe702058fb04b4e7771cec5c27dda0579f9b9"
+    },
+    {
+      "file": "20.npz",
+      "fraction": 0.2,
+      "cut": 2176,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/20.npz",
+      "candidate_sha256": "a5d578ca2871c699f26be2213f114dfc07a3e347e9ffd437ea4f862d80d6e547"
+    },
+    {
+      "file": "25.npz",
+      "fraction": 0.25,
+      "cut": 2720,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/25.npz",
+      "candidate_sha256": "5cafa8fb138bc2940952cb6864b49816596155de24c20b54d3abf5aa92674ed7"
+    },
+    {
+      "file": "30.npz",
+      "fraction": 0.3,
+      "cut": 3264,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/30.npz",
+      "candidate_sha256": "6f0ea5f2f6d8bba01ecfd7d8d9ef22170b8a0f642421900827fad9605df43e95"
+    },
+    {
+      "file": "35.npz",
+      "fraction": 0.35,
+      "cut": 3809,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/35.npz",
+      "candidate_sha256": "8194cb75424a3796c24134b9293a0ba40f13136d8755643145c112cd85d86c1d"
+    },
+    {
+      "file": "40.npz",
+      "fraction": 0.4,
+      "cut": 4352,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/40.npz",
+      "candidate_sha256": "891e6ca6580620427d205ac69942f07a9654f58ccc322e2accd9b89c8f25f1ba"
+    },
+    {
+      "file": "45.npz",
+      "fraction": 0.45,
+      "cut": 4897,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/45.npz",
+      "candidate_sha256": "b92a90ffc3ccd245342826a7b770268394cab521a4cb2b5e698bb7e77d463872"
+    },
+    {
+      "file": "50.npz",
+      "fraction": 0.5,
+      "cut": 5441,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/50.npz",
+      "candidate_sha256": "4cef58117311c4c922e75d76b48fec71b4fefd65501d590821c2fd056537e99d"
+    },
+    {
+      "file": "55.npz",
+      "fraction": 0.55,
+      "cut": 5985,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/55.npz",
+      "candidate_sha256": "c5ee6739852d918e32c48938362b9ef23e7065d8a6fd5af9efdb847daf6045e9"
+    },
+    {
+      "file": "60.npz",
+      "fraction": 0.6,
+      "cut": 6529,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/60.npz",
+      "candidate_sha256": "83ae7d7972a983b8f6e8464a617282fa9231862ef4befc63688befad6be08d68"
+    },
+    {
+      "file": "80.npz",
+      "fraction": 0.8,
+      "cut": 8706,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/email-Enron/snapshots/80.npz",
+      "candidate_sha256": "46064eba89c49e5bb39a819daf77100c692217757e6ad5fd41b92ac2856fc692"
+    }
+  ],
+  "contact-primary-school": [
+    {
+      "file": "10.npz",
+      "fraction": 0.1,
+      "cut": 532,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/10.npz",
+      "candidate_sha256": "176e1315e69e2a0aff0889d7f41a525d845870dee5d36ee271b7a57efe351397"
+    },
+    {
+      "file": "15.npz",
+      "fraction": 0.15,
+      "cut": 801,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/15.npz",
+      "candidate_sha256": "cc721116f54acdbcf70054adf88b5bcae9ece227c5163b1141099e6d43e7bfcb"
+    },
+    {
+      "file": "20.npz",
+      "fraction": 0.2,
+      "cut": 1068,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/20.npz",
+      "candidate_sha256": "cdc13d7a8c15d54e42cedb239318d5d310308ca0a87935d50ec695903e5b9c6f"
+    },
+    {
+      "file": "25.npz",
+      "fraction": 0.25,
+      "cut": 1333,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/25.npz",
+      "candidate_sha256": "38265b8e3e2ce79b613a1240a7ac8366a8a2ef828ff25f0f0e1d78f4cf6563b7"
+    },
+    {
+      "file": "30.npz",
+      "fraction": 0.3,
+      "cut": 1600,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/30.npz",
+      "candidate_sha256": "1bcfc043e7488671852ff0dc68bc13aad518d88e400f2a5418246b95435f88a2"
+    },
+    {
+      "file": "35.npz",
+      "fraction": 0.35,
+      "cut": 1868,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/35.npz",
+      "candidate_sha256": "58485fd337d3aab96508c1b18beade26bed6a35ff0cbece75f83e49d3b5d54d0"
+    },
+    {
+      "file": "40.npz",
+      "fraction": 0.4,
+      "cut": 2134,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/40.npz",
+      "candidate_sha256": "b9c46fdc85d51140abe9aa75490c40eda73554ac5557e139a72665a734f89401"
+    },
+    {
+      "file": "45.npz",
+      "fraction": 0.45,
+      "cut": 2402,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/45.npz",
+      "candidate_sha256": "f6dc443e19ac7ba2c7a18d86bb19b644890a04d843d9dd81ba55a09a4c7fb359"
+    },
+    {
+      "file": "50.npz",
+      "fraction": 0.5,
+      "cut": 2671,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/50.npz",
+      "candidate_sha256": "c47996d3782845adef17d9d99734482d50f0470b502cdb0198e7ff90b910dfba"
+    },
+    {
+      "file": "55.npz",
+      "fraction": 0.55,
+      "cut": 2935,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/55.npz",
+      "candidate_sha256": "3f18b54ef7ad7eba73361d9701bce812fe495d0ac2eb12ec86d3d60c1e70aa38"
+    },
+    {
+      "file": "60.npz",
+      "fraction": 0.6,
+      "cut": 3205,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/60.npz",
+      "candidate_sha256": "1e4918e2e6328b4b27e80a5ed7fcb017167f9410a089d21813492e60194c6a6c"
+    },
+    {
+      "file": "80.npz",
+      "fraction": 0.8,
+      "cut": 4273,
+      "label_end": null,
+      "source": "results/strict_training_source_ablation_two_20261011/contact-primary-school/snapshots/80.npz",
+      "candidate_sha256": "c31720af9a8f1cc1f554197aa3a8a3a23a9111d16e52d0bb5cd173b7e441efce"
+    }
+  ],
+  "email-Eu": [
+    {
+      "file": "20.npz",
+      "fraction": 0.2,
+      "cut": 23246,
+      "label_end": 46492,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/20.npz",
+      "candidate_sha256": "5bdf67f2fdccab1dfe376311f3ee92e6c98b837f70db34d4f0a4e9f63e98e10f"
+    },
+    {
+      "file": "25.npz",
+      "fraction": 0.25,
+      "cut": 29057,
+      "label_end": 52303,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/25.npz",
+      "candidate_sha256": "8f971a9041d1f40b1de061f1471b97f0ca3654a708f78535e91575540025ed7a"
+    },
+    {
+      "file": "30.npz",
+      "fraction": 0.3,
+      "cut": 34869,
+      "label_end": 58115,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/30.npz",
+      "candidate_sha256": "47b342d79e1b8890cc9dd23e886f51bd5808668f36ff06523aba6c114f4b06b0"
+    },
+    {
+      "file": "35.npz",
+      "fraction": 0.35,
+      "cut": 40680,
+      "label_end": 63926,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/35.npz",
+      "candidate_sha256": "eb6a8cdbdb68a88deadc475fc9e872dd738c5448ce69ce566da178bd369687f4"
+    },
+    {
+      "file": "40.npz",
+      "fraction": 0.4,
+      "cut": 46492,
+      "label_end": 69738,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/40.npz",
+      "candidate_sha256": "08fdf534ce094977a98eedb175c6b66351c0619631a666c1b9e40dd020dbc50d"
+    },
+    {
+      "file": "45.npz",
+      "fraction": 0.45,
+      "cut": 52303,
+      "label_end": 75549,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/45.npz",
+      "candidate_sha256": "d69a9538860de15e2ecf235363537362caee85a2307f335a2a183843c8d92058"
+    },
+    {
+      "file": "50.npz",
+      "fraction": 0.5,
+      "cut": 58115,
+      "label_end": 81361,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/50.npz",
+      "candidate_sha256": "e5bd212b025fa494b9b3de6de15fffb625971cb5d2236efa12bcd2992b9cad13"
+    },
+    {
+      "file": "55.npz",
+      "fraction": 0.55,
+      "cut": 63926,
+      "label_end": 87172,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/55.npz",
+      "candidate_sha256": "7557fad0c665d9254635fa03922cdfbaf902ac248a9eedcdd143fbe8f9589c2f"
+    },
+    {
+      "file": "60.npz",
+      "fraction": 0.6,
+      "cut": 69738,
+      "label_end": 92984,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/60.npz",
+      "candidate_sha256": "cb615b18df9c1afd021e7125ac636dd3e7f4b87d5cd807f1c1b235d647cf4fe0"
+    },
+    {
+      "file": "80.npz",
+      "fraction": 0.8,
+      "cut": 92984,
+      "label_end": null,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/email-Eu/snapshots_v2/80.npz",
+      "candidate_sha256": "f5bd05f90102712a98de99690485671be59c2ad136d7855cef6e42a0c5f0e58e"
+    }
+  ],
+  "tags-ask-ubuntu": [
+    {
+      "file": "20.npz",
+      "fraction": 0.2,
+      "cut": 54246,
+      "label_end": 108493,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/20.npz",
+      "candidate_sha256": "be6b08ce9dbc3ff86daf95fb5e10341be8ce0196609c3d027ca74567b0f15ddd"
+    },
+    {
+      "file": "25.npz",
+      "fraction": 0.25,
+      "cut": 67808,
+      "label_end": 122054,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/25.npz",
+      "candidate_sha256": "6b6690bc73d2d804101f65f3d79aa52ee991ff7b40780d1e3ff449891c039a43"
+    },
+    {
+      "file": "30.npz",
+      "fraction": 0.3,
+      "cut": 81369,
+      "label_end": 135616,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/30.npz",
+      "candidate_sha256": "fcf7a33df9f4a67681d37f363d705a6ec283125c488f83ab374cb6022903cbaa"
+    },
+    {
+      "file": "35.npz",
+      "fraction": 0.35,
+      "cut": 94931,
+      "label_end": 149178,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/35.npz",
+      "candidate_sha256": "6a5f98da6ebcd002925ff480debf6c64a2b1b08d9467fa2e41f8f1b6f15cf740"
+    },
+    {
+      "file": "40.npz",
+      "fraction": 0.4,
+      "cut": 108493,
+      "label_end": 162739,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/40.npz",
+      "candidate_sha256": "632638fd7c50307afe2ec93068e62fbf2212b5b24dce0371dd1ac526a0d31bf9"
+    },
+    {
+      "file": "45.npz",
+      "fraction": 0.45,
+      "cut": 122054,
+      "label_end": 176301,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/45.npz",
+      "candidate_sha256": "e857b18195b4714d1b034805764bfafc1846847c1668b550f48198e2daae77fe"
+    },
+    {
+      "file": "50.npz",
+      "fraction": 0.5,
+      "cut": 135616,
+      "label_end": 189863,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/50.npz",
+      "candidate_sha256": "5bda940a11a3e0c98cd0772433d7df07a10a69f46c1d05e0bd7ece72e98c608d"
+    },
+    {
+      "file": "55.npz",
+      "fraction": 0.55,
+      "cut": 149178,
+      "label_end": 203424,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/55.npz",
+      "candidate_sha256": "ad22cbb14c6cd7b3f4158e18628e4216753a6713358ecd4dcc0b7e234492d00b"
+    },
+    {
+      "file": "60.npz",
+      "fraction": 0.6,
+      "cut": 162739,
+      "label_end": 216986,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/60.npz",
+      "candidate_sha256": "57d774af2a3731922cbf28d736ffd55c5d03ff8b030b1a225ac9b1b1ca1b887b"
+    },
+    {
+      "file": "80.npz",
+      "fraction": 0.8,
+      "cut": 216986,
+      "label_end": null,
+      "source": "results/history_route_transfer_eu_ubuntu_20261012/tags-ask-ubuntu/snapshots_v2/80.npz",
+      "candidate_sha256": "58b0721ddfda92132ed006153a070da3974f952966978cea88cdfd067426cc10"
+    }
+  ],
+  "contact-high-school": [
+    {
+      "file": "40.npz",
+      "fraction": 0.4,
+      "cut": 68807,
+      "label_end": 103217,
+      "source": "results/contact_high_school_causal_test_20261026_1523/data/SNAPSHOT_40.npz",
+      "candidate_sha256": "9d3d07dc35b86aff6f2492536f1a0d5d849d8fde20613c3adc5494249660c125"
+    },
+    {
+      "file": "60.npz",
+      "fraction": 0.6,
+      "cut": 103217,
+      "label_end": 137626,
+      "source": "results/contact_high_school_causal_test_20261026_1523/data/SNAPSHOT_60.npz",
+      "candidate_sha256": "cc56b5f78fa212110d92d4218c100b633be4c618ddb3bd3714e0b12040e472a9"
+    },
+    {
+      "file": "80.npz",
+      "fraction": 0.8,
+      "cut": 137626,
+      "label_end": null,
+      "source": "results/contact_high_school_causal_test_20261026_1523/data/SNAPSHOT_80.npz",
+      "candidate_sha256": "103b401b92ffcb66e17152cc8dba31340c58b648b25bdd8ec81f037fab26aa59"
+    }
+  ],
+  "tags-math-sx": [
+    {
+      "file": "10.npz",
+      "fraction": null,
+      "cut": 16441,
+      "label_end": 49323,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/10.npz",
+      "candidate_sha256": "81b3088492c981559cf7c1817572cd73f93b7ba58fe775a9d1a38d72f08a1daa"
+    },
+    {
+      "file": "20.npz",
+      "fraction": null,
+      "cut": 32882,
+      "label_end": 65764,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/20.npz",
+      "candidate_sha256": "3f5624c5e9803a39cc67fd5c544a8f1686cbd06942a6ce78e99a78d0ad6cb65b"
+    },
+    {
+      "file": "30.npz",
+      "fraction": null,
+      "cut": 49323,
+      "label_end": 82205,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/30.npz",
+      "candidate_sha256": "dd43fb6493b30f6a81f5f2173ca72b4cb4b4c2cf0e13a456dcf1537ed5fdfda5"
+    },
+    {
+      "file": "40.npz",
+      "fraction": null,
+      "cut": 65764,
+      "label_end": 98646,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/40.npz",
+      "candidate_sha256": "58b62d3a29b7a79724f02ca627f278858ece6e160030b694468b97f10861598a"
+    },
+    {
+      "file": "50.npz",
+      "fraction": null,
+      "cut": 82205,
+      "label_end": 115087,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/50.npz",
+      "candidate_sha256": "028ab65baac44d05532fd773019abbc81db97ca3e1cc7607253457a0f41064ce"
+    },
+    {
+      "file": "60.npz",
+      "fraction": null,
+      "cut": 98646,
+      "label_end": 131528,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/history/60.npz",
+      "candidate_sha256": "4015b9d472fca2ea6984c757d28c718e540c9f03fe2c5eca263e1a222041e5b3"
+    },
+    {
+      "file": "train.npz",
+      "fraction": 0.6,
+      "cut": 98646,
+      "label_end": 131528,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/train.npz",
+      "candidate_sha256": "a3a8442377d0f3fe1e8296e13e95c33accaeddc3cfca5ed456a75aabe5b0d51e"
+    },
+    {
+      "file": "test.npz",
+      "fraction": 0.8,
+      "cut": 131528,
+      "label_end": 164411,
+      "source": "k2_reproduction_20261020/backend/material/tags-math-sx/test.npz",
+      "candidate_sha256": "5fb6ccd503676f960f9f55d8c182fe012e6d020ec5290b15945e1bdcd74713b7"
+    }
+  ]
+}

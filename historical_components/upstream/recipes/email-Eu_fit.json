@@ -1,0 +1,25 @@
+{
+  "route": {
+    "kind": "current",
+    "config": {
+      "family": "HG_FULL",
+      "leaf": 20,
+      "C": 0.1,
+      "epochs": 40,
+      "view": "temporal",
+      "units": "fixed",
+      "sampler": "full",
+      "deduplicate": true,
+      "recent_weight": 4.0,
+      "balanced": false,
+      "fusion": 0.0,
+      "profile": "dense20",
+      "phase": "complete_direction_v2",
+      "input_rank": true,
+      "probability_ensemble": true,
+      "duration_match": true,
+      "origin_policy": "dense"
+    }
+  },
+  "maximum_hyperparameter_label_end": 69738
+}

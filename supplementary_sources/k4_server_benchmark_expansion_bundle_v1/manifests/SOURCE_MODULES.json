@@ -1,0 +1,17 @@
+{
+  "copied_modules": [
+    "audit_dual_mapping_information_loss.py",
+    "kclosure/__init__.py",
+    "kclosure/core.py",
+    "run_full_information_preservation_validation.py",
+    "run_h_preserving_perturbation_dev_v2.py",
+    "run_k2_residual_lower_order_conditional_redundancy.py",
+    "run_k3_residual_lower_order_conditional_redundancy.py",
+    "run_strict_timestamp_chronological_core_v1.py",
+    "run_strict_timestamp_t2_mlp_local_v1.py",
+    "run_strict_timestamp_t2_mlp_r1_dose_local_v1.py",
+    "scripts/run_k4_task_core_perturbation_v1.py",
+    "scripts/run_task_core_confirmatory_v2.py",
+    "scripts/task_core_common_v1.py"
+  ]
+}

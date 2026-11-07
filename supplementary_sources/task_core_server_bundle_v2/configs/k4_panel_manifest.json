@@ -1,0 +1,8 @@
+{
+  "datasets": [
+    "email-Eu",
+    "tags-ask-ubuntu",
+    "tags-math-sx"
+  ],
+  "panel_size": 3
+}

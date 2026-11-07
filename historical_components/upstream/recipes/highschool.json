@@ -1,0 +1,32 @@
+{
+  "contact-high-school": {
+    "recipes": {
+      "Dual-Mapping": {
+        "recipe": {
+          "stage": "triple",
+          "pair": {
+            "stage": "pair",
+            "first": "temporal/edge_ratio_logprod",
+            "second": "calendar/clock_overlap_min",
+            "formula": "mean75"
+          },
+          "third": "temporal/edge_temporal_overlap_w0.01_logsum",
+          "formula": "mean75"
+        }
+      },
+      "MLSHoL": {
+        "recipe": {
+          "stage": "triple",
+          "pair": {
+            "stage": "pair",
+            "first": "temporal/edge_ratio_logprod",
+            "second": "calendar/clock_overlap_min",
+            "formula": "mean75"
+          },
+          "third": "temporal/edge_temporal_overlap_w0.005_mean",
+          "formula": "minimum"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "input": "new_events.jsonl",
+  "K": 2,
+  "seed": 9101,
+  "mode": "structure_only",
+  "observation_start": 0,
+  "train_cut": 50,
+  "prediction_cut": 70,
+  "prediction_end": 90,
+  "future_labels_available": false,
+  "observed_until": 70,
+  "mls_neighbors": 30,
+  "mls_observed_2_skeleton": true,
+  "mls_expand_cliques": false,
+  "random_walk": {
+    "enabled": true,
+    "steps": 2
+  },
+  "model": {
+    "lr": 0.003,
+    "structure_lr_ratio": 0.1,
+    "weight_decay": 0.0001,
+    "hidden": 32,
+    "dropout": 0.05,
+    "depth": 3,
+    "batch_size": 32,
+    "rw_enabled": true,
+    "gnn": "GAT",
+    "gat_heads": 4,
+    "epochs": 25
+  }
+}

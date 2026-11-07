@@ -1,0 +1,6 @@
+-r ../../requirements.txt
+pandas==2.2.3
+pyarrow==18.1.0
+psutil
+matplotlib
+Pillow
